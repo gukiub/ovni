@@ -14,7 +14,6 @@
 	$estado1 = $_GET['estado']
 	$idade1 = $_GET['idade']
 	$cep1 = $_GET['cep']
-	$imagem1 = $_GET['imagem'];
 	
 
 	$sql = "INSERT INTO cliente
@@ -29,8 +28,7 @@
 				cidade_clie,
 				estado_clie,
 				cep_clie,
-				CPF_clie,
-				img_perfil,
+				CPF_clie
 				)
 		VALUES
 			('".$nome1."','"
@@ -44,8 +42,7 @@
 				.$cidade1."','"
 				.$estado1."','"
 				.$cep1."','"
-				.$cpf1."','"
-				.$imagem1."')";
+				.$cpf1."')";
 
 $PDO->query($sql); //comando de enviar o sql
 
