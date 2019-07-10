@@ -9,11 +9,11 @@
 	$senha1 = $_GET['senha'];
 	$endereco1 = $_GET['endereco'];
 	$cpf1 = $_GET['cpf'];
-	$complemento1 = $_GET['complemento']
-	$cidade1 = $_GET['cidade']
-	$estado1 = $_GET['estado']
-	$idade1 = $_GET['idade']
-	$cep1 = $_GET['cep']
+	$complemento1 = $_GET['complemento'];
+	$cidade1 = $_GET['cidade'];
+	$estado1 = $_GET['estado'];
+	$idade1 = $_GET['idade'];
+	$cep1 = $_GET['cep'];
 	
 
 	$sql = "INSERT INTO cliente
