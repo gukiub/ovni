@@ -826,7 +826,7 @@ legend {
 
 .s010 form {
   width: 100%;
-  max-width: 790px;
+/*  max-width: 790px;*/
   margin: 0;
 }
 
@@ -917,6 +917,7 @@ legend {
 }
 
 .s010 form .inner-form .input-field .btn-delete {
+  
   min-width: 100px;
   height: 40px;
   padding: 0 15px;
