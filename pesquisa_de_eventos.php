@@ -44,7 +44,15 @@
 
 			$sql = "SELECT id, firstname, lastname FROM MyGuests";
 			$result = $conn->query($sql);
-			
+
+			if ($result->num_rows > 0) {
+			    // output data of each row
+			    while($row = $result->fetch_assoc()) {
+			        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+			    }
+			} else {
+			    echo "0 results";
+			}
 			$conn->close();
 		?>
 
@@ -124,6 +132,8 @@
 			<div id="extra">
 				<div class="container">
 					<div class="row no-collapse-1">
+
+						<!-- começa a seleção  -->
 						<section class="4u"> <a href="#" class="image featured"><img src="images/pic01.jpg" alt=""></a>
 							<div class="box">
 								<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
