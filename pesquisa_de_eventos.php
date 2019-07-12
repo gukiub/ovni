@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Phase Shift by TEMPLATED</title>
+		<title>Pesquisa de Eventos</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -29,7 +29,33 @@
 			<link rel="stylesheet" href="css/style-wide.css" />
 		</noscript>
 
-		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<?php
+			$servername = "localhost";
+			$username = "username";
+			$password = "password";
+			$dbname = "myDB";
+
+			// Create connection
+			$conn = new mysqli($servername, $username, $password, $dbname);
+			// Check connection
+			if ($conn->connect_error) {
+			    die("Connection failed: " . $conn->connect_error);
+			} 
+
+			$sql = "SELECT id, firstname, lastname FROM MyGuests";
+			$result = $conn->query($sql);
+
+			if ($result->num_rows > 0) {
+			    // output data of each row
+			    while($row = $result->fetch_assoc()) {
+			        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+			    }
+			} else {
+			    echo "0 results";
+			}
+			$conn->close();
+		?>
+
 	</head>
 	<body>
 
@@ -44,7 +70,7 @@
 		              <div class="col input-field">
 		                <div class="input-select">
 		                  <select data-trigger="" name="choices-single-defaul">
-		                    <option placeholder="" value="">Instrumentos</option>
+		                    <option placeholder="" value="null">Instrumentos</option>
 		                    <option value="violao">Violão</option>
 		                    <option value="cavaco">Cavaco</option>
 		                    <option value="bateria">Bateria</option>
@@ -68,7 +94,7 @@
 		              <div class="col input-field">
 		                <div class="input-select">
 		                  <select data-trigger="" name="choices-single-defaul">
-		                    <option placeholder="" value="">Estilos</option>
+		                    <option placeholder="" value="null">Estilos</option>
 		                <option value="alternativa">Alternativa</option>
 		                <option value="blues">Blues</option>
 		                <option value="dance">Dance</option>
@@ -101,18 +127,13 @@
 		        </div>
 		      </form>
 		    </div>
-			<!-- Banner -->
-			<div id="banner" class="container">
-				<section>
-					<p>This is <strong>Phase Shift</strong>, a responsive HTML5 site template freebie by <a href="http://templated.co">TEMPLATED</a>. Released for free under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so use it for whatever (personal or commercial) &ndash; just give us credit! Check out more of our stuff at <a href="http://templated.co">our site</a> or follow us on <a href="http://twitter.com/templatedco">Twitter</a>.</p>
-					<a href="#" class="button medium">Read More</a>
-				</section>
-			</div>
 
 			<!-- Extra -->
 			<div id="extra">
 				<div class="container">
 					<div class="row no-collapse-1">
+
+						<!-- começa a seleção  -->
 						<section class="4u"> <a href="#" class="image featured"><img src="images/pic01.jpg" alt=""></a>
 							<div class="box">
 								<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
