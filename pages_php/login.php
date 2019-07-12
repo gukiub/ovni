@@ -17,7 +17,7 @@
   <body>
      <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.html"><img src="../images/logo-ovni.png" width="120px" height="56"></a>
+      <a class="navbar-brand" href="../index.html"><img src="../images/logo-ovni.png" width="120px" height="56"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
