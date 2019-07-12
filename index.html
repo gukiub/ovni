@@ -35,120 +35,90 @@
 		</noscript>
 
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<style>
+			.collapse ul li a, .nav-item a{
+				font-size: 16px; text-decoration: none; font-family: sans-serif
+			}
+			.collapse ul div{
+				margin-top: -2em;
+			}
+			.carousel-indicators li{
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+			}
+		</style>
 	</head>
 	<body>
 		 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.html"><img src="images/logo-ovni.png" width="120px" height="56"></a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 2rem 1rem 0.5rem 1rem; ">
+      <a class="navbar-brand" href="index.html" style="margin-top: -1em;"><img src="images/logo-ovni.png" width="120px" height="56"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
           <li class="nav-item active">
-            <a class="nav-link" style="font-size: 16px; text-decoration: none; font-family: sans-serif;" href="index.html">Página Inicial</a>
+            <a class="nav-link"  href="index.html">Página Inicial</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px; text-decoration: none; font-family: sans-serif;" href="#">#</a>
+            <a class="nav-link" href="#">Sobre Nós</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px; text-decoration: none; font-family: sans-serif;" href="#">#</a>
+            <a class="nav-link" href="#">Contato</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px; text-decoration: none; font-family: sans-serif;" href="#">#</a>
+            <a class="nav-link" href="#">#</a>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px; text-decoration: none; font-family: sans-serif;" href="pages_php/login.php">Login</a>
-          </li>
-          <span class="navbar-text">
-            |
-          </span>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px; text-decoration: none; font-family: sans-serif;" href="pages_html/cadastroCliente.html">Registrar-se</a>
-          </li>
+        <ul class="navbar-nav ml-auto" style="display:block;">
+        	<div>
+        		<div class="col">
+        			<p style="color: rgba(255,255,255,.5); margin-left: 0.6em;">Buscando Músicos?  ||  Ou você é o Músico?</p>
+        		</div>
+        	</div>
+         	<div>
+        		<div class="col" style="display: inline-flex;">
+					<li class="nav-item">
+						<a class="nav-link" href="pages_html/login.html">Login</a>
+					</li>
+					<span class="navbar-text">
+						|
+					</span>
+					<li class="nav-item">
+						<a class="nav-link" href="pages_html/cadastroCliente.html">Registrar-se</a>
+					</li>
+					<span class="navbar-text">
+						||
+					</span>
+					<li class="nav-item">
+						<a class="nav-link" href="pages_html/login.html">Login</a>
+					</li>
+					<span class="navbar-text">
+						|
+					</span>
+					<li class="nav-item">
+						<a class="nav-link" href="pages_html/cadastroCliente.html">Registrar-se</a>
+					</li>
+				</div>
+        	</div>
         </ul>
       </div>
   </nav>
 
 		<!-- Wrapper -->
 		<div class="wrapper style1">
-			<div class="s010">
-		      <form>
-		        <div class="inner-form">
-		          <div class="advance-search">
-		            <h1 class="desc">Pesquisa de Músicos Por Instrumentos Ou Estilos</h1>
-		            <div class="row">
-		              <div class="col input-field">
-		                <div class="input-select">
-		                  <select data-trigger="" name="choices-single-defaul">
-		                    <option placeholder="" value="">Instrumentos</option>
-		                    <option value="violao">Violão</option>
-		                    <option value="cavaco">Cavaco</option>
-		                    <option value="bateria">Bateria</option>
-		                    <option value="flauta">Flauta</option>
-		                    <option value="guitarra">Guitarra</option>
-		                    <option value="baixo">Baixo</option>
-		                    <option value="piano">Piano</option>
-		                    <option value="viola">Viola</option>
-		                    <option value="teclado">Teclado</option>
-		                    <option value="orgao">Órgão</option>
-		                    <option value="violino">Violino</option>
-		                    <option value="trompa">Trompa</option>
-		                    <option value="acordeao">Acordeão</option>
-		                    <option value="trombone">Trombone</option>
-		                    <option value="trompete">Trompete</option>
-		                    <option value="saxofone">Saxofone</option>
-		                    <option value="dj)">Instrumentos (DJ)</option>
-		                  </select>
-		                </div>
-		              </div>
-		              <div class="col input-field">
-		                <div class="input-select">
-		                  <select data-trigger="" name="choices-single-defaul">
-		                    <option placeholder="" value="">Estilos</option>
-			                <option value="alternativa">Alternativa</option>
-			                <option value="blues">Blues</option>
-			                <option value="dance">Dance</option>
-			                <option value="eletronica">Eletrônica</option>
-			                <option value="hip">Hip-Hop</option>
-			                <option value="rb">R&B</option>
-			                <option value="reggae">Reggae</option>
-			                <option value="rock">Rock</option>
-			                <option value="country">Country</option>
-			                <option value="folk">Folk</option>
-			                <option value="forro">Forró</option>
-			                <option value="funk">Funk</option>
-			                <option value="jazz">Jazz</option>
-			                <option value="axe">Axé</option>
-			                <option value="sertanejo">Sertanejo</option>
-			                <option value="mpb">MPB</option>
-			                <option value="samba">Samba</option>
-			                <option value="pagode">Pagode</option>
-		                  </select>
-		                </div>
-		              </div>
-		            
-		              <div class="input-field">
-		                  <button class="btn-delete" id="delete">RESET</button>
-		                  <button class="btn-search">SEARCH</button>
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-		      </form>
-		    </div>
+			
 
 			<!-- Banner -->
-			<div class="container">
+			<div class="container" style="width: 100%; max-width: unset; padding: 0px; contain: content;">
 			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 			  <ol class="carousel-indicators">
 			    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 			    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 			    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 			  </ol>
-			  <div class="carousel-inner">
+			  <div class="carousel-inner" style="margin-top: -13.5em;">
 			    <div class="carousel-item active">
 			      <img class="d-block w-100" src="images/1.png" alt="Primeiro Slide">
 			    </div>
@@ -172,7 +142,7 @@
 		</div>
 
 			<!-- Extra -->
-			<div id="extra">
+			<div id="extra" style="padding-top: 4em;">
 				<div class="container">
 					<div class="row no-collapse-1">
 						<section class="4u"> <a href="#" class="image featured"><img src="images/pic01.jpg" alt=""></a>
