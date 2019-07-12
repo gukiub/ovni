@@ -55,15 +55,15 @@
       <div class="container bg-light p-5 w-50">
         <h1 class="center text-center">login</h1>
         <p></p>
-      <form action="../pages_php/login.php" class="w-50 ml-auto mr-auto">
+      <form action="../pages_php/session.php" class="w-50 ml-auto mr-auto">
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="email">Email</label>
-            <input type="Email" class="form-control" name="login" id="login" placeholder="Email">
+            <input type="Email" class="form-control" name="login" id="login" placeholder="Email" required>
           </div>
           <div class="form-group col-md-12">
             <label for="senha">Senha</label>
-            <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha">
+            <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha" required>
           </div>
         <input type="submit" class="btn btn-primary ml-auto mr-auto mt-4">
       </form>
