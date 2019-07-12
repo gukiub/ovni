@@ -38,13 +38,13 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" style="font-size: 16px;" href="login.html">Login</a>
+            <a class="nav-link" style="font-size: 16px;" href="login.php">Login</a>
           </li>
           <span class="navbar-text">
             |
           </span>
           <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="cadastroCliente.html">Registrar-se</a>
+            <a class="nav-link" style="font-size: 16px;" href="../pages_html/cadastroCliente.html">Registrar-se</a>
           </li>
         </ul>
       </div>
@@ -59,7 +59,7 @@
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="email">Email</label>
-            <input type="Email" class="form-control" name="email" id="email" placeholder="Email">
+            <input type="Email" class="form-control" name="login" id="login" placeholder="Email">
           </div>
           <div class="form-group col-md-12">
             <label for="senha">Senha</label>
@@ -78,7 +78,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/jquery.mask.js"></script>
+    <script src="../js/jquery.mask.js"></script>
 
 
     <script type="text/JavaScript">
