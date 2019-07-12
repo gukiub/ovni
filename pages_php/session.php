@@ -13,7 +13,8 @@ contato com o Administrador, ovni@gmail.com");
 // A variavel $result pega as varias $login e $senha, faz uma 
 //pesquisa na tabela de usuarios
 $result = mysqli_query("SELECT * FROM cliente, funcionario 
-WHERE `cpf_clie`,'cpf_func' = ('$email_clie' AND `senha_clie`) AND ('$email_func' AND 'senha_func') = '$senha'");
+    WHERE (email_clie = " . $email . " and senha_clie = " . $senha . ") or (email_func = " . $email . " and senha_func = " . $senha . ")");
+
 /* Logo abaixo temos um bloco com if e else, verificando se a variável $result foi 
 bem sucedida, ou seja se ela estiver encontrado algum registro idêntico o seu valor
 será igual a 1, se não, se não tiver registros seu valor será 0. Dependendo do 
