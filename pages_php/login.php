@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<?php
+  
+?>
+
   <head>
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
@@ -64,6 +68,9 @@
           <div class="form-group col-md-12">
             <label for="senha">Senha</label>
             <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha" required>
+          </div>
+          <div class="alert alert-danger">
+            <strong>Você errou o login ou a senha!</strong>
           </div>
         <input type="submit" class="btn btn-primary ml-auto mr-auto mt-4">
       </form>
