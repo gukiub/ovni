@@ -45,7 +45,7 @@ if(mysqli_num_rows ($result) > 0 )//logou certo
 		header('location:../index.html');
 	}
 }
-else{							//logou errado
+else{//logou errado
   unset ($_SESSION['login']);
   unset ($_SESSION['senha']);
   header('location: ../pages_php/login.php?tentativa=1');

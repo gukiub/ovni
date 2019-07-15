@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php
-  
-?>
+
 
   <head>
     <!-- Meta tags Obrigatórias -->
@@ -57,7 +55,7 @@
   <!-- form -->
     <div class="jumbotron mb-0">
       <div class="container bg-light p-5 w-50">
-        <h1 class="center text-center">login</h1>
+        <h1 class="center text-center">Login</h1>
         <p></p>
       <form action="../pages_php/session.php" class="w-50 ml-auto mr-auto">
         <div class="form-row">
@@ -69,12 +67,22 @@
             <label for="senha">Senha</label>
             <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha" required>
           </div>
-          <div class="alert alert-danger">
-            <strong>Você errou o login ou a senha!</strong>
-          </div>
         <input type="submit" class="btn btn-primary ml-auto mr-auto mt-4">
-      </form>
+        <?php
+          ini_set('display_errors', 0);
+          ini_set('display_startup_errors', 0);
+          error_reporting(E_ALL);
+            $triescheck = $_GET['tentativa'];
 
+            if ($triescheck == 1) {
+                  echo "<div id='loginFailAlert' class='alert alert-danger'>
+                      <strong>Você errou o login ou a senha!</strong>
+                    </div>";
+            }else{
+              die();
+            }
+          ?>
+      </form>
 </div>
     
 
@@ -87,8 +95,6 @@
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="../js/jquery.mask.js"></script>
 
-
-    <script type="text/JavaScript">
       
   </body>
 </html>
