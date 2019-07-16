@@ -22,17 +22,13 @@ $instrumentos = $_GET['instrumentos'];
 
 if (!empty($estilos) and !empty($instrumentos)) {
 	$sql="SELECT * FROM `funcionario` WHERE `estilo_musical` = '" . $estilos . "' and `instrumento` = '" . $instrumentos . "'";
-	echo "ambos";
 }else if (!empty($estilos)) {
 	$sql="SELECT * FROM `funcionario` WHERE `estilo_musical` = '" . $estilos . "'";
-	echo "estilos";
 }else if (!empty($instrumentos)) {
 	$sql="SELECT * FROM `funcionario` WHERE `instrumento` = '" . $instrumentos . "'";
-	echo "instrumento";
 }else{
-	echo "nada";
-}
-
+	$sql="SELECT * FROM `funcionario` LIMIT 6";
+	}
 ?>
 
 <html>
