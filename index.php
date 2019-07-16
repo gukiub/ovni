@@ -4,20 +4,30 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
+ <?php
+ 	session_start();
+
+ ?>
+
 <html>
 	<head>
-		<title>Phase Shift by TEMPLATED</title>
+		<title>OVNI Studio</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 	    <meta name="viewport" content="width=device-width, initial-scale=1" />
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	    <meta name="author" content="colorlib.com">
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
 	    <link href="css/main.css" rel="stylesheet" />
+	    <link href="css/menu.css" rel="stylesheet" />
 
    		
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.dropotron.min.js"></script>
 		<script src="js/skel.min.js"></script>
@@ -30,87 +40,144 @@
 		</noscript>
 
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<style>
+			.collapse ul li a, .nav-item a{
+				font-size: 16px; text-decoration: none; font-family: sans-serif
+			}
+			.loggedOutDiv1{
+				margin-top: -2.8em;
+			}
+			.loggedOutDiv2{
+				margin-top: -1.3em;
+			}
+
+			.carousel-indicators li{
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+			}
+		</style>
 	</head>
 	<body>
+		 <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 2rem 1rem 0.5rem 1rem; ">
+      <a class="navbar-brand" href="index.php" style="margin-top: -1em;"><img src="images/logo-ovni.png" width="120px" height="56"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
+          <li class="nav-item active">
+            <a class="nav-link"  href="index.php">Página Inicial</a>
+          </li>
+          <?php
+          if ($_SESSION['logged_in'] === false ){
+          	echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/login.php'>Perfil</a>
+          	</li>";
+          }
+          
+          else{
+          	echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/perfil.php'>Perfil</a>
+          	</li>";
+          }
+          ?>
+          <?php
+          if ($_SESSION['logged_in'] === false) {
+      		echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/login.php'>Pesquisar</a>
+          	</li>
+        	</ul>";
+          }
+          else{
+          	echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/pesquisar-musicos.php'>Pesquisar</a>
+          	</li>
+        	</ul>";
+          }    
+        ?>
+        <ul class="navbar-nav ml-auto" style="display:block;">
+        	<?php
+        	if ($_SESSION['logged_in'] === false ){
+        	echo "
+        	<div class='loggedOutDiv2'>
+        		<div class='col'>
+        			<p style='color: rgba(255,255,255,.5); margin-left: 0.6em;'>Buscando Músicos?  ||  Ou você é o Músico?</p>
+        		</div>
+        	</div>
+         	<div class='loggedOutDiv1'>
+        		<div class='col' style='display: inline-flex;'>
+					<li class='nav-item'>
+						<a class='nav-link' href='pages_php/login.php'>Login</a>
+					</li>
+					<span class='navbar-text'>
+						|
+					</span>
+					<li class='nav-item'>
+						<a class='nav-link' href='pages_html/cadastroCliente.html' id='cadastro'>Registrar-se</a>
+					</li>
+					<span class='navbar-text'>
+						||
+					</span>
+					<li class='nav-item'>
+						<a class='nav-link' href='pages_php/login.php' id='login'>Login</a>
+					</li>
+					<span class='navbar-text'>
+						|
+					</span>
+					<li class='nav-item'>
+						<a class='nav-link'href='pages_php/cadastroMusicos.php'>Registrar-se</a>
+					</li>";
+				}
+					else{
+						echo "<div class='loggedOutDiv2'>
+        		<div class='col' style='display: inline-flex;'>
+					<li class='nav-item'>
+						<a class='nav-link' href='pages_php/logout.php'>logout</a>
+					</li>
+					<span class='navbar-text'>
+						|
+					</span>
+					<li class='nav-item'>
+						<a class='nav-link' href='pages_html/cadastroCliente.html' id='cadastro'>Nome do Usuário</a>
+					</li>";}
+					?>
+				</div>
+        	</div>
+        </ul>
+      </div>
+  </nav>
 
 		<!-- Wrapper -->
 		<div class="wrapper style1">
-			<div class="s010">
-		      <form>
-		        <div class="inner-form">
-		          <div class="advance-search">
-		            <h1 class="desc">Pesquisa de Músicos Por Instrumentos Ou Estilos</h1>
-		            <div class="row">
-		              <div class="col input-field">
-		                <div class="input-select">
-		                  <select data-trigger="" name="choices-single-defaul">
-		                    <option placeholder="" value="">Instrumentos</option>
-		                    <option value="violao">Violão</option>
-		                    <option value="cavaco">Cavaco</option>
-		                    <option value="bateria">Bateria</option>
-		                    <option value="flauta">Flauta</option>
-		                    <option value="guitarra">Guitarra</option>
-		                    <option value="baixo">Baixo</option>
-		                    <option value="piano">Piano</option>
-		                    <option value="viola">Viola</option>
-		                    <option value="teclado">Teclado</option>
-		                    <option value="orgao">Órgão</option>
-		                    <option value="violino">Violino</option>
-		                    <option value="trompa">Trompa</option>
-		                    <option value="acordeao">Acordeão</option>
-		                    <option value="trombone">Trombone</option>
-		                    <option value="trompete">Trompete</option>
-		                    <option value="saxofone">Saxofone</option>
-		                    <option value="dj)">Instrumentos (DJ)</option>
-		                  </select>
-		                </div>
-		              </div>
-		              <div class="col input-field">
-		                <div class="input-select">
-		                  <select data-trigger="" name="choices-single-defaul">
-		                    <option placeholder="" value="">Estilos</option>
-		                <option value="alternativa">Alternativa</option>
-		                <option value="blues">Blues</option>
-		                <option value="dance">Dance</option>
-		                <option value="eletronica">Eletrônica</option>
-		                <option value="hip">Hip-Hop</option>
-		                <option value="rb">R&B</option>
-		                <option value="reggae">Reggae</option>
-		                <option value="rock">Rock</option>
-		                <option value="country">Country</option>
-		                <option value="folk">Folk</option>
-		                <option value="forro">Forró</option>
-		                <option value="funk">Funk</option>
-		                <option value="jazz">Jazz</option>
-		                <option value="axe">Axé</option>
-		                <option value="sertanejo">Sertanejo</option>
-		                <option value="mpb">MPB</option>
-		                <option value="samba">Samba</option>
-		                <option value="pagode">Pagode</option>
-		                  </select>
-		                </div>
-		              </div>
-		            
-		              <div class="input-field">
-		                  <button class="btn-delete" id="delete">RESET</button>
-		                  <button class="btn-search">SEARCH</button>
-		               
-		              </div>
-		            </div>
-		          </div>
-		        </div>
-		      </form>
-		    </div>
+			
+
 			<!-- Banner -->
-			<div id="banner" class="container">
-				<section>
-					<p>This is <strong>Phase Shift</strong>, a responsive HTML5 site template freebie by <a href="http://templated.co">TEMPLATED</a>. Released for free under the <a href="http://templated.co/license">Creative Commons Attribution</a> license, so use it for whatever (personal or commercial) &ndash; just give us credit! Check out more of our stuff at <a href="http://templated.co">our site</a> or follow us on <a href="http://twitter.com/templatedco">Twitter</a>.</p>
-					<a href="#" class="button medium">Read More</a>
-				</section>
+			<div class="container" style="width: 100%; max-width: unset; padding: 0px; contain: content;">
+			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+			  <ol class="carousel-indicators">
+			    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+			    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+			    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+			  </ol>
+			  <div class="carousel-inner" style="margin-top: -12em;">
+			    <div class="carousel-item active">
+			      <img class="d-block w-100" src="images/whale_1.jpg" alt="Primeiro Slide">
+			    </div>
+			    <div class="carousel-item">
+			      <img class="d-block w-100" src="images/whale_2.jpg" alt="Segundo Slide">
+			    </div>
+			    <div class="carousel-item">
+			      <img class="d-block w-100" src="images/whale_3.jpg" alt="Terceiro Slide">
+			    </div>
+			  </div>
 			</div>
+			</div>
+		</div>
 
 			<!-- Extra -->
-			<div id="extra">
+			<div id="extra" style="padding-top: 4em;">
 				<div class="container">
 					<div class="row no-collapse-1">
 						<section class="4u"> <a href="#" class="image featured"><img src="images/pic01.jpg" alt=""></a>
@@ -152,8 +219,7 @@
 			<!-- Main -->
 			<div id="main">
 				<div class="container">
-					<div class="row"> 
-						
+					<div class="row"> 						
 						<!-- Content -->
 						<div class="6u">
 							<section>

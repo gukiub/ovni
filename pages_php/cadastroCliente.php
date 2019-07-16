@@ -10,16 +10,53 @@
 
     <title>ovni</title>
     <style type="text/css">
+      .collapse ul li a{
+        font-size: 16px;
+      }
     </style>
-
-    
   </head>
   <body>
+     <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="../index.php"><img src="../images/logo-ovni.png" width="120px" height="56"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.php">Página Inicial</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">#</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">#</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">#</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../pages_php/login.php">Login</a>
+          </li>
+          <span class="navbar-text">
+            |
+          </span>
+          <li class="nav-item active">
+            <a class="nav-link" href="cadastroCliente.php">Registrar-se</a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+
+  <!-- form -->
     <div class="jumbotron mb-0">
       <div class="container bg-light p-5">
         <h1 class="center text-center">Cadastro do Cliente</h1>
         <p></p>
-      <form action="salvar_cliente.php" class="w-50 ml-auto mr-auto">
+      <form action="../pages_php/salvar_cliente.php" class="w-50 ml-auto mr-auto">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="nome">Nome Completo</label>
@@ -46,8 +83,8 @@
             <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Complemento(Opcional)">
           </div>
           <div class="form-group col-md-6">
-            <label for="cpf">CPF</label>
-            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="000.000.000-00">
+            <label for="cpf1">CPF</label>
+            <input type="text" class="form-control" name="cpf" id="cpf1" placeholder="000.000.000-00">
           </div>
           <div class="form-group col-md-4">
             <label for="estado">Estado</label>
@@ -122,7 +159,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/jquery.mask.js"></script>
+    <script src="../js/jquery.mask.js"></script>
 
 
     <script type="text/JavaScript">
@@ -132,7 +169,7 @@
       //MASCARAS
       $(document).ready(function () { 
         jQuery(function($){
-          $("#cpf").mask('999.999.999-99');
+          $("#cpf1").mask('999.999.999-99');
           $("#cep").mask('99999-999');
           $("#telefone").mask("(99)9999-9999");
           $("#celular").mask("(99)99999-9999");
