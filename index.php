@@ -79,42 +79,47 @@
         <ul class="navbar-nav ml-auto" style="display:block;">
         	<?php
         	if ($_SESSION['logged_in'] === false ){
-        	echo" <div>
-        		<div class="col">
-        			<p style="color: rgba(255,255,255,.5); margin-left: 0.6em;">Buscando Músicos?  ||  Ou você é o Músico?</p>
+        	echo "<div>
+        		<div class='col'>
+        			<p style='color: rgba(255,255,255,.5); margin-left: 0.6em;'>Buscando Músicos?  ||  Ou você é o Músico?</p>
         		</div>
         	</div>
          	<div>
-        		<div class="col" style="display: inline-flex;">
-					<li class="nav-item">
-					 //verificação de login
-						//se estiver deslogado
-							echo "<a class='nav-link' href='pages_php/login.php'>Login</a>";
-						} 
-						else{ 
-							//echo "<a class='nav-link' href='pages_php/logout.php'>Logout</a>";
-							//se estiver logado
-						}
-
+        		<div class='col' style='display: inline-flex;'>
+					<li class='nav-item'>
+						<a class='nav-link' href='pages_php/login.php'>Login</a>
 					</li>
-					<span class="navbar-text">
+					<span class='navbar-text'>
 						|
 					</span>
-					<li class="nav-item">
-						<a class="nav-link" href="pages_html/cadastroCliente.html" id="cadastro">Registrar-se</a>
+					<li class='nav-item'>
+						<a class='nav-link' href='pages_html/cadastroCliente.html' id='cadastro'>Registrar-se</a>
 					</li>
-					<span class="navbar-text">
+					<span class='navbar-text'>
 						||
 					</span>
-					<li class="nav-item">
-						<a class="nav-link" href="pages_php/login.php" id="login">Login</a>
+					<li class='nav-item'>
+						<a class='nav-link' href='pages_php/login.php' id='login'>Login</a>
 					</li>
-					<span class="navbar-text">
+					<span class='navbar-text'>
 						|
 					</span>
-					<li class="nav-item">
-						<a class="nav-link" href="pages_html/cadastroMusicos.html">Registrar-se</a>
+					<li class='nav-item'>
+						<a class='nav-link'href='pages_html/cadastroMusicos.html'>Registrar-se</a>
+					</li>";
+				}
+					else{
+						echo "<div>
+        		<div class='col' style='display: inline-flex;'>
+					<li class='nav-item'>
+						<a class='nav-link' href='pages_php/logout.php'>logout</a>
 					</li>
+					<span class='navbar-text'>
+						|
+					</span>
+					<li class='nav-item'>
+						<a class='nav-link' href='pages_html/cadastroCliente.html' id='cadastro'>Nome do Usuário</a>
+					</li>";}
 					?>
 				</div>
         	</div>
