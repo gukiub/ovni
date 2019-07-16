@@ -10,6 +10,9 @@
 
     <title>ovni</title>
     <style type="text/css">
+      .collapse ul li a{
+        font-size: 16px
+      }
     </style>
   </head>
   <body>
@@ -24,27 +27,27 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="../index.php">Página Inicial</a>
+            <a class="nav-link" href="../index.php">Página Inicial</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="#">#</a>
+            <a class="nav-link" href="#">#</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="#">#</a>
+            <a class="nav-link" href="#">#</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="#">#</a>
+            <a class="nav-link" href="#">#</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" style="font-size: 16px;" href="login.php">Login</a>
+            <a class="nav-link" href="login.php">Login</a>
           </li>
           <span class="navbar-text">
             |
           </span>
           <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="../pages_html/cadastroCliente.html">Registrar-se</a>
+            <a class="nav-link" href="../pages_html/cadastroCliente.html">Registrar-se</a>
           </li>
         </ul>
       </div>

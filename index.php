@@ -85,12 +85,14 @@
          	<div>
         		<div class="col" style="display: inline-flex;">
 					<li class="nav-item">
-						<?php//VERIFICAÇÃO DE LOGIN
-						if ($_SESSION['logged_in'] === false ){//SE ESTIVER DESLOGADO
+						<?php //verificação de login
+						if ($_SESSION['logged_in'] === false ){
+						//se estiver deslogado
 							echo "<a class='nav-link' href='pages_php/login.php'>Login</a>";
 						} 
-						else{//SE ESTIVER LOGADO
+						else{ 
 							echo "<a class='nav-link' href='pages_php/logout.php'>Logout</a>";
+							//se estiver logado
 						}
 
 
@@ -112,7 +114,7 @@
 						|
 					</span>
 					<li class="nav-item">
-						<a class="nav-link" href="pages_html/cadastroCliente.html">Registrar-se</a>
+						<a class="nav-link" href="pages_html/cadastroMusicos.html">Registrar-se</a>
 					</li>
 				</div>
         	</div>
