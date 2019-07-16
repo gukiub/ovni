@@ -46,14 +46,19 @@ if (isset($_SESSION));
 			.collapse ul li a, .nav-item a{
 				font-size: 16px; text-decoration: none; font-family: sans-serif
 			}
-			.collapse ul div{
-				margin-top: -2em;
+			.loggedOutDiv1{
+				margin-top: -2.8em;
 			}
+			.loggedOutDiv2{
+				margin-top: -1.3em;
+			}
+
 			.carousel-indicators li{
 				width: 25px;
 				height: 25px;
 				border-radius: 50%;
 			}
+ 
 		</style>
 	</head>
 	<body>
@@ -65,57 +70,27 @@ if (isset($_SESSION));
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link"  href="../index.php">Página Inicial</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Sobre Nós</a>
+            <a class="nav-link" href="perfil.php">Perfil</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contato</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">batata</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="pesquisar-musicos.php">Pesquisar</a>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto" style="display:block;">
-        	<div>
-        		<div class="col">
-        			<p style="color: rgba(255,255,255,.5); margin-left: 0.6em;">Buscando Músicos?  ||  Ou você é o Músico?</p>
-        		</div>
-        	</div>
-         	<div>
+        <ul class="navbar-nav ml-auto" style="display:block;">     	
+			<div class="loggedOutDiv2">
         		<div class="col" style="display: inline-flex;">
 					<li class="nav-item">
-						<?php  
-						if (session === true){
-							echo "<a class='nav-link' href='pages_php/login.php'>Login</a>";
-						} 
-						else{
-							echo "<a class='nav-link' href='../index.php'>Logout</a>";
-							session_destroy();
-						}
-
-
-						?>
+						<a class="nav-link" href="logout.php">logout</a>
 					</li>
 					<span class="navbar-text">
 						|
 					</span>
 					<li class="nav-item">
-						<a class="nav-link" href="pages_html/cadastroCliente.html" id="cadastro">Registrar-se</a>
-					</li>
-					<span class="navbar-text">
-						||
-					</span>
-					<li class="nav-item">
-						<a class="nav-link" href="pages_php/login.php" id="login">Login</a>
-					</li>
-					<span class="navbar-text">
-						|
-					</span>
-					<li class="nav-item">
-						<a class="nav-link" href="pages_html/cadastroCliente.html">Registrar-se</a>
+						<a class="nav-link" href="../pages_html/cadastroCliente.html" id="cadastro">Nome do Usuário</a>
 					</li>
 				</div>
         	</div>

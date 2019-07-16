@@ -70,16 +70,33 @@
           <li class="nav-item active">
             <a class="nav-link"  href="index.php">Página Inicial</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sobre Nós</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contato</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">batata</a>
-          </li>
-        </ul>
+          <?php
+          if ($_SESSION['logged_in'] === false ){
+          	echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/login.php'>Perfil</a>
+          	</li>";
+          }
+          
+          else{
+          	echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/perfil.php'>Perfil</a>
+          	</li>";
+          }
+          ?>
+          <?php
+          if ($_SESSION['logged_in'] === false) {
+      		echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/login.php'>Pesquisar</a>
+          	</li>
+        	</ul>";
+          }
+          else{
+          	echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/pesquisar-musicos.php'>Pesquisar</a>
+          	</li>
+        	</ul>";
+          }    
+        ?>
         <ul class="navbar-nav ml-auto" style="display:block;">
         	<?php
         	if ($_SESSION['logged_in'] === false ){
@@ -110,7 +127,7 @@
 						|
 					</span>
 					<li class='nav-item'>
-						<a class='nav-link'href='pages_html/cadastroMusicos.html'>Registrar-se</a>
+						<a class='nav-link'href='pages_php/cadastroMusicos.php'>Registrar-se</a>
 					</li>";
 				}
 					else{

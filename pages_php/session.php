@@ -42,7 +42,7 @@ if(mysqli_num_rows ($result) > 0 )//logou certo
 	}elseif (mysqli_num_rows($result3) > 0) {//checar se foi login de cliente
 		$_SESSION['tipo'] = "cliente";
 		$_SESSION['logged_in']=true;
-		header('location:../index.php');
+		header('location:pesquisar-musicos.php');
 	}
 }
 else{//logou errado
