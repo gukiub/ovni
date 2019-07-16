@@ -77,7 +77,9 @@
           </li>
         </ul>
         <ul class="navbar-nav ml-auto" style="display:block;">
-        	<div>
+        	<?php
+        	if ($_SESSION['logged_in'] === false ){
+        	echo" <div>
         		<div class="col">
         			<p style="color: rgba(255,255,255,.5); margin-left: 0.6em;">Buscando Músicos?  ||  Ou você é o Músico?</p>
         		</div>
@@ -85,18 +87,15 @@
          	<div>
         		<div class="col" style="display: inline-flex;">
 					<li class="nav-item">
-						<?php //verificação de login
-						if ($_SESSION['logged_in'] === false ){
+					 //verificação de login
 						//se estiver deslogado
 							echo "<a class='nav-link' href='pages_php/login.php'>Login</a>";
 						} 
 						else{ 
-							echo "<a class='nav-link' href='pages_php/logout.php'>Logout</a>";
+							//echo "<a class='nav-link' href='pages_php/logout.php'>Logout</a>";
 							//se estiver logado
 						}
 
-
-						?>
 					</li>
 					<span class="navbar-text">
 						|
@@ -116,6 +115,7 @@
 					<li class="nav-item">
 						<a class="nav-link" href="pages_html/cadastroMusicos.html">Registrar-se</a>
 					</li>
+					?>
 				</div>
         	</div>
         </ul>
