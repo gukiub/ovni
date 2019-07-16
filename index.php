@@ -4,6 +4,13 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
+<?php  
+
+session_start();
+
+
+?>
+
 <html>
 	<head>
 		<title>OVNI Studio</title>
@@ -52,14 +59,14 @@
 	<body>
 		 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 2rem 1rem 0.5rem 1rem; ">
-      <a class="navbar-brand" href="index.html" style="margin-top: -1em;"><img src="images/logo-ovni.png" width="120px" height="56"></a>
+      <a class="navbar-brand" href="index.php" style="margin-top: -1em;"><img src="images/logo-ovni.png" width="120px" height="56"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
           <li class="nav-item active">
-            <a class="nav-link"  href="index.html">Página Inicial</a>
+            <a class="nav-link"  href="index.php">Página Inicial</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Sobre Nós</a>
@@ -80,19 +87,29 @@
          	<div>
         		<div class="col" style="display: inline-flex;">
 					<li class="nav-item">
-						<a class="nav-link" href="pages_php/login.php">Login</a>
+						<?php  
+						if (session === true){
+							echo "<a class='nav-link' href='pages_php/login.php'>Login</a>";
+						} 
+						else{
+							echo "<a class='nav-link' href='index.php'>Logout</a>";
+							session_unset();
+						}
+
+
+						?>
 					</li>
 					<span class="navbar-text">
 						|
 					</span>
 					<li class="nav-item">
-						<a class="nav-link" href="pages_html/cadastroCliente.html">Registrar-se</a>
+						<a class="nav-link" href="pages_html/cadastroCliente.html" id="cadastro">Registrar-se</a>
 					</li>
 					<span class="navbar-text">
 						||
 					</span>
 					<li class="nav-item">
-						<a class="nav-link" href="pages_php/login.php">Login</a>
+						<a class="nav-link" href="pages_php/login.php" id="login">Login</a>
 					</li>
 					<span class="navbar-text">
 						|

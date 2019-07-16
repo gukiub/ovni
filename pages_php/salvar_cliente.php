@@ -7,7 +7,6 @@
 	$telefone1 = $_GET['telefone'];
 	$celular1 = $_GET['celular'];
 	$senha1 = $_GET['senha'];
-	$senha1_crypt = crypt(rand(0, 1000), $senha1);
 	$endereco1 = $_GET['endereco'];
 	$cpf1 = $_GET['cpf'];
 	$complemento1 = $_GET['complemento'];
@@ -37,7 +36,7 @@
 				.$idade1."','"
 				.$telefone1."','"
 				.$celular1."','"
-				.$senha1_crypt."','"
+				.$senha1."','"
 				.$endereco1."','"
 				.$complemento1."','"
 				.$cidade1."','"

@@ -37,12 +37,12 @@ if(mysqli_num_rows ($result) > 0 )//logou certo
 	if (mysqli_num_rows($result2) > 0) {//checar se foi login de musico
 		$_SESSION['tipo'] = "musico";
 		echo $_SESSION['tipo'];
-		header('location:../index.html');
+		header('location:../index.php');
 		
-	}elseif (mysql_num_rows($result3) > 0) {//checar se foi login de cliente
+	}elseif (mysqli_num_rows($result3) > 0) {//checar se foi login de cliente
 		$_SESSION['tipo'] = "cliente";
 		echo $_SESSION['tipo'];
-		header('location:../index.html');
+		header('location:../index.php');
 	}
 }
 else{//logou errado

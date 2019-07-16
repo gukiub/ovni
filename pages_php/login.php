@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-
   <head>
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
@@ -19,14 +17,14 @@
   <body>
      <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="../index.html"><img src="../images/logo-ovni.png" width="120px" height="56"></a>
+      <a class="navbar-brand" href="../index.php"><img src="../images/logo-ovni.png" width="120px" height="56"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="../index.html">Página Inicial</a>
+            <a class="nav-link" style="font-size: 16px;" href="../index.php">Página Inicial</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="font-size: 16px;" href="#">#</a>
@@ -55,7 +53,7 @@
   <!-- form -->
     <div class="jumbotron mb-0">
       <div class="container bg-light p-5 w-50">
-        <h1 class="center text-center">Login</h1>
+        <h1 class="center text-center">login</h1>
         <p></p>
       <form action="../pages_php/session.php" class="w-50 ml-auto mr-auto">
         <div class="form-row">
@@ -68,21 +66,8 @@
             <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha" required>
           </div>
         <input type="submit" class="btn btn-primary ml-auto mr-auto mt-4">
-        <?php
-          ini_set('display_errors', 0);
-          ini_set('display_startup_errors', 0);
-          error_reporting(E_ALL);
-            $triescheck = $_GET['tentativa'];
-
-            if ($triescheck == 1) {
-                  echo "<div id='loginFailAlert' class='alert alert-danger'>
-                      <strong>Você errou o login ou a senha!</strong>
-                    </div>";
-            }else{
-              die();
-            }
-          ?>
       </form>
+
 </div>
     
 
@@ -95,6 +80,8 @@
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="../js/jquery.mask.js"></script>
 
+
+    <script type="text/JavaScript">
       
   </body>
 </html>
