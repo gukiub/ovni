@@ -8,6 +8,8 @@
 
 session_start();
 
+if (isset($_SESSION));
+
 
 ?>
 
@@ -93,7 +95,7 @@ session_start();
 						} 
 						else{
 							echo "<a class='nav-link' href='index.php'>Logout</a>";
-							session_unset();
+							session_destroy();
 						}
 
 
