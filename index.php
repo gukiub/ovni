@@ -90,12 +90,11 @@ if (isset($_SESSION));
         		<div class="col" style="display: inline-flex;">
 					<li class="nav-item">
 						<?php  
-						if (session === true){
+						if (!isset($_SESSION)){
 							echo "<a class='nav-link' href='pages_php/login.php'>Login</a>";
 						} 
 						else{
-							echo "<a class='nav-link' href='index.php'>Logout</a>";
-							session_destroy();
+							echo "<a class='nav-link' href='pages_php/logout.php'>Logout</a>";
 						}
 
 
