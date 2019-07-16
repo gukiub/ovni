@@ -44,9 +44,13 @@
 			.collapse ul li a, .nav-item a{
 				font-size: 16px; text-decoration: none; font-family: sans-serif
 			}
-			.collapse ul div{
-				margin-top: -2em;
+			.loggedOutDiv1{
+				margin-top: -2.8em;
 			}
+			.loggedOutDiv2{
+				margin-top: -1.3em;
+			}
+
 			.carousel-indicators li{
 				width: 25px;
 				height: 25px;
@@ -79,12 +83,13 @@
         <ul class="navbar-nav ml-auto" style="display:block;">
         	<?php
         	if ($_SESSION['logged_in'] === false ){
-        	echo "<div>
+        	echo "
+        	<div class='loggedOutDiv2'>
         		<div class='col'>
         			<p style='color: rgba(255,255,255,.5); margin-left: 0.6em;'>Buscando Músicos?  ||  Ou você é o Músico?</p>
         		</div>
         	</div>
-         	<div>
+         	<div class='loggedOutDiv1'>
         		<div class='col' style='display: inline-flex;'>
 					<li class='nav-item'>
 						<a class='nav-link' href='pages_php/login.php'>Login</a>
@@ -109,7 +114,7 @@
 					</li>";
 				}
 					else{
-						echo "<div>
+						echo "<div class='loggedOutDiv2'>
         		<div class='col' style='display: inline-flex;'>
 					<li class='nav-item'>
 						<a class='nav-link' href='pages_php/logout.php'>logout</a>
