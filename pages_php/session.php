@@ -36,12 +36,12 @@ if(mysqli_num_rows ($result) > 0 )//logou certo
 
 	if (mysqli_num_rows($result2) > 0) {//checar se foi login de musico
 		$_SESSION['tipo'] = "musico";
-		echo $_SESSION['tipo'];
+		$_SESSION['logged_in']=true;
 		header('location:../index.php');
 		
 	}elseif (mysqli_num_rows($result3) > 0) {//checar se foi login de cliente
 		$_SESSION['tipo'] = "cliente";
-		echo $_SESSION['tipo'];
+		$_SESSION['logged_in']=true;
 		header('location:../index.php');
 	}
 }

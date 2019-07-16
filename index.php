@@ -4,14 +4,10 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
-<?php  
+ <?php
+ 	session_start();
 
-session_start();
-
-if (isset($_SESSION));
-
-
-?>
+ ?>
 
 <html>
 	<head>
@@ -89,11 +85,11 @@ if (isset($_SESSION));
          	<div>
         		<div class="col" style="display: inline-flex;">
 					<li class="nav-item">
-						<?php  
-						if (!isset($_SESSION)){
+						<?php//VERIFICAÇÃO DE LOGIN
+						if ($_SESSION['logged_in'] === false ){//SE ESTIVER DESLOGADO
 							echo "<a class='nav-link' href='pages_php/login.php'>Login</a>";
 						} 
-						else{
+						else{//SE ESTIVER LOGADO
 							echo "<a class='nav-link' href='pages_php/logout.php'>Logout</a>";
 						}
 
