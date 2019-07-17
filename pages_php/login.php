@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
 
     <title>Ovni</title>
     <style type="text/css">
@@ -47,11 +48,11 @@
             |
           </span>
           <li class="nav-item">
-            <a class="nav-link" href="../pages_html/cadastroCliente.html">Registrar-se</a>
+            <a class="nav-link" href="cadastroCliente.php">Registrar-se</a>
           </li>
         </ul>
       </div>
-  </nav>
+  </nav></header>
 
   <!-- form -->
     <div class="jumbotron mb-0">

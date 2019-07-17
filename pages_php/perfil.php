@@ -4,6 +4,25 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
+
+<?php  
+session_start();
+ //não mostrar mensagens de erros
+ini_set('display_errors', 0); 
+ini_set('display_startup_errors', 0); 
+error_reporting(E_ALL); 
+ //não mostrar mensagens de erros
+
+include('conexao.php');//conecta ao banco de dados
+
+$con=mysqli_connect("localhost","root","","ovni");
+
+if($_SESSION['logged_in'] == 0){
+header('../index.php');
+}
+
+?>
+
 <html>
 	<head>
 		<title>Left Sidebar - Phase Shift by TEMPLATED</title>
@@ -11,16 +30,34 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/jquery.dropotron.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-wide.css" />
-		</noscript>
+		
+		 <style type="text/css">
+     	 .collapse ul li a, .nav-item a{
+			font-size: 16px; text-decoration: none; font-family: sans-serif
+			}
+		.loggedOutDiv1{
+				margin-top: -2.8em;
+			}
+			.loggedOutDiv2{
+				margin-top: -1.3em;
+			}
+
+			.carousel-indicators li{
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+			}
+    	</style>
+    	<script src="../js/jquery.min.js"></script>
+		<script src="../js/jquery.dropotron.min.js"></script>
+		<script src="../js/skel.min.js"></script>
+		<script src="../js/skel-layers.min.js"></script>
+		<script src="../js/init.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="../css/skel.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../css/style-wide.css" />
+		<link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body>
@@ -29,20 +66,97 @@
 			<div class="wrapper style1">
 
 				<!-- Header -->
-					<div id="header" class="skel-panels-fixed">
-						<div id="logo">
-							<h1><a href="index.html">Phase Shift</a></h1>
-							<span class="tag">by TEMPLATED</span>
-						</div>
-						<nav id="nav">
-							<ul>
-								<li class="active"><a href="index.html">Homepage</a></li>
-								<li><a href="left-sidebar.html">Left Sidebar</a></li>
-								<li><a href="right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="no-sidebar.html">No Sidebar</a></li>
-							</ul>
-						</nav>
-					</div>
+					<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 2rem 1rem 0.5rem 1rem; ">
+      <a class="navbar-brand" href="../index.php" style="margin-top: -1em;"><img src="../images/logo-ovni.png" width="120px" height="56"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
+          <li class="nav-item active">
+            <a class="nav-link"  href="../index.php">Página Inicial</a>
+          </li>
+          <?php
+          if ($_SESSION['logged_in'] === false ){
+          	echo "<li class='nav-item'>
+            <a class='nav-link' href='login.php'>Perfil</a>
+          	</li>";
+          }
+          
+          else{
+          	echo "<li class='nav-item'>
+            <a class='nav-link' href='perfil.php'>Perfil</a>
+          	</li>";
+          }
+          ?>
+          <?php
+          if ($_SESSION['logged_in'] === false) {
+      		echo "<li class='nav-item'>
+            <a class='nav-link' href='login.php'>Pesquisar</a>
+          	</li>
+        	</ul>";
+          }
+          else{
+          	echo "<li class='nav-item'>
+            <a class='nav-link' href='pesquisar-musicos.php'>Pesquisar</a>
+          	</li>
+        	</ul>";
+          }    
+        ?>
+        <ul class="navbar-nav ml-auto" style="display:block;">
+        	<?php
+        	if ($_SESSION['logged_in'] === false ){
+        	echo "
+        	<div class='loggedOutDiv2'>
+        		<div class='col'>
+        			<p style='color: rgba(255,255,255,.5); margin-left: 0.6em;'>Buscando Músicos?  ||  Ou você é o Músico?</p>
+        		</div>
+        	</div>
+         	<div class='loggedOutDiv1'>
+        		<div class='col' style='display: inline-flex;'>
+					<li class='nav-item'>
+						<a class='nav-link' href='login.php'>Login</a>
+					</li>
+					<span class='navbar-text'>
+						|
+					</span>
+					<li class='nav-item'>
+						<a class='nav-link' href='cadastroCliente.php' id='cadastro'>Registrar-se</a>
+					</li>
+					<span class='navbar-text'>
+						||
+					</span>
+					<li class='nav-item'>
+						<a class='nav-link' href='login.php' id='login'>Login</a>
+					</li>
+					<span class='navbar-text'>
+						|
+					</span>
+					<li class='nav-item'>
+						<a class='nav-link'href='cadastroMusicos.php'>Registrar-se</a>
+					</li>";
+				}
+					else{
+						echo "<div class='loggedOutDiv2'>
+        		<div class='col' style='display: inline-flex;'>
+					<li class='nav-item'>
+						<a class='nav-link' href='logout.php'>logout</a>
+					</li>
+					<span class='navbar-text'>
+						|
+					</span>
+					<li class='nav-item'>
+						<a class='nav-link' href='cadastroCliente.php' id='cadastro'>Nome do Usuário</a>
+					</li>";
+				}
+					?>
+				</div>
+        	</div>
+        </ul>
+      </div>
+  </nav>
+</header>
 				<!-- Header -->
 
 				<!-- Page -->
@@ -104,47 +218,9 @@
 									<p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Aliquam lacinia metus ut elit.</p>
 								</section>
 							</div>
-		
 						</div>
-					</div>
-				<!-- /Page -->
-
-				<!-- Main -->
-					<div id="main">
-						<div class="container">
-							<div class="row"> 
-								
-								<!-- Content -->
-								<div class="6u">
-									<section>
-										<ul class="style">
-											<li class="fa fa-wrench">
-												<h3>Integer ultrices</h3>
-												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
-											<li class="fa fa-leaf">
-												<h3>Aliquam luctus</h3>
-												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
-										</ul>
-									</section>
-								</div>
-								<div class="6u">
-									<section>
-										<ul class="style">
-											<li class="fa fa-cogs">
-												<h3>Integer ultrices</h3>
-												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
-											<li class="fa fa-road">
-												<h3>Aliquam luctus</h3>
-												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
-										</ul>
-									</section>
-								</div>
-							</div>
-						</div>
-					</div>
-				<!-- /Main --> 
-
-	</div>
+					</div> 
+				</div>
 
 	<!-- Footer -->
 		

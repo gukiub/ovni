@@ -5,11 +5,10 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
 <?php  
-
 session_start();
  //não mostrar mensagens de erros
-ini_set('display_errors', 1); 
-ini_set('display_startup_errors', 1); 
+ini_set('display_errors', 0); 
+ini_set('display_startup_errors', 0); 
 error_reporting(E_ALL); 
  //não mostrar mensagens de erros
 
@@ -19,14 +18,18 @@ $con=mysqli_connect("localhost","root","","ovni");
 
 $estilos = $_GET['estilos'];
 $instrumentos = $_GET['instrumentos'];
+$email = $_GET['email'];
 
 if (!empty($estilos) and !empty($instrumentos)) {
 	$sql="SELECT * FROM `funcionario` WHERE `estilo_musical` = '" . $estilos . "' and `instrumento` = '" . $instrumentos . "'";
-}else if (!empty($estilos)) {
+}
+else if (!empty($estilos)) {
 	$sql="SELECT * FROM `funcionario` WHERE `estilo_musical` = '" . $estilos . "'";
-}else if (!empty($instrumentos)) {
+}
+else if (!empty($instrumentos)) {
 	$sql="SELECT * FROM `funcionario` WHERE `instrumento` = '" . $instrumentos . "'";
-}else{
+}
+else{
 	$sql="SELECT * FROM `funcionario` LIMIT 6";
 	}
 ?>
@@ -47,6 +50,7 @@ if (!empty($estilos) and !empty($instrumentos)) {
     <link href="../css/skel.css" rel="stylesheet"  />
 	<link href="../css/style.css" rel="stylesheet" />
 	<link href="../css/style-wide.css" rel="stylesheet" />
+	<link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
 
 		
 	<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
@@ -104,7 +108,15 @@ if (!empty($estilos) and !empty($instrumentos)) {
 						|
 					</span>
 					<li class="nav-item">
-						<a class="nav-link" href="../pages_html/cadastroCliente.html" id="cadastro">Nome do Usuário</a>
+						<a class="nav-link" href="cadastroCliente.php" id="cadastro"> 
+							<?php
+							$con=mysqli_connect("localhost","root","","ovni");
+								if ($result = mysqli_query($con, $nomeUsuario)) {
+									$nomeUsuario = "SELECT email_clie FROM cliente WHERE email_clie = '" . $email . "'";
+
+								}
+							?>
+						</a>
 					</li>
 				</div>
         	</div>
