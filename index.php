@@ -141,7 +141,7 @@
 						|
 					</span>
 					<li class='nav-item'>
-						<a class='nav-link' href='pages_php/cadastroCliente.php' id='cadastro'>Nome do Usuário</a>
+						<a class='nav-link' href='pages_php/cadastroCliente.php' id='cadastro'>" . $_SESSION['nome'] . "</a>
 					</li>";}
 					?>
 				</div>
