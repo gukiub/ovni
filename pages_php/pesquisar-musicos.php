@@ -108,15 +108,9 @@ else{
 						|
 					</span>
 					<li class="nav-item">
-						<a class="nav-link" href="cadastroCliente.php" id="cadastro"> 
-							<?php
-							$con=mysqli_connect("localhost","root","","ovni");
-								if ($result = mysqli_query($con, $nomeUsuario)) {
-									$nomeUsuario = "SELECT email_clie FROM cliente WHERE email_clie = '" . $email . "'";
-
-								}
-							?>
-						</a>
+						<a class="nav-link" href="cadastroCliente.php" id="cadastro"><?php 
+						echo $_SESSION['nome'];
+						?></a>
 					</li>
 				</div>
         	</div>

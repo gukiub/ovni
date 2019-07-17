@@ -74,7 +74,7 @@ header('../index.php');
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link"  href="../index.php">Página Inicial</a>
           </li>
           <?php
@@ -85,7 +85,7 @@ header('../index.php');
           }
           
           else{
-          	echo "<li class='nav-item'>
+          	echo "<li class='nav-item active'>
             <a class='nav-link' href='perfil.php'>Perfil</a>
           	</li>";
           }
@@ -147,7 +147,7 @@ header('../index.php');
 						|
 					</span>
 					<li class='nav-item'>
-						<a class='nav-link' href='cadastroCliente.php' id='cadastro'>Nome do Usuário</a>
+						<a class='nav-link' href='cadastroCliente.php' id='cadastro'>" . $_SESSION['nome'] . "</a>
 					</li>";
 				}
 					?>
@@ -167,42 +167,28 @@ header('../index.php');
 							<div id="sidebar" class="4u">
 								<section>
 									<header class="major">
-										<h2>Etiam malesuada</h2>
+										<h2><?php 
+										echo $_SESSION['estilo'];
+
+										?></h2>
 									</header>
 									<div class="row half">
 										<section class="6u">
-											<ul class="default">
-												<li><a href="#">Donec facilisis tempor</a></li>
-												<li><a href="#">Nulla convallis cursus</a></li>
-												<li><a href="#">Integer congue euis</a></li>
-												<li><a href="#">Venenatis vulputate</a></li>
-												<li><a href="#">Morbi ligula volutpat</a></li>
-											</ul>
-										</section>
-										<section class="6u">
-											<ul class="default small">
-												<li><a href="#">Donec facilisis tempor</a></li>
-												<li><a href="#">Nulla convallis cursus</a></li>
-												<li><a href="#">Integer congue euis</a></li>
-												<li><a href="#">Venenatis vulputate</a></li>
-												<li><a href="#">Morbi ligula volutpat</a></li>
-											</ul>
+											<?php 
+										//echo $_SESSION['img_perfil'];
+											echo "<img src='../images/1.png' style='width: 200%; margin-bottom: 5vh;'>";
+
+										?>
 										</section>
 									</div>
 								</section>
 								<section>
 									<header class="major">
-										<h2>Mauris vulputate</h2>
+										
+										<h2><?php 
+										echo $_SESSION['instrumento'];
+										?></h2>
 									</header>
-									<ul class="default">
-										<li><a href="#">Pellentesque lectus gravida blandit</a></li>
-										<li><a href="#">Lorem ipsum consectetuer adipiscing</a></li>
-										<li><a href="#">Phasellus nibh pellentesque congue</a></li>
-										<li><a href="#">Cras vitae metus aliquam pharetra</a></li>
-										<li><a href="#">Maecenas vitae orci feugiat eleifend</a></li>
-										<li><a href="#">Phasellus nibh pellentesque congue</a></li>
-										<li><a href="#">Cras vitae metus aliquam pharetra</a></li>
-									</ul>
 								</section>
 							</div>
 							
@@ -210,13 +196,13 @@ header('../index.php');
 							<div id="content" class="8u skel-cell-important">
 								<section>
 									<header class="major">
-										<h2>Left Sidebar</h2>
+										<h2><?php 
+										echo $_SESSION['nome'];
+
+										?></h2>
 										<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
 									</header>
 									<p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna. Quisque eleifend.</p>
-									<p>Donec nonummy magna quis risus. Quisque eleifend. Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo.</p>
-									<p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum dui sem, pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Aliquam lacinia metus ut elit.</p>
-								</section>
 							</div>
 						</div>
 					</div> 
