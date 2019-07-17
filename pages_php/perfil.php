@@ -173,10 +173,10 @@ header('../index.php');
 										?></h2>
 									</header>
 									<div class="row half">
-										<section class="6u">
+										<section class="6u" style="contain: content;">
 											<?php 
 										//echo $_SESSION['img_perfil'];
-											echo "<img src='../images/1.png' style='width: 200%; margin-bottom: 5vh;'>";
+											echo "<img src='../images/teste.jpg' style='width: 100%; height: auto; margin-bottom: 5vh; border-radius: 100%;'>";
 
 										?>
 										</section>
@@ -204,6 +204,8 @@ header('../index.php');
 									</header>
 									<p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna. Quisque eleifend.</p>
 							</div>
+
+							 <input type="submit" class="btn btn-primary mr-auto ml-auto">
 						</div>
 					</div> 
 				</div>
