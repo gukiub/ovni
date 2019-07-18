@@ -120,7 +120,7 @@ else{
 					</span>
 					<li class="nav-item">
 						<a class="nav-link" href="perfil.php" id="cadastro"><?php 
-						echo $_SESSION['nome'];
+					   echo utf8_encode($_SESSION['nome']);
 						?></a>
 					</li>
 				</div>
@@ -226,11 +226,11 @@ else{
 						<div class='box'>
 							<p>
 								Descrição do Músico, criar um campo no banco de dados, plz, Gustavo :D
-								Estilo: " . $row[12] . "
-								Instrumento "  . $row[8] . ".
+								Estilo: " . utf8_encode($row[12]) . "
+								Instrumento "  . utf8_encode($row[8]) . ".
 							</p>
 
-							<a href='#' class='button'>" . $row[0] . "</a> 
+							<a href='#' class='button'>" . utf8_encode($row[0]) . "</a> 
 						</div>
 					</section>";
 

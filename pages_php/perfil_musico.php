@@ -148,7 +148,7 @@ header('../index.php');
 						|
 					</span>
 					<li class='nav-item'>
-						<a class='nav-link' href='perfil.php' id='cadastro'>" . $_SESSION['nome'] . "</a>
+						<a class='nav-link' href='perfil.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
 					</li>";
 				}
 					?>
@@ -169,7 +169,7 @@ header('../index.php');
 								<section>
 									<header class="major">
 										<h2><?php 
-										echo $_SESSION['estilo'];
+										echo utf8_encode($_SESSION['estilo']);
 
 										?></h2>
 									</header>
@@ -198,7 +198,7 @@ header('../index.php');
 								<section>
 									<header class="major">
 										<h2><?php 
-										echo $_SESSION['nome'];
+										echo utf8_encode($_SESSION['nome']);
 
 										?></h2>
 										<span class="byline">Descrição</span>
@@ -208,7 +208,7 @@ header('../index.php');
 									?></p>
 							</div>
 
-							 <input type="submit" class="btn btn-primary mr-auto ml-auto">
+							 <input type="submit" class="btn btn-primary mr-auto ml-auto" style="padding: 0.75em 1.5em !important;">
 						</div>
 					</div> 
 				</div>

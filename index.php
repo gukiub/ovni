@@ -150,7 +150,7 @@
 						|
 					</span>
 					<li class='nav-item'>
-						<a class='nav-link' href='pages_php/perfil.php' id='cadastro'>" . $_SESSION['nome'] . "</a>
+						<a class='nav-link' href='pages_php/perfil.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
 					</li>";}
 					?>
 				</div>
