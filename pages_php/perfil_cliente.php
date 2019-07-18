@@ -185,7 +185,7 @@ header('../index.php');
 										echo $_SESSION['nome'];
 
 										?></h2>
-										<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
+										<span class="byline">Alterar dados do perfil</span>
 									</header>
 										<div class="jumbotron">
 											<div class="form-row">
@@ -220,10 +220,20 @@ header('../index.php');
 													estado: batates
 												</div>
 											</div>
-											<div class="form-row"></div>
+											<div class="form-row">
+												<div class="form-group col-md-4">
+													cpf: 000.000.000.00
+												</div>
+												<div class="form-group col-md-4">
+													telefone: (99)9898989
+												</div>
+												<div class="form-group col-md-4">
+													celular: (batates)
+												</div>
+											</div>
 										</div>
       								</div>
-							 <input type="submit" class="btn btn-primary mr-auto ml-auto">
+							 <input type="submit" class="btn btn-primary mr-auto ml-auto" style="padding: 0.75em 1.5em !important;">
 						</div>
 					</div> 
 				</div>
