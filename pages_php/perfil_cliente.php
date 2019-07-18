@@ -187,9 +187,42 @@ header('../index.php');
 										?></h2>
 										<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
 									</header>
-									<p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna. Quisque eleifend.</p>
-							</div>
-
+										<div class="jumbotron">
+											<div class="form-row">
+												<div class="form-group col-md-12">
+													Nome: batata Junior da silva amassada purê
+												</div>
+											</div>
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													idade: 11/25/1800
+												</div>
+												<div class="form-group col-md-6">
+													email: batata@batata
+												</div>
+											</div>
+											<div class="form-row">
+												<div class="form-group col-md-6">
+													endereço: batatao
+												</div>
+												<div class="form-group col-md-6">
+													complemento: 01
+												</div>
+											</div>
+											<div class="form-row">
+												<div class="form-group col-md-4">
+													cidade: batatópolis
+												</div>
+												<div class="form-group col-md-4">
+													cep: 0000-01
+												</div>
+												<div class="form-group col-md-4">
+													estado: batates
+												</div>
+											</div>
+											<div class="form-row"></div>
+										</div>
+      								</div>
 							 <input type="submit" class="btn btn-primary mr-auto ml-auto">
 						</div>
 					</div> 

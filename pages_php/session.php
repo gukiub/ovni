@@ -83,7 +83,7 @@ if(mysqli_num_rows ($result) > 0 )//logou certo
 		$_SESSION['cpf'] = $row["CPF_clie"];
 		$_SESSION['img'] = $row["img_perfil"];
 
-		header('location:pesquisar-musicos.php');
+		header('location:pesquisar_musicos.php');
 
 	}
 }
