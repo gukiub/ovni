@@ -71,8 +71,8 @@ if(mysqli_num_rows ($result) > 0 )//logou certo
 		$row = $result->fetch_assoc();
 
 		$_SESSION['nome'] = $row["nome_clie"];
-		$_SESSION['bday'] = $row["email_clie"];
-		$_SESSION['email'] = $row["idade_clie"];
+		$_SESSION['email'] = $row["email_clie"];
+		$_SESSION['bday'] = $row["idade_clie"];
 		$_SESSION['tel'] = $row["tel_fixo_clie"];
 		$_SESSION['cel'] = $row["tel_celular_clie"];
 		$_SESSION['end'] = $row["endereco_clie"];
