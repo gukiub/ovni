@@ -185,45 +185,58 @@ header('../index.php');
 										echo $_SESSION['nome'];
 
 										?></h2>
-										<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
+										<span class="byline">Alterar dados do perfil</span>
 									</header>
 										<div class="jumbotron">
-											<div class="form-row">
-												<div class="form-group col-md-12">
-													Nome: batata Junior da silva amassada purê
+											<?php
+											echo "<div class='form-row'>
+												<div class='form-group col-md-12'>
+													Nome: ". $_SESSION['nome'] ."
 												</div>
 											</div>
-											<div class="form-row">
-												<div class="form-group col-md-6">
-													idade: 11/25/1800
+											<div class='form-row'>
+												<div class='form-group col-md-6'>
+													idade: " . $_SESSION['bday'] . "
 												</div>
-												<div class="form-group col-md-6">
-													email: batata@batata
-												</div>
-											</div>
-											<div class="form-row">
-												<div class="form-group col-md-6">
-													endereço: batatao
-												</div>
-												<div class="form-group col-md-6">
-													complemento: 01
+												<div class='form-group col-md-6'>
+													email: " . $_SESSION['email'] . "
 												</div>
 											</div>
-											<div class="form-row">
-												<div class="form-group col-md-4">
-													cidade: batatópolis
+											<div class='form-row'>
+												<div class='form-group col-md-6'>
+													endereço: ". $_SESSION['end'] ."
 												</div>
-												<div class="form-group col-md-4">
-													cep: 0000-01
-												</div>
-												<div class="form-group col-md-4">
-													estado: batates
+												<div class='form-group col-md-6'>
+													complemento: ". $_SESSION['end_complemento'] ."
 												</div>
 											</div>
-											<div class="form-row"></div>
-										</div>
+											<div class='form-row'>
+												<div class='form-group col-md-6'>
+													cidade: ". $_SESSION['cidade'] ."
+												</div>
+												<div class='form-group col-md-6'>
+													cep: ". $_SESSION['cep'] ."
+												</div>
+											</div>
+											<div class='form-row'>
+												<div class='form-group col-md-6'>
+													telefone: ". $_SESSION['tel'] ."
+												</div>
+												<div class='form-group col-md-6'>
+													celular: ". $_SESSION['cel'] ."
+												</div>
+											</div>
+											<div class='form-row'>
+												<div class='form-group col-md-6'>
+													cpf: ". $_SESSION['cpf'] ."
+												</div>
+												<div class='form-group col-md-6'>
+													estado: ". $_SESSION['estado'] ."
+												</div>
+											</div>
+										</div>";?>
       								</div>
-							 <input type="submit" class="btn btn-primary mr-auto ml-auto">
+							 <input type="submit" class="btn btn-primary mr-auto ml-auto" style="padding: 0.75em 1.5em !important;">
 						</div>
 					</div> 
 				</div>
