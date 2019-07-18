@@ -27,6 +27,7 @@ header('../index.php');
 	<head>
 		<title>Left Sidebar - Phase Shift by TEMPLATED</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta charset="utf-8">
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
@@ -165,13 +166,6 @@ header('../index.php');
 		
 							<!-- Sidebar -->
 							<div id="sidebar" class="4u">
-								<section>
-									<header class="major">
-										<h2><?php 
-										echo $_SESSION['estilo'];
-
-										?></h2>
-									</header>
 									<div class="row half">
 										<section class="6u" style="contain: content;">
 											<?php 
@@ -181,15 +175,6 @@ header('../index.php');
 										?>
 										</section>
 									</div>
-								</section>
-								<section>
-									<header class="major">
-										
-										<h2><?php 
-										echo $_SESSION['instrumento'];
-										?></h2>
-									</header>
-								</section>
 							</div>
 							
 							<!-- Content -->

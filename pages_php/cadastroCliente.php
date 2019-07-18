@@ -27,15 +27,6 @@
           <li class="nav-item">
             <a class="nav-link" href="../index.php">Página Inicial</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">#</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">#</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">#</a>
-          </li>
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">

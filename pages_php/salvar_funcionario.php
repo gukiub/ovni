@@ -16,6 +16,7 @@
 	$estado2 = $_GET['estado'];
 	$idade2 = $_GET['idade'];
 	$cep2 = $_GET['cep'];
+	$descricao2 = $_GET['descricao_func'];
 	
 
 	$sql = "INSERT INTO funcionario
@@ -32,7 +33,8 @@
 				cep_func,
 				email_func,
 				estilo_musical,
-				disp_func
+				disp_func,
+				desc_func
 				)
 		
 		VALUES
@@ -49,7 +51,8 @@
 				.$cep2."','"
 				.$email2."','"
 				.$estilo_musical."','"
-				.$disp_func."')";
+				.$disp_func."','"
+				.$descricao2."')";
 
 $PDO->query($sql); //comando de enviar o sql
 

@@ -21,15 +21,6 @@
           <li class="nav-item">
             <a class="nav-link" style="font-size: 16px;" href="../index.php">Página Inicial</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="#">#</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="#">#</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="#">#</a>
-          </li>
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
@@ -39,7 +30,7 @@
             |
           </span>
           <li class="nav-item active">
-            <a class="nav-link" style="font-size: 16px;" href="cadastroMusicos.html">Registrar-se</a>
+            <a class="nav-link" style="font-size: 16px;" href="cadastroMusicos.php">Registrar-se</a>
           </li>
         </ul>
       </div>
@@ -54,7 +45,7 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="nome">Nome Completo</label>
-            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
+            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" maxlength="35" required>
           </div>
           <div class="form-group col-md-6">
             <label for="idade">Data de Nascimento</label>
@@ -62,27 +53,27 @@
           </div>
           <div class="form-group col-md-12">
             <label for="email">Email</label>
-            <input type="Email" class="form-control" name="email" id="email" placeholder="Email">
+            <input type="Email" class="form-control" name="email" id="email" placeholder="Email" maxlength="30" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="endereco">Endereço</label>
-            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Ex: Avenida Paulista, Nº">
+            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Ex: Avenida Paulista, Nº" maxlength="50" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="complemento">Complemento do endereço</label>
-            <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Complemento(Opcional)">
+            <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Complemento(Opcional)" maxlength="30">
           </div>
           <div class="form-group col-md-6">
             <label for="cpf">CPF</label>
-            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="000.000.000-00">
+            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="000.000.000-00" required>
           </div>
           <div class="form-group col-md-4">
             <label for="estado">Estado</label>
-              <select name="estado" id="estado" class="form-control">
+              <select name="estado" id="estado" class="form-control" required>
                 <option>Selecione</option>
                 <option>Acre</option>
                 <option>Alagoas</option>
@@ -115,28 +106,24 @@
           </div>
           <div class="form-group col-md-4">
             <label for="cidade">Cidade</label>
-            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Ex: SP">
+            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Ex: SP" maxlength="30" required>
           </div> 
 
           <div class="form-group col-md-4">
             <label for="cep">CEP</label>
-            <input type="text" class="form-control" name="cep" id="cep" placeholder="00000-000">
+            <input type="text" class="form-control" name="cep" id="cep" placeholder="00000-000" required>
           </div>
           <div class="form-group col-md-6">
-            <label for="telefone">Telefone</label>
+            <label for="telefone">Telefone Comercial</label>
             <input type="text" class="form-control" name="telefone" id="telefone" placeholder="(00)0000-0000">
           </div>
           <div class="form-group col-md-6">
-            <label for="celular">Celular</label>
-            <input type="text" class="form-control" name="celular" id="celular" placeholder="(00)00000-0000">
-          </div>
-          <div class="form-group col-md-12">
             <label for="senha">Senha</label>
-            <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha">
+            <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha" required>
           </div>
           <div class="form-group col-md-6">
             <label for="instrumento">Instrumento</label>
-              <select name="instrumento" id="instrumento" class="form-control">
+              <select name="instrumento" id="instrumento" class="form-control" required>
                 <option>Selecione</option>
                 <option>Acordeão</option>
                 <option>Baixo</option>
@@ -159,7 +146,7 @@
           </div>
           <div class="form-group col-md-6">
             <label for="estilo">Estilo Musical Principal</label>
-              <select name="estilo_musical" id="estilo" class="form-control">
+              <select name="estilo_musical" id="estilo" class="form-control" required>
                 <option>Alternativa</option>
                 <option>Axé</option>
                 <option>Blues</option>
@@ -180,7 +167,11 @@
                 <option>Sertanejo</option>
               </select>
           </div>
-        </div>
+          <div class="form-group col-md-12">
+              <label for="descricao">Fale um pouco sobre você. [Descrição]</label>
+              <textarea class="form-control" id="descricao" name="descricao_func" rows="3"></textarea>
+            </div>
+          </div>
         <input type="submit" class="btn btn-primary">
       </form>
 
@@ -205,8 +196,7 @@
         jQuery(function($){
           $("#cpf").mask('999.999.999-99');
           $("#cep").mask('99999-999');
-          $("#telefone").mask("(99)9999-9999");
-          $("#celular").mask("(99)99999-9999");
+          $("#telefone").mask("(99)99999-9999");
         });
       });
     </script>

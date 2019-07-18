@@ -30,15 +30,6 @@
           <li class="nav-item">
             <a class="nav-link" href="../index.php">Página Inicial</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">#</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">#</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">#</a>
-          </li>
         </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
@@ -63,11 +54,11 @@
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="email">Email</label>
-            <input type="Email" class="form-control" name="login" id="login" placeholder="Email" required>
+            <input type="Email" class="form-control" name="login" id="login" placeholder="Email" maxlength="30" required>
           </div>
           <div class="form-group col-md-12">
             <label for="senha">Senha</label>
-            <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha" required>
+            <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha" maxlength="30" required>
           </div>
         <input type="submit" class="btn btn-primary ml-auto mr-auto mt-4">
       </form>

@@ -92,7 +92,18 @@ else{
             <a class="nav-link"  href="../index.php">Página Inicial</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="perfil.php">Perfil</a>
+          	<?php
+          	if ($_SESSION['tipo'] === 'musico') {
+          		echo "<li class='nav-item'>
+            <a class='nav-link' href='perfil-musico.php'>Perfil</a>
+          	</li>";
+          	}
+          	elseif ($_SESSION['tipo'] === 'cliente') {
+          		echo "<li class='nav-item'>
+            <a class='nav-link' href='perfil-cliente.php'>Perfil</a>
+          	</li>";
+          }
+            ?>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="pesquisar-musicos.php">Pesquisar</a>
