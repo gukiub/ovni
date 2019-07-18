@@ -4,7 +4,7 @@
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
 
-    <title>Ovni</title>
+    <title>Ovni - Cadastro Músico</title>
     <style type="text/css">
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -19,7 +19,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="../index.php">Página Inicial</a>
+            <a class="nav-link" style="font-size: 16px;" href="../index.php"><- Página Inicial</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -38,7 +38,7 @@
 
     <div class="jumbotron mb-0">
       <div class="container bg-light p-5">
-        <h1 class="center text-center">Cadastro do Músicos</h1>
+        <h1 class="center text-center">Cadastro do Músico</h1>
         <p></p>
       <form action="../pages_php/salvar_funcionario.php" class="w-50 ml-auto mr-auto">
         <input type="hidden" name="disp_func" value="1">

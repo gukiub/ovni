@@ -104,7 +104,15 @@
           	echo "<li class='nav-item'>
             <a class='nav-link' href='pages_php/pesquisar_musicos.php'>Pesquisar</a>
           		</li>
-        	</ul>";
+          		<li class='nav-item'>
+          		<a class='nav-link' href='pages_php/pedido.php'>Faça seu Pedidos!</a>
+          		</li>";
+          		if ($_SESSION['tipo'] === "musico") {
+        			echo "<li class='nav-item'>
+			        	<a class='nav-link' href='pages_php/chamado.php'>Atenda ao chamado!</a>
+			        </li>";
+        		};
+        	echo "</ul>";
           }    
         ?>
         <ul class="navbar-nav ml-auto" style="display:block;">

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
 
-    <title>Ovni</title>
+    <title>Ovni - Login</title>
     <style type="text/css">
       .collapse ul li a{
         font-size: 16px
@@ -48,7 +48,7 @@
   <!-- form -->
     <div class="jumbotron mb-0">
       <div class="container bg-light p-5 w-50">
-        <h1 class="center text-center">login</h1>
+        <h1 class="center text-center">Login</h1>
         <p></p>
       <form action="../pages_php/session.php" class="w-50 ml-auto mr-auto">
         <div class="form-row">
