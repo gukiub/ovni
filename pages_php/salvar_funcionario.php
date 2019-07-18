@@ -56,4 +56,6 @@
 
 $PDO->query($sql); //comando de enviar o sql
 
+header('location:login.php');
+
  ?>
