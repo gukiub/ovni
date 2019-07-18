@@ -191,47 +191,47 @@ header('../index.php');
 											<?php
 											echo "<div class='form-row'>
 												<div class='form-group col-md-12'>
-													Nome: ". $_SESSION['nome'] ."
+													Nome: ". utf8_encode($_SESSION['nome']) ."
 												</div>
 											</div>
 											<div class='form-row'>
 												<div class='form-group col-md-6'>
-													idade: " . $_SESSION['bday'] . "
+													idade: " . utf8_encode($_SESSION['bday']) . "
 												</div>
 												<div class='form-group col-md-6'>
-													email: " . $_SESSION['email'] . "
-												</div>
-											</div>
-											<div class='form-row'>
-												<div class='form-group col-md-6'>
-													endereço: ". $_SESSION['end'] ."
-												</div>
-												<div class='form-group col-md-6'>
-													complemento: ". $_SESSION['end_complemento'] ."
+													email: " . utf8_encode($_SESSION['email']) . "
 												</div>
 											</div>
 											<div class='form-row'>
 												<div class='form-group col-md-6'>
-													cidade: ". $_SESSION['cidade'] ."
+													endereço: ". utf8_encode($_SESSION['end']) ."
 												</div>
 												<div class='form-group col-md-6'>
-													cep: ". $_SESSION['cep'] ."
-												</div>
-											</div>
-											<div class='form-row'>
-												<div class='form-group col-md-6'>
-													telefone: ". $_SESSION['tel'] ."
-												</div>
-												<div class='form-group col-md-6'>
-													celular: ". $_SESSION['cel'] ."
+													complemento: ". utf8_encode($_SESSION['end_complemento']) ."
 												</div>
 											</div>
 											<div class='form-row'>
 												<div class='form-group col-md-6'>
-													cpf: ". $_SESSION['cpf'] ."
+													cidade: ". utf8_encode($_SESSION['cidade']) ."
 												</div>
 												<div class='form-group col-md-6'>
-													estado: ". $_SESSION['estado'] ."
+													cep: ". utf8_encode($_SESSION['cep']) ."
+												</div>
+											</div>
+											<div class='form-row'>
+												<div class='form-group col-md-6'>
+													telefone: ". utf8_encode($_SESSION['tel']) ."
+												</div>
+												<div class='form-group col-md-6'>
+													celular: ". utf8_encode($_SESSION['cel']) ."
+												</div>
+											</div>
+											<div class='form-row'>
+												<div class='form-group col-md-6'>
+													cpf: ". utf8_encode($_SESSION['cpf']) ."
+												</div>
+												<div class='form-group col-md-6'>
+													estado: ". utf8_encode($_SESSION['estado']) ."
 												</div>
 											</div>
 										</div>";?>
