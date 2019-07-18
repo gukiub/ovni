@@ -31,21 +31,22 @@ CREATE TABLE funcionario(
 	estilo_musical VARCHAR(220) not null,
 	img_perfil longblob,
 	unique(email_func),
-	disp_func VARCHAR(220)
+	disp_func VARCHAR(220),
+	desc_func VARCHAR(220)
 );
 
 CREATE TABLE realiza_pedido(
 	data_hora_evento DATETIME,
-	endereço_evento VARCHAR(30),
-	estilo_musica_pedido VARCHAR(30),
-	metodo_pagamento VARCHAR(15),
-	instrumento_desejado VARCHAR(15),
+	endereço_evento VARCHAR(220),
+	estilo_musica_pedido VARCHAR(220),
+	metodo_pagamento VARCHAR(220),
+	instrumento_desejado VARCHAR(220),
 	status_pedido VARCHAR(2),
-	desc_pedido varchar(200),
-	valor_pedido varchar(50),
-	CPF_clie_FK VARCHAR(15),
-	CPF_func_FK VARCHAR(15),
-	ID_pedido_PK int(15) AUTO_INCREMENT,
+	desc_pedido varchar(220),
+	valor_pedido varchar(220),
+	CPF_clie_FK VARCHAR(220),
+	CPF_func_FK VARCHAR(220),
+	ID_pedido_PK int(220) AUTO_INCREMENT,
     	PRIMARY KEY(ID_pedido_pk),
 	FOREIGN KEY(CPF_clie_FK) REFERENCES cliente (CPF_clie),
 	FOREIGN KEY(CPF_func_FK) REFERENCES funcionario (CPF_func)
