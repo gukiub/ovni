@@ -95,18 +95,18 @@ else{
           	<?php
           	if ($_SESSION['tipo'] === 'musico') {
           		echo "<li class='nav-item'>
-            <a class='nav-link' href='perfil-musico.php'>Perfil</a>
+            <a class='nav-link' href='perfil_musico.php'>Perfil</a>
           	</li>";
           	}
           	elseif ($_SESSION['tipo'] === 'cliente') {
           		echo "<li class='nav-item'>
-            <a class='nav-link' href='perfil-cliente.php'>Perfil</a>
+            <a class='nav-link' href='perfil_cliente.php'>Perfil</a>
           	</li>";
           }
             ?>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="pesquisar-musicos.php">Pesquisar</a>
+            <a class="nav-link" href="pesquisar_musicos.php">Pesquisar</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto" style="display:block;">     	
@@ -119,7 +119,7 @@ else{
 						|
 					</span>
 					<li class="nav-item">
-						<a class="nav-link" href="cadastroCliente.php" id="cadastro"><?php 
+						<a class="nav-link" href="perfil.php" id="cadastro"><?php 
 						echo $_SESSION['nome'];
 						?></a>
 					</li>

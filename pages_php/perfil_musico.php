@@ -100,7 +100,7 @@ header('../index.php');
           }
           else{
           	echo "<li class='nav-item'>
-            <a class='nav-link' href='pesquisar-musicos.php'>Pesquisar</a>
+            <a class='nav-link' href='pesquisar_musicos.php'>Pesquisar</a>
           	</li>
         	</ul>";
           }    
@@ -148,7 +148,7 @@ header('../index.php');
 						|
 					</span>
 					<li class='nav-item'>
-						<a class='nav-link' href='cadastroCliente.php' id='cadastro'>" . $_SESSION['nome'] . "</a>
+						<a class='nav-link' href='perfil.php' id='cadastro'>" . $_SESSION['nome'] . "</a>
 					</li>";
 				}
 					?>
