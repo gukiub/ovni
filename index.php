@@ -98,12 +98,13 @@
       		echo "<li class='nav-item'>
             <a class='nav-link' href='pages_php/login.php'>Pesquisar</a>
           	</li>
-        	</ul>";
+        	";
           }
           else{
           	echo "<li class='nav-item'>
             <a class='nav-link' href='pages_php/pesquisar_musicos.php'>Pesquisar</a>
           		</li>
+<<<<<<< HEAD
           		<li class='nav-item'>
           		<a class='nav-link' href='pages_php/pedido.php'>Faça seu Pedidos!</a>
           		</li>";
@@ -114,6 +115,22 @@
         		};
         	echo "</ul>";
           }    
+=======
+        	";
+          }
+          if ($_SESSION['tipo'] === 'musico') {
+        		echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/chamado.php'>Chamados</a>
+          		</li>
+          		</ul>";
+        	}
+        	elseif($_SESSION['tipo'] === 'cliente'){
+        		echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/pedido.php'>Pedidos</a>
+          		</li>
+          		</ul>";
+        	}    
+>>>>>>> test
         ?>
         <ul class="navbar-nav ml-auto" style="display:block;">
         	<?php
