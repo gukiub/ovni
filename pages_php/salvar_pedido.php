@@ -15,6 +15,7 @@
 	 	
 
 	//EU DEIXEI ESSES CAMPOS COMENTADOS PQ PRECISA ASSOCIAR O cpf_cliente_fk COM O CPF DO CLIENTE DO BANCO DE DADOS.
+	
 
 	$sql = "INSERT INTO  realiza_pedido(
 				data_hora_evento,

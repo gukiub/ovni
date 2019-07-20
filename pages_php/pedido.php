@@ -8,6 +8,9 @@
     <style type="text/css">
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <?php 
+      session_start();
+    ?>
   </head>
 
   <body>
@@ -40,7 +43,7 @@
       <div class="container bg-light p-5">
         <h1 class="center text-center">Realizar Pedido</h1>
         <p></p>
-      <form action="../pages_php/salvar_funcionario.php" class="w-50 ml-auto mr-auto">
+      <form action="../pages_php/salvar_pedido.php" class="w-50 ml-auto mr-auto">
         <input type="hidden" name="disp_func" value="1">
         <div class="form-row">
           <div class="form-group col-md-12">
@@ -52,14 +55,15 @@
             <input type="date" class="form-control" name="data" id="data" placeholder="Data do Evento"> 
           </div>
           <div class="form-group col-md-4">
-            <label for="idade">CEP</label>
-            <input type="text" class="form-control" name="data" id="data" placeholder="CEP"> 
+            <label for="cep">CEP</label>
+            <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP"> 
           </div>
           <div class="form-group col-md-4">
-            <label for="email">Hora</label>
-            <input type="text" class="form-control" name="hora" id="hora" placeholder="hora">
+            <label for="hora">Hora</label>
+            <input type="text" class="form-control" name="hora" id="hora" placeholder="hh:mm">
           </div>
-          <!-- <div class="form-group col-md-4">
+          <!-- Não precisa de estado?
+          <div class="form-group col-md-4">
             <label for="estado">Estado</label>
               <select name="estado" id="estado" class="form-control">
                 <option>Selecione</option>
@@ -145,8 +149,10 @@
           </div>
           <div class="form-group col-md-12">
               <label for="descricao">Descrição </label>
-              <textarea class="form-control" id="descricao" name="descricao_func" rows="3"></textarea>
+              <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
             </div>
+            <!-- busca e envia o cpf do usuário pelo form-->
+            <input type="hidden" name="cpf" value="<?php echo $_SESSION['cpf']?>">
         </div>
         <input type="submit" class="btn btn-primary">
       </form>
@@ -171,6 +177,7 @@
       $(document).ready(function () { 
         jQuery(function($){
           $("#cpf").mask('999.999.999-99');
+          $("#hora").mask('99:99');
           $("#cep").mask('99999-999');
           $("#telefone").mask("(99)9999-9999");
           $("#celular").mask("(99)99999-9999");
