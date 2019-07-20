@@ -4,10 +4,13 @@
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
 
-    <title>Ovni</title>
+    <title>Ovni - Pedidos</title>
     <style type="text/css">
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <?php 
+      session_start();
+    ?>
   </head>
 
   <body>
@@ -20,15 +23,6 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" style="font-size: 16px;" href="../index.php">Página Inicial</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="#">#</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="#">#</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: 16px;" href="#">#</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -47,39 +41,28 @@
 
     <div class="jumbotron mb-0">
       <div class="container bg-light p-5">
-        <h1 class="center text-center">Cadastro do Músicos</h1>
+        <h1 class="center text-center">Realizar Pedido</h1>
         <p></p>
-      <form action="../pages_php/salvar_funcionario.php" class="w-50 ml-auto mr-auto">
+      <form action="../pages_php/salvar_pedido.php" class="w-50 ml-auto mr-auto">
         <input type="hidden" name="disp_func" value="1">
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="nome">Nome Completo</label>
-            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="idade">Data de Nascimento</label>
-            <input type="date" class="form-control" name="idade" id="idade" placeholder="Idade" min="18" max="99"> <!-- maple -->
-          </div>
           <div class="form-group col-md-12">
-            <label for="email">Email</label>
-            <input type="Email" class="form-control" name="email" id="email" placeholder="Email">
+            <label for="nome">Endereço do evento</label>
+            <input type="text" class="form-control" name="nome" id="nome" placeholder="Ex: nome do logradouro, n° - bairro">
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <label for="endereco">Endereço</label>
-            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Ex: Avenida Paulista, Nº">
+          <div class="form-group col-md-4">
+            <label for="idade">Data do evento</label>
+            <input type="date" class="form-control" name="data" id="data" placeholder="Data do Evento"> 
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="complemento">Complemento do endereço</label>
-            <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Complemento(Opcional)">
+          <div class="form-group col-md-4">
+            <label for="cep">CEP</label>
+            <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP"> 
           </div>
-          <div class="form-group col-md-6">
-            <label for="cpf">CPF</label>
-            <input type="text" class="form-control" name="cpf" id="cpf" placeholder="000.000.000-00">
+          <div class="form-group col-md-4">
+            <label for="hora">Hora</label>
+            <input type="text" class="form-control" name="hora" id="hora" placeholder="hh:mm">
           </div>
+          <!-- Não precisa de estado?
           <div class="form-group col-md-4">
             <label for="estado">Estado</label>
               <select name="estado" id="estado" class="form-control">
@@ -112,29 +95,12 @@
                 <option>Sergipe</option>
                 <option>Tocantins</option>
               </select>
-          </div>
+          </div> -->
           <div class="form-group col-md-4">
             <label for="cidade">Cidade</label>
             <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Ex: SP">
           </div> 
-
           <div class="form-group col-md-4">
-            <label for="cep">CEP</label>
-            <input type="text" class="form-control" name="cep" id="cep" placeholder="00000-000">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="telefone">Telefone</label>
-            <input type="text" class="form-control" name="telefone" id="telefone" placeholder="(00)0000-0000">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="celular">Celular</label>
-            <input type="text" class="form-control" name="celular" id="celular" placeholder="(00)00000-0000">
-          </div>
-          <div class="form-group col-md-12">
-            <label for="senha">Senha</label>
-            <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha">
-          </div>
-          <div class="form-group col-md-6">
             <label for="instrumento">Instrumento</label>
               <select name="instrumento" id="instrumento" class="form-control">
                 <option>Selecione</option>
@@ -157,9 +123,10 @@
                 <option>Violino</option>
               </select>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-4">
             <label for="estilo">Estilo Musical Principal</label>
               <select name="estilo_musical" id="estilo" class="form-control">
+                <option>Selecione</option>
                 <option>Alternativa</option>
                 <option>Axé</option>
                 <option>Blues</option>
@@ -180,6 +147,12 @@
                 <option>Sertanejo</option>
               </select>
           </div>
+          <div class="form-group col-md-12">
+              <label for="descricao">Descrição </label>
+              <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
+            </div>
+            <!-- busca e envia o cpf do usuário pelo form-->
+            <input type="hidden" name="cpf" value="<?php echo $_SESSION['cpf']?>">
         </div>
         <input type="submit" class="btn btn-primary">
       </form>
@@ -204,6 +177,7 @@
       $(document).ready(function () { 
         jQuery(function($){
           $("#cpf").mask('999.999.999-99');
+          $("#hora").mask('99:99');
           $("#cep").mask('99999-999');
           $("#telefone").mask("(99)9999-9999");
           $("#celular").mask("(99)99999-9999");

@@ -1,0 +1,13 @@
+﻿alterar campo para inserir novo end, cidade
+verificar se o pagamento está em dia e redirecionar
+verificar sessão(destruir)
+remover campo metodo de pagamento
+acrescentar cep no realiza_pedido
+Acrescentar recuperar senha
+Verificar email
+redirecionar da página do perfil para o index (header)
+registrar se a conta do usuario ainda não expirou...
+[MENU] QUEM SOMOS
+index.php>>>>>>> Organizar o menu(LOGIN // REGISTRAR / REGISTRAR-SE)
+index.php>>>>>>> no rodapé precisa de contato(email, direitos reservados, cnpj)
+login.php>>>>>>> ou registrar-se na base do formulário

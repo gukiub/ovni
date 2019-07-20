@@ -25,9 +25,8 @@ header('../index.php');
 
 <html>
 	<head>
-		<title>Left Sidebar - Phase Shift by TEMPLATED</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta charset="utf-8">
+		<title>Backup do código dos icones de instrumentos</title>
+		<meta http-equiv="content-type" content="text/html"; charset="utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
@@ -48,6 +47,18 @@ header('../index.php');
 				height: 25px;
 				border-radius: 50%;
 			}
+
+			.icones{
+				width: 25px;
+				height: 25px;
+				margin:0.5em;
+				background-color: red;
+				display: inline-flex;
+			}
+
+			.clicked{
+				background-color: blue;
+			}
     	</style>
     	<script src="../js/jquery.min.js"></script>
 		<script src="../js/jquery.dropotron.min.js"></script>
@@ -60,8 +71,9 @@ header('../index.php');
 		<link rel="stylesheet" href="../css/style-wide.css" />
 		<link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		
 	</head>
-	<body>
+	<body onload="icone()">
 
 		<!-- Wrapper -->
 			<div class="wrapper style1">
@@ -166,15 +178,48 @@ header('../index.php');
 		
 							<!-- Sidebar -->
 							<div id="sidebar" class="4u">
+								<section>
+									<header class="major">
+										<h2><?php 
+										echo $_SESSION['estilo'];
+
+										?></h2>
+									</header>
 									<div class="row half">
-										<section class="6u" style="contain: content;">
+										<section class="6u">
 											<?php 
 										//echo $_SESSION['img_perfil'];
-											echo "<img src='../images/teste.jpg' style='width: 100%; height: auto; margin-bottom: 5vh; border-radius: 100%;'>";
+											echo "<img src='../images/1.png' style='width: 200%; margin-bottom: 5vh;'>";
 
 										?>
 										</section>
 									</div>
+								</section>
+								<section>
+									<header class="major">
+										
+										<h2>
+											<!-- ----- -->
+											<div class="icones" id="Acordeão"></div>
+											<div class="icones" id="Baixo"></div>
+											<div class="icones" id="Bateria"></div>
+											<div class="icones" id="Cavaco"></div>
+											<div class="icones" id="Flauta"></div>
+											<div class="icones" id="Guitarra"></div>
+											<div class="icones" id="Instrumentos (DJ)"></div>
+											<div class="icones" id="Órgão"></div>
+											<div class="icones" id="Piano"></div>
+											<div class="icones" id="Saxofone"></div>
+											<div class="icones" id="Teclado"></div>
+											<div class="icones" id="Trombone"></div>
+											<div class="icones" id="Trompa"></div>
+											<div class="icones" id="Trompete"></div>
+											<div class="icones" id="Viola"></div>
+											<div class="icones" id="Violão"></div>
+											<div class="icones" id="Violino"></div>
+										</h2>
+									</header>
+								</section>
 							</div>
 							
 							<!-- Content -->
@@ -189,8 +234,6 @@ header('../index.php');
 									</header>
 									<p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna. Quisque eleifend.</p>
 							</div>
-
-							 <input type="submit" class="btn btn-primary mr-auto ml-auto">
 						</div>
 					</div> 
 				</div>
@@ -210,5 +253,10 @@ header('../index.php');
 			</div>
 		</div>
 
+		<script>
+			function icone() {
+				$("#<?php echo $_SESSION['instrumento']; ?>").toggleClass("clicked");
+			}
+		</script>
 	</body>
 </html>

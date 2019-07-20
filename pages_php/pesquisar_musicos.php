@@ -36,7 +36,7 @@ else{
 
 <html>
 <head>
-	<title>OVNI Studio</title>
+	<title>OVNI - Pesquisa</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -95,19 +95,37 @@ else{
           	<?php
           	if ($_SESSION['tipo'] === 'musico') {
           		echo "<li class='nav-item'>
-            <a class='nav-link' href='perfil-musico.php'>Perfil</a>
+            <a class='nav-link' href='perfil_musico.php'>Perfil</a>
           	</li>";
           	}
           	elseif ($_SESSION['tipo'] === 'cliente') {
           		echo "<li class='nav-item'>
-            <a class='nav-link' href='perfil-cliente.php'>Perfil</a>
+            <a class='nav-link' href='perfil_cliente.php'>Perfil</a>
           	</li>";
           }
             ?>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="pesquisar-musicos.php">Pesquisar</a>
+            <a class="nav-link" href="pesquisar_musicos.php">Pesquisar</a>
           </li>
+          <?php 
+
+
+          if ($_SESSION['logged_in'] === false) {
+          header('location:login.php');
+          }
+          else{
+            echo  "<li class='nav-item'>
+              <a class='nav-link' href='pedido.php'>Faça seu Pedidos!</a>
+              </li>";
+              if ($_SESSION['tipo'] === "musico") {
+              echo "<li class='nav-item'>
+                <a class='nav-link' href='chamado.php'>Atenda ao chamado!</a>
+              </li>";
+            };
+          };
+
+          ?>
         </ul>
         <ul class="navbar-nav ml-auto" style="display:block;">     	
 			<div class="loggedOutDiv2">
@@ -119,8 +137,8 @@ else{
 						|
 					</span>
 					<li class="nav-item">
-						<a class="nav-link" href="cadastroCliente.php" id="cadastro"><?php 
-						echo $_SESSION['nome'];
+						<a class="nav-link" href="perfil.php" id="cadastro"><?php 
+					   echo utf8_encode($_SESSION['nome']);
 						?></a>
 					</li>
 				</div>
@@ -224,13 +242,13 @@ else{
 							<img src='../images/pic01.jpg' alt=''>
 						</a>
 						<div class='box'>
-							<p>
-								Descrição do Músico, criar um campo no banco de dados, plz, Gustavo :D
-								Estilo: " . $row[12] . "
-								Instrumento "  . $row[8] . ".
-							</p>
+							
+								<div class='col'>Descrição: " . utf8_encode($row[15]) . "</div>
+								<div class='col' style='background-color: #f1f1f1;'>Estilo: " . utf8_encode($row[12]) . "</div>
+								<div class='col'>Instrumento "  . utf8_encode($row[8]) . ".</div>
+							
 
-							<a href='#' class='button'>" . $row[0] . "</a> 
+							<a href='#' class='button'>" . utf8_encode($row[0]) . "</a> 
 						</div>
 					</section>";
 
@@ -258,7 +276,8 @@ else{
 			$row[11] = email
 			$row[12] = estilo musical
 			$row[13] = img perfil
-			$row[14] = disponibilidade do funcionario
+      $row[14] = disponibilidade do funcionario
+			$row[15] = descrição do funcionario
 			*/
 			?>
 

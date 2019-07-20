@@ -7,8 +7,8 @@
  <?php
  	session_start();
  	ini_set('display_errors', 0); 
-ini_set('display_startup_errors', 0); 
-error_reporting(E_ALL);
+	ini_set('display_startup_errors', 0); 
+	error_reporting(E_ALL);
  ?>
 
 <html>
@@ -20,7 +20,7 @@ error_reporting(E_ALL);
 	    <meta name="viewport" content="width=device-width, initial-scale=1" />
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	    <meta name="author" content="colorlib.com">
-	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	    <link rel="stylesheet" href="css/bootstrap.min.css">
 	    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
 	    <link href="css/main.css" rel="stylesheet" />
 	    <link href="css/menu.css" rel="stylesheet" />
@@ -29,8 +29,8 @@ error_reporting(E_ALL);
    		
 		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.dropotron.min.js"></script>
 		<script src="js/skel.min.js"></script>
@@ -83,12 +83,12 @@ error_reporting(E_ALL);
           else{
           	if ($_SESSION['tipo'] === 'musico') {
           		echo "<li class='nav-item'>
-            <a class='nav-link' href='pages_php/perfil-musico.php'>Perfil</a>
+            <a class='nav-link' href='pages_php/perfil_musico.php'>Perfil</a>
           	</li>";
           	}
           	elseif ($_SESSION['tipo'] === 'cliente') {
           		echo "<li class='nav-item'>
-            <a class='nav-link' href='pages_php/perfil-cliente.php'>Perfil</a>
+            <a class='nav-link' href='pages_php/perfil_cliente.php'>Perfil</a>
           	</li>";
           	}
           }
@@ -98,14 +98,26 @@ error_reporting(E_ALL);
       		echo "<li class='nav-item'>
             <a class='nav-link' href='pages_php/login.php'>Pesquisar</a>
           	</li>
-        	</ul>";
+        	";
           }
           else{
           	echo "<li class='nav-item'>
-            <a class='nav-link' href='pages_php/pesquisar-musicos.php'>Pesquisar</a>
+            <a class='nav-link' href='pages_php/pesquisar_musicos.php'>Pesquisar</a>
           		</li>
-        	</ul>";
-          }    
+        	";
+          }
+          if ($_SESSION['tipo'] === 'musico') {
+        		echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/chamado.php'>Chamados</a>
+          		</li>
+          		</ul>";
+        	}
+        	elseif($_SESSION['tipo'] === 'cliente'){
+        		echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/pedido.php'>Pedidos</a>
+          		</li>
+          		</ul>";
+        	}    
         ?>
         <ul class="navbar-nav ml-auto" style="display:block;">
         	<?php
@@ -150,7 +162,7 @@ error_reporting(E_ALL);
 						|
 					</span>
 					<li class='nav-item'>
-						<a class='nav-link' href='pages_php/cadastroCliente.php' id='cadastro'>" . $_SESSION['nome'] . "</a>
+						<a class='nav-link' href='pages_php/perfil.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
 					</li>";}
 					?>
 				</div>
@@ -277,46 +289,5 @@ error_reporting(E_ALL);
 				</div>
 			</div>
 		</div>
-
-
-		<script src="js/extention/choices.js"></script>
-	    <script>
-	      const customSelects = document.querySelectorAll("select");
-	      const deleteBtn = document.getElementById('delete')
-	      const choices = new Choices('select',
-	      {
-	        searchEnabled: false,
-	        itemSelectText: '',
-	        removeItemButton: true,
-	      });
-	      for (let i = 0; i < customSelects.length; i++)
-	      {
-	        customSelects[i].addEventListener('addItem', function(event)
-	        {
-	          if (event.detail.value)
-	          {
-	            let parent = this.parentNode.parentNode
-	            parent.classList.add('valid')
-	            parent.classList.remove('invalid')
-	          }
-	          else
-	          {
-	            let parent = this.parentNode.parentNode
-	            parent.classList.add('invalid')
-	            parent.classList.remove('valid')
-	          }
-	        }, false);
-	      }
-	      deleteBtn.addEventListener("click", function(e)
-	      {
-	        e.preventDefault()
-	        const deleteAll = document.querySelectorAll('.choices__button')
-	        for (let i = 0; i < deleteAll.length; i++)
-	        {
-	          deleteAll[i].click();
-	        }
-	      });
-
-	    </script>
 	</body>
 </html>

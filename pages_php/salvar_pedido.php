@@ -1,6 +1,7 @@
 <?php 
 	 
 	include('conexao.php');
+	session_start();
 
 	$datahora3 = $_GET['datahora'];
 	$endereco3 = $_GET['endereco'];
@@ -10,12 +11,11 @@
 	$status3 = $_GET['status'];
 	$desc_pedido3 = $_GET['desc_pedido'];
 	$valor_pedido3 = $_GET['valor_pedido'];
-	// $cpf_cliente_fk3 = $_GET['cpf_cliente_fk'];
-	// $cpf_func_fk3 = $_GET['cpf_func_fk'];
-	// $id_pedido_pk3 = $_GET['id_pedido_pk'];
-	
+	$cpf_clie = $_SESSION['cpf'];
+	 	
 
 	//EU DEIXEI ESSES CAMPOS COMENTADOS PQ PRECISA ASSOCIAR O cpf_cliente_fk COM O CPF DO CLIENTE DO BANCO DE DADOS.
+	
 
 	$sql = "INSERT INTO  realiza_pedido(
 				data_hora_evento,

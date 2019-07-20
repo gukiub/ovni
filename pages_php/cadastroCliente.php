@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>ovni</title>
+    <title>Ovni - Cadastro Cliente</title>
     <style type="text/css">
       .collapse ul li a{
         font-size: 16px;
@@ -25,7 +25,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="../index.php">Página Inicial</a>
+            <a class="nav-link" href="../index.php"><- Página Inicial</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -167,6 +167,31 @@
         });
       });
     </script>
+
+    <!--<script>
+      function TestaCPF(strCPF) {
+          var Soma;
+          var Resto;
+          Soma = 0;
+        if (strCPF == "00000000000") return false;
+           
+        for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+        Resto = (Soma * 10) % 11;
+         
+          if ((Resto == 10) || (Resto == 11))  Resto = 0;
+          if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
+         
+        Soma = 0;
+          for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+          Resto = (Soma * 10) % 11;
+         
+          if ((Resto == 10) || (Resto == 11))  Resto = 0;
+          if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
+          return true;
+      }
+      var strCPF = "12345678909";
+      alert(TestaCPF(strCPF));
+    </script> -->
 
   </body>
 </html>
