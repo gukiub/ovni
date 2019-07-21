@@ -91,49 +91,6 @@ else{
 	</style>
 </head>
 <body>
-<header>
-				margin-top: -2.8em;
-			}
-			.loggedOutDiv2{
-				margin-top: -1.3em;
-			}
-
-			.carousel-indicators li{
-				width: 25px;
-				height: 25px;
-				border-radius: 50%;
-			}
-
-			.icones{
-				width: 25px;
-				height: 25px;
-				margin:0.5em;
-				background-color: red;
-				display: inline-flex;
-			}
-
-			.clicked{
-				background-color: blue;
-			}
-    	</style>
-    	<script src="../js/jquery.min.js"></script>
-		<script src="../js/jquery.dropotron.min.js"></script>
-		<script src="../js/skel.min.js"></script>
-		<script src="../js/skel-layers.min.js"></script>
-		<script src="../js/init.js"></script>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-		<link rel="stylesheet" href="../css/skel.css" />
-		<link rel="stylesheet" href="../css/style.css" />
-		<link rel="stylesheet" href="../css/style-wide.css" />
-		<link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-		
-	</head>
-	<body onload="icone()">
-
-		<!-- Wrapper -->
-			<div class="wrapper style1">
-
 				<!-- Header -->
 					 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 2rem 1rem 0.5rem 1rem; ">
