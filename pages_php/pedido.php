@@ -48,7 +48,7 @@
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="nome">Endereço do evento</label>
-            <input type="text" class="form-control" name="nome" id="nome" placeholder="Ex: nome do logradouro, n° - bairro">
+            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Ex: nome do logradouro, n° - bairro">
           </div>
           <div class="form-group col-md-4">
             <label for="idade">Data do evento</label>
@@ -148,11 +148,9 @@
               </select>
           </div>
           <div class="form-group col-md-12">
-              <label for="descricao">Descrição </label>
+              <label for="descricao">Descrição do Peido</label>
               <textarea class="form-control" id="descricao" name="descricao" rows="3"></textarea>
             </div>
-            <!-- busca e envia o cpf do usuário pelo form-->
-            <input type="hidden" name="cpf" value="<?php echo $_SESSION['cpf']?>">
         </div>
         <input type="submit" class="btn btn-primary">
       </form>
