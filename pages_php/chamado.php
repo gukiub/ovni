@@ -224,6 +224,8 @@ header('../index.php');
 		</div>
 	</div>
 </div>
+</ul>
+</div>
 
 	<!-- Page -->
 				 

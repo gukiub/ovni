@@ -43,6 +43,8 @@ CREATE TABLE realiza_pedido(
 	endereço_evento VARCHAR(220),
 	estilo_musica_pedido VARCHAR(220),
 	instrumento_desejado VARCHAR(220),
+	email_contato varchar(220),
+	telefone_contato varchar(220),
 	status_pedido VARCHAR(2),
 	desc_pedido varchar(220),
 	CPF_clie_FK VARCHAR(220),
