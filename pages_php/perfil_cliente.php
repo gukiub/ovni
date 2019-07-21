@@ -19,7 +19,7 @@ $con=mysqli_connect("localhost","root","","ovni");
 
 if($_SESSION['logged_in'] == 0){
 header('../index.php');
-}
+};
 
 ?>
 
