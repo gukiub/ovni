@@ -29,12 +29,12 @@ $estilos = $_GET['estilos'];
 $instrumentos = $_GET['instrumentos'];
 
 	$sql="SELECT * FROM realiza_pedido WHERE CPF_func_FK = '" . $_SESSION['cpf'] . "'  ORDER BY realiza_pedido.data_evento ASC";
-  echo $sql;
+
 ?>
 
 <html>
 <head>
-	<title>OVNI - Pesquisa</title>
+	<title>OVNI - Chamados Atendidos</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />

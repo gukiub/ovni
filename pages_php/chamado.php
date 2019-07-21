@@ -29,22 +29,22 @@ $estilos = $_GET['estilos'];
 $instrumentos = $_GET['instrumentos'];
 
 if (!empty($estilos) and !empty($instrumentos)) {
-	$sql="SELECT * FROM `realiza_pedido` WHERE `estilo_musica_pedido` = '" . $estilos . "' and `instrumento_desejado` = '" . $instrumentos . "'";
+	$sql="SELECT * FROM `realiza_pedido` WHERE `estilo_musica_pedido` = '" . $estilos . "' and `instrumento_desejado` = '" . $instrumentos .  "' AND `status_pedido` = 0";
 }
 else if (!empty($estilos)) {
-	$sql="SELECT * FROM `realiza_pedido` WHERE `estilo_musica_pedido` = '" . $estilos . "'";
+	$sql="SELECT * FROM `realiza_pedido` WHERE `estilo_musica_pedido` = '" . $estilos .  "' AND `status_pedido` = 0";
 }
 else if (!empty($instrumentos)) {
-	$sql="SELECT * FROM `realiza_pedido` WHERE `instrumento_desejado` = '" . $instrumentos . "'";
+	$sql="SELECT * FROM `realiza_pedido` WHERE `instrumento_desejado` = '" . $instrumentos . "' AND `status_pedido` = 0";
 }
 else{
-	$sql="SELECT * FROM `realiza_pedido` LIMIT 6";
+	$sql="SELECT * FROM `realiza_pedido` WHERE `status_pedido` = 0";
 	}
 ?>
 
 <html>
 <head>
-	<title>OVNI - Pesquisa</title>
+	<title>OVNI - Chamados</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />

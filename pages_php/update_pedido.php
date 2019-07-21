@@ -19,6 +19,6 @@
 
 $PDO->query($sql); //comando de enviar o sql
 
-header('location: ../index.php')
+header('location:chamado_atendido.php')
 
 ?>
