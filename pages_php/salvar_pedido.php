@@ -44,9 +44,8 @@
 				"')";
 $PDO->query($sql); //comando de enviar o sql
 
+// header('location: ../index.php')
 
-header('location: ../index.php')
-
- ?>
+?>
 
  <!-- acrescentar campos para ter contato com o cliente que realizou o pedido -->

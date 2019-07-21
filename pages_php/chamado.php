@@ -112,7 +112,7 @@ header('../index.php');
           }
           else{
           	echo "<li class='nav-item'>
-            <a class='nav-link' href='pesquisar-musicos.php'>Pesquisar</a>
+            <a class='nav-link' href='pesquisar_musicos.php'>Pesquisar</a>
           	</li>
         	</ul>";
           }    
@@ -172,75 +172,62 @@ header('../index.php');
 </header>
 				<!-- Header -->
 
-				<!-- Page -->
-					<div id="page" class="container">
-						<div class="row">
-		
-							<!-- Sidebar -->
-							<div id="sidebar" class="4u">
-								<section>
-									<header class="major">
-										<h2><?php 
-										echo $_SESSION['estilo'];
+	<!-- Page -->
 
-										?></h2>
-									</header>
-									<div class="row half">
-										<section class="6u">
-											<?php 
-										//echo $_SESSION['img_perfil'];
-											echo "<img src='../images/1.png' style='width: 200%; margin-bottom: 5vh;'>";
+<div id="extra" style="padding-top: 4em;">
+	<div class="container">
+		<div class="row no-collapse-1">
 
-										?>
-										</section>
-									</div>
-								</section>
-								<section>
-									<header class="major">
-										
-										<h2>
-											<!-- ----- -->
-											<div class="icones" id="Acordeão"></div>
-											<div class="icones" id="Baixo"></div>
-											<div class="icones" id="Bateria"></div>
-											<div class="icones" id="Cavaco"></div>
-											<div class="icones" id="Flauta"></div>
-											<div class="icones" id="Guitarra"></div>
-											<div class="icones" id="Instrumentos (DJ)"></div>
-											<div class="icones" id="Órgão"></div>
-											<div class="icones" id="Piano"></div>
-											<div class="icones" id="Saxofone"></div>
-											<div class="icones" id="Teclado"></div>
-											<div class="icones" id="Trombone"></div>
-											<div class="icones" id="Trompa"></div>
-											<div class="icones" id="Trompete"></div>
-											<div class="icones" id="Viola"></div>
-											<div class="icones" id="Violão"></div>
-											<div class="icones" id="Violino"></div>
-										</h2>
-									</header>
-								</section>
-							</div>
-							
-							<!-- Content -->
-							<div id="content" class="8u skel-cell-important">
-								<section>
-									<header class="major">
-										<h2><?php 
-										echo $_SESSION['nome'];
+			<!-- gerar lista de pedidos -->
 
-										?></h2>
-										<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
-									</header>
-									<p>Maecenas pede nisl, elementum eu, ornare ac, malesuada at, erat. Proin gravida orci porttitor enim accumsan lacinia. Donec condimentum, urna non molestie semper, ligula enim ornare nibh, quis laoreet eros quam eget ante. Aliquam libero. Vivamus nisl nibh, iaculis vitae, viverra sit amet, ullamcorper vitae, turpis. Aliquam erat volutpat. Vestibulum pulvinar sed, imperdiet nec, iaculis nec, leo. Fusce odio. Etiam arcu dui, faucibus eget, placerat vel, sodales eget, orci. Donec ornare neque ac sem. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna. Quisque eleifend.</p>
-							</div>
-						</div>
-					</div> 
-				</div>
+			<section class="4u"> <a href="#" class="image featured"><img src="../images/pic01.jpg" alt=""></a>
+				<div class="box">
+					<p style="max-height: 160px; contain: content;">"Texto de descrição que vai ser limitado para três linhas no máximo, esse texto foi escrito com a intenção de testar a funcionalidade da caixa e ver se funciona de verdade, qualquer problemas ter paciência com diogo misawa porque ele quase se perde fazendo o css dessa desgraça, mas ainda vai mudar muita coisa, por exemplo para fazer um texto com nome, instrumento e estilo procurados, endereço, etc etc, ficarem ao lado da imagem, e descrição abaixo dela."
+					</p>
+					<a href="#" class="button">Caixa editada mas e se o exemplo for de algum nome gigante?</a> </div>
+			</section>
 
-	<!-- Footer -->
-		
-	<!-- /Footer -->
+			<!-- gerar lista de pedidos -->
+
+			<section class="4u"> <a href="#" class="image featured"><img src="../images/pic01.jpg" alt=""></a>
+				<div class="box">
+					<p>Texto de descrição que vai ser limitado para três linhas no máximo, esse texto foi escrito com a intenção de testar a funcionalidade da caixa e ver se funciona de verdade, qualquer problemas ter paciência com diogo misawa porque ele quase se perde fazendo o css dessa desgraça, mas ainda vai mudar muita coisa, por exemplo para fazer um texto com nome, instrumento e estilo procurados, endereço, etc etc, ficarem ao lado da imagem, e descrição abaixo dela..</p>
+					<a href="#" class="button">Caixa Não-editada</a> </div>
+			</section>
+			<section class="4u"> <a href="#" class="image featured"><img src="../images/pic01.jpg" alt=""></a>
+				<div class="box">
+					<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
+					<a href="#" class="button">Read More</a> </div>
+			</section></div>
+		<div class="row no-collapse-1">
+
+				<!-- gerar lista de pedidos -->
+
+			<section class="4u"> <a href="#" class="image featured"><img src="../images/pic01.jpg" alt=""></a>
+				<div class="box">
+					<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
+					<a href="#" class="button">Read More</a> </div>
+			</section>
+
+				<!-- gerar lista de pedidos -->
+
+			<section class="4u"> <a href="#" class="image featured"><img src="../images/pic01.jpg" alt=""></a>
+				<div class="box">
+					<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
+					<a href="#" class="button">Read More</a> </div>
+			</section>
+			<section class="4u"> <a href="#" class="image featured"><img src="../images/pic01.jpg" alt=""></a>
+				<div class="box">
+					<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
+					<a href="#" class="button">Read More</a> </div>
+			</section>
+		</div>
+	</div>
+</div>
+
+	<!-- Page -->
+				 
+
 
 	<!-- Copyright -->
 		<div id="copyright">
