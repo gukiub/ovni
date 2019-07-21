@@ -94,31 +94,28 @@
           }
           ?>
           <?php
-          if ($_SESSION['logged_in'] === false) {
-      		echo "<li class='nav-item'>
-            <a class='nav-link' href='pages_php/login.php'>Pesquisar</a>
-          	</li>
-        	";
-          }
-          else{
-          	echo "<li class='nav-item'>
-            <a class='nav-link' href='pages_php/pesquisar_musicos.php'>Pesquisar</a>
-          		</li>
-        	";
-          }
           if ($_SESSION['tipo'] === 'musico') {
-        		echo "<li class='nav-item'>
+        		if ($_SESSION['logged_in'] === true) {
+        			echo "<li class='nav-item'>
             <a class='nav-link' href='pages_php/chamado.php'>Chamados</a>
-          		</li>
-          		</ul>";
+          		</li>";
+        		}
         	}
         	elseif($_SESSION['tipo'] === 'cliente'){
-        		echo "<li class='nav-item'>
+        		if ($_SESSION['logged_in'] === true) {
+        			echo "<li class='nav-item'>
             <a class='nav-link' href='pages_php/pedido.php'>Pedidos</a>
-          		</li>
-          		</ul>";
-        	}    
+          		</li>";
+          		}
+        	}
+        	if ($_SESSION['logged_in'] === true) {
+        		echo "<li class='nav-item'>
+          		<li class='nav-item'>
+          		<a class='nav-link' href='pages_php/pedido.php'>Faça seu Pedido!</a>
+          		</li>";
+        		}; 
         ?>
+    </ul>
         <ul class="navbar-nav ml-auto" style="display:block;">
         	<?php
         	if ($_SESSION['logged_in'] === false ){
@@ -161,9 +158,17 @@
 					<span class='navbar-text'>
 						|
 					</span>
-					<li class='nav-item'>
-						<a class='nav-link' href='pages_php/perfil.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
-					</li>";}
+					<li class='nav-item'>";
+
+					if ($_SESSION['tipo'] === 'cliente' ) {
+						echo "<a class='nav-link' href='pages_php/perfil_cliente.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
+					</li>";
+					}
+					elseif ($_SESSION['tipo'] === 'musico' ) {
+						echo "<a class='nav-link' href='pages_php/perfil_musico.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
+						</li>";
+							}
+						}
 					?>
 				</div>
         	</div>

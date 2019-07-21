@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+  ini_set('display_errors', 0); 
+  ini_set('display_startup_errors', 0); 
+  error_reporting(E_ALL);
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -16,31 +24,120 @@
     </style>
   </head>
   <body>
-     <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="../index.php"><img src="../images/logo-ovni.png" width="120px" height="56"></a>
+      <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 2rem 1rem 0.5rem 1rem; ">
+      <a class="navbar-brand" href="../index.php" style="margin-top: -1em;"><img src="../images/logo-ovni.png" width="120px" height="56"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="../index.php"><- Página Inicial</a>
+        <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
+          <li class="nav-item active">
+            <a class="nav-link"  href="../index.php">Página Inicial</a>
           </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="../pages_php/login.php">Login</a>
+          <?php
+          if ($_SESSION['logged_in'] === false ){
+            echo "<li class='nav-item'>
+            <a class='nav-link' href='login.php'>Perfil</a>
+            </li>";
+          }
+          
+          else{
+            if ($_SESSION['tipo'] === 'musico') {
+              echo "<li class='nav-item'>
+            <a class='nav-link' href='perfil_musico.php'>Perfil</a>
+            </li>";
+            }
+            elseif ($_SESSION['tipo'] === 'cliente') {
+              echo "<li class='nav-item'>
+            <a class='nav-link' href='perfil_cliente.php'>Perfil</a>
+            </li>";
+            }
+          }
+          ?>
+          <?php
+          if ($_SESSION['tipo'] === 'musico') {
+            if ($_SESSION['logged_in'] === true) {
+              echo "<li class='nav-item'>
+            <a class='nav-link' href='chamado.php'>Chamados</a>
+              </li>";
+            }
+          }
+          elseif($_SESSION['tipo'] === 'cliente'){
+            if ($_SESSION['logged_in'] === true) {
+              echo "<li class='nav-item'>
+            <a class='nav-link' href='pedido.php'>Pedidos</a>
+              </li>";
+              }
+          }
+          if ($_SESSION['logged_in'] === true) {
+            echo "<li class='nav-item'>
+              <li class='nav-item'>
+              <a class='nav-link' href='pedido.php'>Faça seu Pedido!</a>
+              </li>";
+            }; 
+        ?>
+    </ul>
+        <ul class="navbar-nav ml-auto" style="display:block;">
+          <?php
+          if ($_SESSION['logged_in'] === false ){
+          echo "
+          <div class='loggedOutDiv2'>
+            <div class='col'>
+              <p style='color: rgba(255,255,255,.5); margin-left: 0.6em;'>Buscando Músicos?  ||  Ou você é o Músico?</p>
+            </div>
+          </div>
+          <div class='loggedOutDiv1'>
+            <div class='col' style='display: inline-flex;'>
+          <li class='nav-item'>
+            <a class='nav-link' href='login.php'>Login</a>
           </li>
-          <span class="navbar-text">
+          <span class='navbar-text'>
             |
           </span>
-          <li class="nav-item active">
-            <a class="nav-link" href="cadastroCliente.php">Registrar-se</a>
+          <li class='nav-item'>
+            <a class='nav-link' href='cadastroCliente.php' id='cadastro'>Registrar-se</a>
           </li>
+          <span class='navbar-text'>
+            ||
+          </span>
+          <li class='nav-item'>
+            <a class='nav-link' href='login.php' id='login'>Login</a>
+          </li>
+          <span class='navbar-text'>
+            |
+          </span>
+          <li class='nav-item'>
+            <a class='nav-link'href='cadastroMusicos.php'>Registrar-se</a>
+          </li>";
+        }
+          else{
+            echo "<div class='loggedOutDiv2'>
+            <div class='col' style='display: inline-flex;'>
+          <li class='nav-item'>
+            <a class='nav-link' href='logout.php'>logout</a>
+          </li>
+          <span class='navbar-text'>
+            |
+          </span>
+          <li class='nav-item'>";
+
+          if ($_SESSION['tipo'] === 'cliente' ) {
+            echo "<a class='nav-link' href='perfil_cliente.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
+          </li>";
+          }
+          elseif ($_SESSION['tipo'] === 'musico' ) {
+            echo "<a class='nav-link' href='perfil_musico.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
+            </li>";
+              }
+            }
+          ?>
+        </div>
+          </div>
         </ul>
       </div>
   </nav>
+</header>
 
   <!-- form -->
     <div class="jumbotron mb-0">
@@ -51,7 +148,7 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="nome">Nome Completo</label>
-            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
+            <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" maxlength="35">
           </div>
           <div class="form-group col-md-6">
             <label for="idade">Data de Nascimento</label>
@@ -59,23 +156,23 @@
           </div>
           <div class="form-group col-md-12">
             <label for="email">Email</label>
-            <input type="Email" class="form-control" name="email" id="email" placeholder="Email">
+            <input type="Email" class="form-control" name="email" id="email" placeholder="Email" maxlength="30">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="endereco">Endereço</label>
-            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Ex: Avenida Paulista, Nº">
+            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Ex: Avenida Paulista, Nº" maxlength="30">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="complemento">Complemento do endereço</label>
-            <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Complemento(Opcional)">
+            <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Complemento(Opcional)" maxlength="30">
           </div>
           <div class="form-group col-md-6">
             <label for="cpf1">CPF</label>
-            <input type="text" class="form-control" name="cpf" id="cpf1" placeholder="000.000.000-00">
+            <input type="text" class="form-control" name="cpf" id="cpf1" placeholder="000.000.000-00" maxlength="30">
           </div>
           <div class="form-group col-md-4">
             <label for="estado">Estado</label>
@@ -111,24 +208,24 @@
           </div>
           <div class="form-group col-md-4">
             <label for="cidade">Cidade</label>
-            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Ex:SP">
+            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Ex:SP" maxlength="30">
           </div>
 
           <div class="form-group col-md-4">
             <label for="cep">CEP</label>
-            <input type="text" class="form-control" name="cep" id="cep" placeholder="00000-000">
+            <input type="text" class="form-control" name="cep" id="cep" placeholder="00000-000" maxlength="30">
           </div>
           <div class="form-group col-md-6">
             <label for="telefone">Telefone</label>
-            <input type="text" class="form-control" name="telefone" id="telefone" placeholder="(00)0000-0000">
+            <input type="text" class="form-control" name="telefone" id="telefone" placeholder="(00)0000-0000" maxlength="30">
           </div>
           <div class="form-group col-md-6">
             <label for="celular">Ou Celular</label>
-            <input type="text" class="form-control" name="celular" id="celular" placeholder="(00)00000-0000">
+            <input type="text" class="form-control" name="celular" id="celular" placeholder="(00)00000-0000" maxlength="30">
           </div>
           <div class="form-group col-md-12">
             <label for="senha">Senha</label>
-            <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha">
+            <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha" maxlength="30">
           </div>
           <div class="hide form-group col-md-12">
             <label for="image"></label>
