@@ -36,14 +36,17 @@ CREATE TABLE funcionario(
 );
 
 CREATE TABLE realiza_pedido(
-	data_hora_evento DATETIME,
+	data_evento DATE,
+	hora_evento VARCHAR(220),
+	cep_evento varchar(220),
+	cidade_evento varchar(220),
 	endereço_evento VARCHAR(220),
 	estilo_musica_pedido VARCHAR(220),
-	metodo_pagamento VARCHAR(220),
 	instrumento_desejado VARCHAR(220),
+	email_contato varchar(220),
+	telefone_contato varchar(220),
 	status_pedido VARCHAR(2),
 	desc_pedido varchar(220),
-	valor_pedido varchar(220),
 	CPF_clie_FK VARCHAR(220),
 	CPF_func_FK VARCHAR(220),
 	ID_pedido_PK int(220) AUTO_INCREMENT,

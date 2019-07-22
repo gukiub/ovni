@@ -10,10 +10,7 @@ session_start();
  
 if($_SESSION['logged_in'] == 0){ 
 header('location: ../index.php'); 
-}else if($_SESSION['tipo'] === "cliente"){ 
-header('location: ../index.php'); 
 }; 
- 
  
  //não mostrar mensagens de erros 
 ini_set('display_errors', 0);  
@@ -28,23 +25,19 @@ $con=mysqli_connect("localhost","root","","ovni");
 $estilos = $_GET['estilos']; 
 $instrumentos = $_GET['instrumentos']; 
  
-if (!empty($estilos) and !empty($instrumentos)) { 
-  $sql="SELECT * FROM `realiza_pedido` WHERE `estilo_musica_pedido` = '" . $estilos . "' and `instrumento_desejado` = '" . $instrumentos .  "' AND `status_pedido` = 0"; 
-} 
-else if (!empty($estilos)) { 
-  $sql="SELECT * FROM `realiza_pedido` WHERE `estilo_musica_pedido` = '" . $estilos .  "' AND `status_pedido` = 0"; 
-} 
-else if (!empty($instrumentos)) { 
-  $sql="SELECT * FROM `realiza_pedido` WHERE `instrumento_desejado` = '" . $instrumentos . "' AND `status_pedido` = 0"; 
-} 
-else{ 
-  $sql="SELECT * FROM `realiza_pedido` WHERE `status_pedido` = 0"; 
-  } 
+ 
+  if ($_SESSION['tipo'] === 'musico') { 
+   $sql="SELECT * FROM realiza_pedido WHERE CPF_func_FK = '" . $_SESSION['cpf'] . "'  ORDER BY realiza_pedido.data_evento ASC"; 
+  }elseif ($_SESSION['tipo'] === 'cliente') { 
+    $sql="SELECT * FROM realiza_pedido WHERE CPF_clie_FK = '" . $_SESSION['cpf'] . "'  ORDER BY realiza_pedido.data_evento ASC"; 
+  }; 
+ 
+   
 ?> 
  
 <html> 
 <head> 
-  <title>OVNI - Chamados</title> 
+  <title>OVNI - Chamados Atendidos</title> 
   <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
   <meta name="description" content="" /> 
   <meta name="keywords" content="" /> 
@@ -203,8 +196,8 @@ else{
           elseif ($_SESSION['tipo'] === 'musico' ) { 
             echo "<a class='nav-link' href='perfil_musico.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a> 
             </li>"; 
-              } 
-            } 
+              }; 
+            }; 
           ?> 
         </div> 
           </div> 
@@ -212,83 +205,6 @@ else{
       </div> 
   </nav> 
 </header> 
- 
-<!-- Barra de pesquisa --> 
-     
-<div class="s010"> 
-  <form> 
-    <div class="inner-form"> 
-      <div class="advance-search"> 
-        <h1 class="desc">Pesquisa de Músicos Por Instrumentos Ou Estilos</h1> 
-        <div class="row"> 
-          <div class="col input-field"> 
-            <div class="input-select"> 
-              <select data-trigger="" name="instrumentos"> 
-                <option placeholder="" value="0">Instrumentos</option> 
-                <option value="violao">Violão</option> 
-                <option value="cavaco">Cavaco</option> 
-                <option value="bateria">Bateria</option> 
-                <option value="flauta">Flauta</option> 
-                <option value="guitarra">Guitarra</option> 
-                <option value="baixo">Baixo</option> 
-                <option value="piano">Piano</option> 
-                <option value="viola">Viola</option> 
-                <option value="teclado">Teclado</option> 
-                <option value="orgao">Órgão</option> 
-                <option value="violino">Violino</option> 
-                <option value="trompa">Trompa</option> 
-                <option value="acordeao">Acordeão</option> 
-                <option value="trombone">Trombone</option> 
-                <option value="trompete">Trompete</option> 
-                <option value="saxofone">Saxofone</option> 
-                <option value="dj)">Instrumentos (DJ)</option> 
-              </select> 
-            </div> 
-          </div> 
-          <div class="col input-field"> 
-            <div class="input-select"> 
-              <select data-trigger="" name="estilos"> 
-                <option placeholder="" value="0">Estilos</option> 
-                <option value="alternativa">Alternativa</option> 
-                <option value="blues">Blues</option> 
-                <option value="dance">Dance</option> 
-                <option value="eletronica">Eletrônica</option> 
-                <option value="hip">Hip-Hop</option> 
-                <option value="rb">R&B</option> 
-                <option value="reggae">Reggae</option> 
-                <option value="rock">Rock</option> 
-                <option value="country">Country</option> 
-                <option value="folk">Folk</option> 
-                <option value="forro">Forró</option> 
-                <option value="funk">Funk</option> 
-                <option value="jazz">Jazz</option> 
-                <option value="axe">Axé</option> 
-                <option value="sertanejo">Sertanejo</option> 
-                <option value="mpb">MPB</option> 
-                <option value="samba">Samba</option> 
-                <option value="pagode">Pagode</option> 
-              </select> 
-            </div> 
-          </div> 
-        </div> 
-        <div class="row third"> 
-          <div class="input-field"> 
-            <div class="result-count"> 
-              <span> 
-                <?php 
-                  //numero de resultados 
-                ?>  
-              </span>resultados</div> 
-            <div class="group-btn"> 
-              <button class="btn-delete" id="delete">RESET</button> 
-              <button class="btn-search">SEARCH</button> 
-            </div> 
-          </div> 
-        </div> 
-      </div> 
-    </div> 
-  </form> 
-</div>     
  
       <!-- PESQUISAR MUSICOS --> 
 <div id="extra" style="padding-top: 4em;"> 
@@ -315,7 +231,7 @@ else{
                 <div class='col'></div> 
                
  
-              <a href='update_pedido.php?id=" . $row[13] . "' class='button'>Atender!</a>  
+              <a href='chamado_detalhes.php?id=" . utf8_encode($row[13]) . "' class='button'>Ver mais detalhes</a>  
             </div> 
           </section>"; 
  
