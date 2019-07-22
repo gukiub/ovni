@@ -244,29 +244,37 @@ $row[13] -> ID_pedido_PK
             <label for="nome">Endereço do evento</label>
             <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Ex: nome do logradouro, n° - bairro" maxlength="30" value="<?php echo(utf8_encode($row[4]))?>" readonly>
           </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-6">
             <label for="idade">Data do evento</label>
-            <input type="date" class="form-control" name="data" id="data" placeholder="Data do Evento" maxlength="30" value="<?php echo(utf8_encode($row[0]))?>" readonly> 
+            <input type="date" class="form-control" name="data" id="data" value="<?php echo(utf8_encode($row[0]))?>" readonly> 
           </div>
-          <div class="form-group col-md-4">
-            <label for="cep">CEP</label>
-            <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP" maxlength="30" value="<?php echo(utf8_encode($row[2]))?>" readonly> 
-          </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-6">
             <label for="hora">Hora</label>
             <input type="text" class="form-control" name="hora" id="hora" placeholder="hh:mm" maxlength="30" value="<?php echo(utf8_encode($row[1]))?>" readonly>
+          </div>
+          <div class="form-group col-md-12">
+            <label for="hora">Email</label>
+            <input type="text" class="form-control" name="hora" id="hora" value="<?php echo(utf8_encode($row[7]))?>" readonly>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="tel">Telefone</label>
+            <input type="text" class="form-control" name="tel" id="tel"  value="<?php echo(utf8_encode($row[8]))?>" readonly>
           </div>
           <div class="form-group col-md-4">
             <label for="cidade">Cidade</label>
             <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Ex: SP" maxlength="30" value="<?php echo(utf8_encode($row[3]))?>" readonly>
           </div> 
           <div class="form-group col-md-4">
-            <label for="instrumento">Instrumento</label>
-            <input type="text" class="form-control" name="instrumento" id="instrumento" placeholder="Ex: SP" maxlength="30" value="<?php echo(utf8_encode($row[6]))?>" readonly>
+            <label for="cep">CEP</label>
+            <input type="text" class="form-control" name="cep" id="cep" value="<?php echo(utf8_encode($row[2]))?>" readonly>
           </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-6">
+            <label for="instrumento">Instrumento</label>
+            <input type="text" class="form-control" name="instrumento" id="instrumento" maxlength="30" value="<?php echo(utf8_encode($row[6]))?>" readonly>
+          </div>
+          <div class="form-group col-md-6">
             <label for="estilo">Estilo Musical Principal</label>
-              <input type="text" class="form-control" name="estilo_musical" id="estilo" placeholder="Ex: SP" maxlength="30" value="<?php echo(utf8_encode($row[5]))?>" readonly>
+              <input type="text" class="form-control" name="estilo_musical" id="estilo" value="<?php echo(utf8_encode($row[5]))?>" readonly>
           </div>
           <div class="form-group col-md-12">
               <label for="descricao">Descrição do Pedido</label>

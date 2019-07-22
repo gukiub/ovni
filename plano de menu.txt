@@ -1,0 +1,7 @@
+MENU
+
+
+PAGINA INICIAL - PERFIL - PEDIDOS\/
+							FAZER PEDIDO  - pedido.php
+							PEGAR PEDIDO  - chamado.php
+							LISTA PEDIDO  - chamado_atendido.php
