@@ -26,11 +26,32 @@ header('../index.php');
 <html>
 	<head>
 		<title>Ovni - Perfil do Cliente</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta charset="utf-8">
 		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+    <meta name="keywords" content="" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="author" content="colorlib.com">
+      <link rel="stylesheet" href="../css/bootstrap.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
+      <link href="../css/main.css" rel="stylesheet" />
+      <link href="../css/menu.css" rel="stylesheet" />
+      <link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
+
+      
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.dropotron.min.js"></script>
+    <script src="../js/skel.min.js"></script>
+    <script src="../js/skel-layers.min.js"></script>
+    <script src="../js/init.js"></script>
+    <noscript>
+      <link rel="stylesheet" href="../css/skel.css" />
+      <link rel="stylesheet" href="../css/style.css" />
+      <link rel="stylesheet" href="../css/style-wide.css" />
+    </noscript>
 		
 		 <style type="text/css">
      	 .collapse ul li a, .nav-item a{
@@ -67,7 +88,7 @@ header('../index.php');
 			<div class="wrapper style1">
 
 				<!-- Header -->
-					 <header>
+<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 2rem 1rem 0.5rem 1rem; ">
       <a class="navbar-brand" href="../index.php" style="margin-top: -1em;"><img src="../images/logo-ovni.png" width="120px" height="56"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +96,7 @@ header('../index.php');
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link"  href="../index.php">Página Inicial</a>
           </li>
           <?php
@@ -87,38 +108,43 @@ header('../index.php');
           
           else{
             if ($_SESSION['tipo'] === 'musico') {
-              echo "<li class='nav-item active'>
+              echo "<li class='nav-item'>
             <a class='nav-link' href='perfil_musico.php'>Perfil</a>
             </li>";
             }
             elseif ($_SESSION['tipo'] === 'cliente') {
-              echo "<li class='nav-item active'>
+              echo "<li class='nav-item'>
             <a class='nav-link' href='perfil_cliente.php'>Perfil</a>
             </li>";
             }
           }
           ?>
           <?php
-          if ($_SESSION['tipo'] === 'musico') {
+           if ($_SESSION['tipo'] === 'musico') {
             if ($_SESSION['logged_in'] === true) {
-              echo "<li class='nav-item'>
-            <a class='nav-link' href='chamado.php'>Chamados</a>
-              </li>";
-            }
-          }
-          if($_SESSION['tipo'] === 'musico'){
-            if ($_SESSION['logged_in'] === true) {
-              echo "<li class='nav-item'>
-            <a class='nav-link' href='chamado_atendido.php'>Chamados Atendidos</a>
-              </li>";
-              }
-          }
+         echo "<div class='dropdown'>
+        <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
+    border-color: #343a40;'>
+          Pedidos
+        </button>
+        <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+          <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Chamados</a>
+          <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a>
+
+          <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
+        </div>
+      </div>";
+    }
+  }
+         
           if ($_SESSION['logged_in'] === true) {
-            echo "<li class='nav-item'>
+            if ($_SESSION['tipo'] === 'cliente') {
+              echo "<li class='nav-item'>
               <li class='nav-item'>
               <a class='nav-link' href='pedido.php'>Faça seu Pedido!</a>
               </li>";
-            }; 
+            } 
+          }; 
         ?>
     </ul>
         <ul class="navbar-nav ml-auto" style="display:block;">
@@ -180,7 +206,7 @@ header('../index.php');
         </ul>
       </div>
   </nav>
-</header>
+</header> 
 				<!-- Header -->
 
 				<!-- Page -->

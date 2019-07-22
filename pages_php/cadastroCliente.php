@@ -10,18 +10,32 @@ session_start();
 <html lang="pt-br">
   <head>
     <!-- Meta tags Obrigatórias -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
+    <<meta name="description" content="" />
+    <meta name="keywords" content="" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="author" content="colorlib.com">
+      <link rel="stylesheet" href="../css/bootstrap.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
       <link href="../css/main.css" rel="stylesheet" />
       <link href="../css/menu.css" rel="stylesheet" />
+      <link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
+
+      
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.dropotron.min.js"></script>
+    <script src="../js/skel.min.js"></script>
+    <script src="../js/skel-layers.min.js"></script>
+    <script src="../js/init.js"></script>
+    <noscript>
       <link rel="stylesheet" href="../css/skel.css" />
       <link rel="stylesheet" href="../css/style.css" />
       <link rel="stylesheet" href="../css/style-wide.css" />
-      <link rel="icon" type="imagem/png" href="images/logo-ovni.png" />
+    </noscript>
 
 
     <title>Ovni - Cadastro Cliente</title>
@@ -40,7 +54,7 @@ session_start();
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link"  href="../index.php">Página Inicial</a>
           </li>
           <?php
@@ -64,26 +78,31 @@ session_start();
           }
           ?>
           <?php
-          if ($_SESSION['tipo'] === 'musico') {
+           if ($_SESSION['tipo'] === 'musico') {
             if ($_SESSION['logged_in'] === true) {
-              echo "<li class='nav-item'>
-            <a class='nav-link' href='chamado.php'>Chamados</a>
-              </li>";
-            }
-          }
-          if($_SESSION['tipo'] === 'musico'){
-            if ($_SESSION['logged_in'] === true) {
-              echo "<li class='nav-item'>
-            <a class='nav-link' href='chamado_atendido.php'>Chamados Atendidos</a>
-              </li>";
-              }
-          }
+         echo "<div class='dropdown'>
+        <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
+    border-color: #343a40;'>
+          Pedidos
+        </button>
+        <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+          <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Chamados</a>
+          <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a>
+
+          <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
+        </div>
+      </div>";
+    }
+  }
+         
           if ($_SESSION['logged_in'] === true) {
-            echo "<li class='nav-item'>
+            if ($_SESSION['tipo'] === 'cliente') {
+              echo "<li class='nav-item'>
               <li class='nav-item'>
               <a class='nav-link' href='pedido.php'>Faça seu Pedido!</a>
               </li>";
-            }; 
+            } 
+          }; 
         ?>
     </ul>
         <ul class="navbar-nav ml-auto" style="display:block;">
@@ -103,7 +122,7 @@ session_start();
           <span class='navbar-text'>
             |
           </span>
-          <li class='nav-item active'>
+          <li class='nav-item'>
             <a class='nav-link' href='cadastroCliente.php' id='cadastro'>Registrar-se</a>
           </li>
           <span class='navbar-text'>

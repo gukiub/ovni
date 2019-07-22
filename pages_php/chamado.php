@@ -91,8 +91,7 @@ else{
 	</style>
 </head>
 <body>
-				<!-- Header -->
-					 <header>
+<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 2rem 1rem 0.5rem 1rem; ">
       <a class="navbar-brand" href="../index.php" style="margin-top: -1em;"><img src="../images/logo-ovni.png" width="120px" height="56"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,7 +99,7 @@ else{
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link"  href="../index.php">Página Inicial</a>
           </li>
           <?php
@@ -124,26 +123,31 @@ else{
           }
           ?>
           <?php
-          if ($_SESSION['tipo'] === 'musico') {
+           if ($_SESSION['tipo'] === 'musico') {
             if ($_SESSION['logged_in'] === true) {
-              echo "<li class='nav-item active'>
-            <a class='nav-link' href='chamado.php'>Chamados</a>
-              </li>";
-            }
-          }
-          if($_SESSION['tipo'] === 'musico'){
-            if ($_SESSION['logged_in'] === true) {
-              echo "<li class='nav-item'>
-            <a class='nav-link' href='chamado_atendido.php'>Chamados Atendidos</a>
-              </li>";
-              }
-          }
+         echo "<div class='dropdown'>
+        <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
+    border-color: #343a40;'>
+          Pedidos
+        </button>
+        <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+          <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Chamados</a>
+          <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a>
+
+          <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
+        </div>
+      </div>";
+    }
+  }
+         
           if ($_SESSION['logged_in'] === true) {
-            echo "<li class='nav-item'>
+            if ($_SESSION['tipo'] === 'cliente') {
+              echo "<li class='nav-item'>
               <li class='nav-item'>
               <a class='nav-link' href='pedido.php'>Faça seu Pedido!</a>
               </li>";
-            }; 
+            } 
+          }; 
         ?>
     </ul>
         <ul class="navbar-nav ml-auto" style="display:block;">
@@ -204,7 +208,7 @@ else{
           </div>
         </ul>
       </div>
-	</nav>
+  </nav>
 </header>
 
 <!-- Barra de pesquisa -->
