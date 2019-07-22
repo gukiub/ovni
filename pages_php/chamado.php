@@ -100,7 +100,7 @@ else{
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link"  href="../index.php">Página Inicial</a>
           </li>
           <?php
@@ -126,15 +126,15 @@ else{
           <?php
           if ($_SESSION['tipo'] === 'musico') {
             if ($_SESSION['logged_in'] === true) {
-              echo "<li class='nav-item'>
+              echo "<li class='nav-item active'>
             <a class='nav-link' href='chamado.php'>Chamados</a>
               </li>";
             }
           }
-          elseif($_SESSION['tipo'] === 'cliente'){
+          if($_SESSION['tipo'] === 'musico'){
             if ($_SESSION['logged_in'] === true) {
               echo "<li class='nav-item'>
-            <a class='nav-link' href='pedido.php'>Pedidos</a>
+            <a class='nav-link' href='chamado_atendido.php'>Chamados Atendidos</a>
               </li>";
               }
           }

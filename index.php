@@ -101,10 +101,10 @@
           		</li>";
         		}
         	}
-        	elseif($_SESSION['tipo'] === 'cliente'){
+        	if($_SESSION['tipo'] === 'musico'){
         		if ($_SESSION['logged_in'] === true) {
         			echo "<li class='nav-item'>
-            <a class='nav-link' href='pages_php/pedido.php'>Pedidos</a>
+            <a class='nav-link' href='pages_php/chamado_atendido.php'>Chamados Atendidos</a>
           		</li>";
           		}
         	}
@@ -190,13 +190,13 @@
 			  </ol>
 			  <div class="carousel-inner" style="margin-top: -12em;">
 			    <div class="carousel-item active">
-			      <img class="d-block w-100" src="images/whale_1.jpg" alt="Primeiro Slide">
+			      <img class="d-block w-100" src="images/2.png" alt="Primeiro Slide">
 			    </div>
 			    <div class="carousel-item">
-			      <img class="d-block w-100" src="images/whale_2.jpg" alt="Segundo Slide">
+			      <img class="d-block w-100" src="images/3.png" alt="Segundo Slide">
 			    </div>
 			    <div class="carousel-item">
-			      <img class="d-block w-100" src="images/whale_3.jpg" alt="Terceiro Slide">
+			      <img class="d-block w-100" src="images/123.356.173-12.png" alt="Terceiro Slide">
 			    </div>
 			  </div>
 			</div>

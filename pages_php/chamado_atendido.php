@@ -92,61 +92,108 @@ $instrumentos = $_GET['instrumentos'];
           <li class="nav-item">
             <a class="nav-link"  href="../index.php">Página Inicial</a>
           </li>
-          <li class="nav-item">
-          	<?php
-          	if ($_SESSION['tipo'] === 'musico') {
-          		echo "<li class='nav-item'>
-            <a class='nav-link' href='perfil_musico.php'>Perfil</a>
-          	</li>";
-          	}
-          	elseif ($_SESSION['tipo'] === 'cliente') {
-          		echo "<li class='nav-item'>
-            <a class='nav-link' href='perfil_cliente.php'>Perfil</a>
-          	</li>";
+          <?php
+          if ($_SESSION['logged_in'] === false ){
+            echo "<li class='nav-item'>
+            <a class='nav-link' href='login.php'>Perfil</a>
+            </li>";
           }
-            ?>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pesquisar_musicos.php">Pesquisar</a>
-          </li>
-          <?php 
-
-
-          if ($_SESSION['logged_in'] === false) {
-          header('location:login.php');
-          }
+          
           else{
-            echo  "<li class='nav-item'>
-              <a class='nav-link' href='pedido.php'>Faça seu Pedidos!</a>
-              </li>";
-              if ($_SESSION['tipo'] === "musico") {
-              echo "<li class='nav-item active'>
-                <a class='nav-link' href='chamado.php'>Atenda ao chamado!</a>
-              </li>";
-            };
-          };
-
+            if ($_SESSION['tipo'] === 'musico') {
+              echo "<li class='nav-item'>
+            <a class='nav-link' href='perfil_musico.php'>Perfil</a>
+            </li>";
+            }
+            elseif ($_SESSION['tipo'] === 'cliente') {
+              echo "<li class='nav-item'>
+            <a class='nav-link' href='perfil_cliente.php'>Perfil</a>
+            </li>";
+            }
+          }
           ?>
-        </ul>
-        <ul class="navbar-nav ml-auto" style="display:block;">     	
-			<div class="loggedOutDiv2">
-        		<div class="col" style="display: inline-flex;">
-					<li class="nav-item">
-						<a class="nav-link" href="logout.php">logout</a>
-					</li>
-					<span class="navbar-text">
-						|
-					</span>
-					<li class="nav-item">
-						<a class="nav-link" href="perfil.php" id="cadastro"><?php 
-					   echo utf8_encode($_SESSION['nome']);
-						?></a>
-					</li>
-				</div>
-        	</div>
+          <?php
+          if ($_SESSION['tipo'] === 'musico') {
+            if ($_SESSION['logged_in'] === true) {
+              echo "<li class='nav-item'>
+            <a class='nav-link' href='chamado.php'>Chamados</a>
+              </li>";
+            }
+          }
+          if($_SESSION['tipo'] === 'musico'){
+            if ($_SESSION['logged_in'] === true) {
+              echo "<li class='nav-item active'>
+            <a class='nav-link' href='chamado_atendido.php'>Chamados Atendidos</a>
+              </li>";
+              }
+          }
+          if ($_SESSION['logged_in'] === true) {
+            echo "<li class='nav-item'>
+              <li class='nav-item'>
+              <a class='nav-link' href='pedido.php'>Faça seu Pedido!</a>
+              </li>";
+            }; 
+        ?>
+    </ul>
+        <ul class="navbar-nav ml-auto" style="display:block;">
+          <?php
+          if ($_SESSION['logged_in'] === false ){
+          echo "
+          <div class='loggedOutDiv2'>
+            <div class='col'>
+              <p style='color: rgba(255,255,255,.5); margin-left: 0.6em;'>Buscando Músicos?  ||  Ou você é o Músico?</p>
+            </div>
+          </div>
+          <div class='loggedOutDiv1'>
+            <div class='col' style='display: inline-flex;'>
+          <li class='nav-item'>
+            <a class='nav-link' href='login.php'>Login</a>
+          </li>
+          <span class='navbar-text'>
+            |
+          </span>
+          <li class='nav-item'>
+            <a class='nav-link' href='cadastroCliente.php' id='cadastro'>Registrar-se</a>
+          </li>
+          <span class='navbar-text'>
+            ||
+          </span>
+          <li class='nav-item'>
+            <a class='nav-link' href='login.php' id='login'>Login</a>
+          </li>
+          <span class='navbar-text'>
+            |
+          </span>
+          <li class='nav-item'>
+            <a class='nav-link'href='cadastroMusicos.php'>Registrar-se</a>
+          </li>";
+        }
+          else{
+            echo "<div class='loggedOutDiv2'>
+            <div class='col' style='display: inline-flex;'>
+          <li class='nav-item'>
+            <a class='nav-link' href='logout.php'>logout</a>
+          </li>
+          <span class='navbar-text'>
+            |
+          </span>
+          <li class='nav-item'>";
+
+          if ($_SESSION['tipo'] === 'cliente' ) {
+            echo "<a class='nav-link' href='perfil_cliente.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
+          </li>";
+          }
+          elseif ($_SESSION['tipo'] === 'musico' ) {
+            echo "<a class='nav-link' href='perfil_musico.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
+            </li>";
+              }
+            }
+          ?>
+        </div>
+          </div>
         </ul>
       </div>
-	</nav>
+  </nav>
 </header>
 
 			<!-- PESQUISAR MUSICOS -->
