@@ -1,44 +1,42 @@
-<?php
-
-session_start();
-  ini_set('display_errors', 0); 
-  ini_set('display_startup_errors', 0); 
-  error_reporting(E_ALL);
-
-?>
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <!-- Meta tags Obrigatórias -->
-    <<meta name="description" content="" />
-    <meta name="keywords" content="" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="author" content="colorlib.com">
-      <link rel="stylesheet" href="../css/bootstrap.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
-      <link href="../css/main.css" rel="stylesheet" />
-      <link href="../css/menu.css" rel="stylesheet" />
-      <link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
-
-      
-    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/jquery.dropotron.min.js"></script>
-    <script src="../js/skel.min.js"></script>
-    <script src="../js/skel-layers.min.js"></script>
-    <script src="../js/init.js"></script>
-    <noscript>
-      <link rel="stylesheet" href="../css/skel.css" />
-      <link rel="stylesheet" href="../css/style.css" />
-      <link rel="stylesheet" href="../css/style-wide.css" />
-    </noscript>
-
-
-    <title>Ovni - Cadastro Cliente</title>
+<?php 
+ 
+session_start(); 
+  ini_set('display_errors', 0);  
+  ini_set('display_startup_errors', 0);  
+  error_reporting(E_ALL); 
+ 
+?> 
+<!DOCTYPE html> 
+<html lang="pt-br"> 
+  <head> 
+    <!-- Meta tags Obrigatórias --> 
+    <meta name="description" content="" /> 
+    <meta name="keywords" content="" /> 
+      <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+      <meta name="author" content="colorlib.com"> 
+      <link rel="stylesheet" href="../css/bootstrap.min.css"> 
+      <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" /> 
+      <link href="../css/main.css" rel="stylesheet" /> 
+      <link href="../css/menu.css" rel="stylesheet" /> 
+      <link rel="icon" type="imagem/png" href="../images/logo_ovni_no_borders.png" /> 
+ 
+       
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]--> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+    <script src="../js/popper.min.js"></script> 
+    <script src="../js/bootstrap.min.js"></script> 
+    <script src="../js/jquery.min.js"></script> 
+    <script src="../js/jquery.dropotron.min.js"></script> 
+    <script src="../js/skel.min.js"></script> 
+    <script src="../js/skel-layers.min.js"></script> 
+    <script src="../js/init.js"></script> 
+      <link rel="stylesheet" href="../css/skel.css" /> 
+      <link rel="stylesheet" href="../css/style.css" /> 
+      <link rel="stylesheet" href="../css/style-wide.css" /> 
+ 
+ 
+    <title>Ovni - Cadastro Cliente</title> 
     <style type="text/css">
       .collapse ul li a{
         font-size: 16px;

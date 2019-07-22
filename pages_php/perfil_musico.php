@@ -36,7 +36,7 @@ header('../index.php');
       <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
       <link href="../css/main.css" rel="stylesheet" />
       <link href="../css/menu.css" rel="stylesheet" />
-      <link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
+      <link rel="icon" type="imagem/png" href="../images/logo_ovni_no_borders.png" /> 
 
       
     <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
