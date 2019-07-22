@@ -120,33 +120,31 @@ header('../index.php');
           }
           ?>
           <?php
-           if ($_SESSION['logged_in'] === true) {
-            if ($_SESSION['tipo'] === 'musico') {
-             echo "<div class='dropdown'>
-                <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
-            border-color: #343a40;'>
-                  Pedidos
-                </button>
-                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                  <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
-                  <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Chamados</a>
-                  <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a>
-                </div>
-              </div>";
-            }elseif ($_SESSION['tipo'] === 'cliente') {
-              echo "<div class='dropdown'>
-                <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
-            border-color: #343a40;'>
-                  Pedidos
-                </button>
-                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                  <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
-                  <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Outros Pedidos</a>
-                  <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Pedidos feitos</a>
-                </div>
-              </div>";
-            }
-          };
+           if ($_SESSION['tipo'] === 'musico') {
+            if ($_SESSION['logged_in'] === true) {
+         echo "<div class='dropdown'>
+        <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
+    border-color: #343a40;'>
+          Pedidos
+        </button>
+        <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+          <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Chamados</a>
+          <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a>
+
+          <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
+        </div>
+      </div>";
+    }
+  }
+         
+          if ($_SESSION['logged_in'] === true) {
+            if ($_SESSION['tipo'] === 'cliente') {
+              echo "<li class='nav-item'>
+              <li class='nav-item'>
+              <a class='nav-link' href='pedido.php'>Faça seu Pedido!</a>
+              </li>";
+            } 
+          }; 
         ?>
     </ul>
         <ul class="navbar-nav ml-auto" style="display:block;">

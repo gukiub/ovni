@@ -22,7 +22,7 @@ session_start();
       <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
       <link href="../css/main.css" rel="stylesheet" />
       <link href="../css/menu.css" rel="stylesheet" />
-      <link rel="icon" type="imagem/png" href="../images/logo_ovni_no_borders.png" />
+      <link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
 
       
     <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
@@ -39,9 +39,6 @@ session_start();
     <link rel="stylesheet" href="../css/style-wide.css" />
     <?php 
       session_start();
-      if ($_SESSION['logged_in'] == 0) {
-        header('location: ../index.php');
-      };
     ?>
   </head>
 
@@ -78,33 +75,31 @@ session_start();
           }
           ?>
           <?php
-           if ($_SESSION['logged_in'] === true) {
-            if ($_SESSION['tipo'] === 'musico') {
-             echo "<div class='dropdown'>
-                <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
-            border-color: #343a40;'>
-                  Pedidos
-                </button>
-                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                  <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
-                  <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Chamados</a>
-                  <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a>
-                </div>
-              </div>";
-            }elseif ($_SESSION['tipo'] === 'cliente') {
-              echo "<div class='dropdown'>
-                <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
-            border-color: #343a40;'>
-                  Pedidos
-                </button>
-                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                  <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
-                  <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Outros Pedidos</a>
-                  <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Pedidos feitos</a>
-                </div>
-              </div>";
-            }
-          };
+           if ($_SESSION['tipo'] === 'musico') {
+            if ($_SESSION['logged_in'] === true) {
+         echo "<div class='dropdown'>
+        <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
+    border-color: #343a40;'>
+          Pedidos
+        </button>
+        <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+          <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Chamados</a>
+          <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a>
+
+          <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
+        </div>
+      </div>";
+    }
+  }
+         
+          if ($_SESSION['logged_in'] === true) {
+            if ($_SESSION['tipo'] === 'cliente') {
+              echo "<li class='nav-item'>
+              <li class='nav-item'>
+              <a class='nav-link' href='pedido.php' style='text-decoration: none;'>Faça seu Pedido!</a>
+              </li>";
+            } 
+          }; 
         ?>
     </ul>
         <ul class="navbar-nav ml-auto" style="display:block;">
@@ -178,19 +173,19 @@ session_start();
             <label for="nome">Endereço do evento</label>
             <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Ex: nome do logradouro, n° - bairro" maxlength="30" required>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-4">
             <label for="idade">Data do evento</label>
             <input type="date" class="form-control" name="data" id="data" placeholder="Data do Evento" maxlength="30" required> 
-          </div>
-          <div class="form-group col-md-6">
-            <label for="hora">Hora</label>
-            <input type="text" class="form-control" name="hora" id="hora" placeholder="HH:MM" maxlength="30" required>
           </div>
           <div class="form-group col-md-4">
             <label for="cep">CEP</label>
             <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP" maxlength="30" required> 
           </div>
-          <!--
+          <div class="form-group col-md-4">
+            <label for="hora">Hora</label>
+            <input type="text" class="form-control" name="hora" id="hora" placeholder="hh:mm" maxlength="30" required>
+          </div>
+          <!-- Não precisa de estado?
           <div class="form-group col-md-4">
             <label for="estado">Estado</label>
               <select name="estado" id="estado" class="form-control">
@@ -224,11 +219,11 @@ session_start();
                 <option>Tocantins</option>
               </select>
           </div> -->
-          <div class="form-group col-md-8">
+          <div class="form-group col-md-4">
             <label for="cidade">Cidade</label>
             <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Ex: SP" maxlength="30" required>
           </div> 
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-4">
             <label for="instrumento">Instrumento</label>
               <select name="instrumento" id="instrumento" class="form-control" required>
                 <option selected>Acordeão</option>
@@ -250,7 +245,7 @@ session_start();
                 <option>Violino</option>
               </select>
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-4">
             <label for="estilo">Estilo Musical Principal</label>
               <select name="estilo_musical" id="estilo" class="form-control" required>
                 <option selected>Alternativa</option>
@@ -318,9 +313,6 @@ session_start();
           $("#cep").mask('99999-999');
           $("#telefone").mask("(99)9999-9999");
           $("#celular").mask("(99)99999-9999");
-        });
-        $("#dropdownMenuButton").click(function(){ //código pra abrir o menui
-          $(".dropdown-menu").toggleClass("show");
         });
       });
     </script>

@@ -9,7 +9,9 @@ session_start();
 
 
 if($_SESSION['logged_in'] == 0){
-header('location: ../index.php');
+header('../index.php');
+}else if($_SESSION['tipo'] === "cliente"){
+header('../index.php');
 };
 
 
@@ -26,14 +28,7 @@ $con=mysqli_connect("localhost","root","","ovni");
 $estilos = $_GET['estilos'];
 $instrumentos = $_GET['instrumentos'];
 
-
-  if ($_SESSION['tipo'] === 'musico') {
-   $sql="SELECT * FROM realiza_pedido WHERE CPF_func_FK = '" . $_SESSION['cpf'] . "'  ORDER BY realiza_pedido.data_evento ASC";
-  }elseif ($_SESSION['tipo'] === 'cliente') {
-    $sql="SELECT * FROM realiza_pedido WHERE CPF_clie_FK = '" . $_SESSION['cpf'] . "'  ORDER BY realiza_pedido.data_evento ASC";
-  };
-
-	
+	$sql="SELECT * FROM realiza_pedido WHERE CPF_func_FK = '" . $_SESSION['cpf'] . "'  ORDER BY realiza_pedido.data_evento ASC";
 
 ?>
 
@@ -118,33 +113,31 @@ $instrumentos = $_GET['instrumentos'];
           }
           ?>
           <?php
-           if ($_SESSION['logged_in'] === true) {
-            if ($_SESSION['tipo'] === 'musico') {
-             echo "<div class='dropdown'>
-                <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
-            border-color: #343a40;'>
-                  Pedidos
-                </button>
-                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                  <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
-                  <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Chamados</a>
-                  <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a>
-                </div>
-              </div>";
-            }elseif ($_SESSION['tipo'] === 'cliente') {
-              echo "<div class='dropdown'>
-                <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
-            border-color: #343a40;'>
-                  Pedidos
-                </button>
-                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                  <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
-                  <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Outros Pedidos</a>
-                  <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Pedidos feitos</a>
-                </div>
-              </div>";
-            }
-          };
+           if ($_SESSION['tipo'] === 'musico') {
+            if ($_SESSION['logged_in'] === true) {
+         echo "<div class='dropdown'>
+        <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
+    border-color: #343a40;'>
+          Pedidos
+        </button>
+        <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+          <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Chamados</a>
+          <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a>
+
+          <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
+        </div>
+      </div>";
+    }
+  }
+         
+          if ($_SESSION['logged_in'] === true) {
+            if ($_SESSION['tipo'] === 'cliente') {
+              echo "<li class='nav-item'>
+              <li class='nav-item'>
+              <a class='nav-link' href='pedido.php'>Faça seu Pedido!</a>
+              </li>";
+            } 
+          }; 
         ?>
     </ul>
         <ul class="navbar-nav ml-auto" style="display:block;">
@@ -198,8 +191,8 @@ $instrumentos = $_GET['instrumentos'];
           elseif ($_SESSION['tipo'] === 'musico' ) {
             echo "<a class='nav-link' href='perfil_musico.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
             </li>";
-              };
-            };
+              }
+            }
           ?>
         </div>
           </div>

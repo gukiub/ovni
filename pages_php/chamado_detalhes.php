@@ -18,7 +18,7 @@ include('conexao.php');//conecta ao banco de dados
 $con=mysqli_connect("localhost","root","","ovni");
 
 if($_SESSION['logged_in'] == 0){
-header('location: ../index.php');
+header('../index.php');
 }
 
 $idchamado = $_GET['id'];
