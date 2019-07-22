@@ -4,37 +4,39 @@
 	templated.co @templatedco
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
-<?php
+<?php  
 session_start();
-
-
-if($_SESSION['logged_in'] == 0){
-header('../index.php');
-}else if($_SESSION['tipo'] === "cliente"){
-header('../index.php');
-};
-
-
  //não mostrar mensagens de erros
 ini_set('display_errors', 0); 
-ini_set('display_startup_errors', 0);
-error_reporting(E_ALL);
+ini_set('display_startup_errors', 0); 
+error_reporting(E_ALL); 
  //não mostrar mensagens de erros
 
 include('conexao.php');//conecta ao banco de dados
 
 $con=mysqli_connect("localhost","root","","ovni");
-	
+
 $estilos = $_GET['estilos'];
 $instrumentos = $_GET['instrumentos'];
+$email = $_GET['email'];
 
-	$sql="SELECT * FROM realiza_pedido WHERE CPF_func_FK = '" . $_SESSION['cpf'] . "'  ORDER BY realiza_pedido.data_evento ASC";
-
+if (!empty($estilos) and !empty($instrumentos)) {
+	$sql="SELECT * FROM `funcionario` WHERE `estilo_musical` = '" . $estilos . "' and `instrumento` = '" . $instrumentos . "'";
+}
+else if (!empty($estilos)) {
+	$sql="SELECT * FROM `funcionario` WHERE `estilo_musical` = '" . $estilos . "'";
+}
+else if (!empty($instrumentos)) {
+	$sql="SELECT * FROM `funcionario` WHERE `instrumento` = '" . $instrumentos . "'";
+}
+else{
+	$sql="SELECT * FROM `funcionario` LIMIT 6";
+	}
 ?>
 
 <html>
 <head>
-	<title>OVNI - Chamados Atendidos</title>
+	<title>OVNI - Pesquisa</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
@@ -75,39 +77,36 @@ $instrumentos = $_GET['instrumentos'];
 		.container div section{
 			margin-top: 2em;
 		}
-		section div div{
-    		height: 40px;
-		}
 	</style>
 </head>
 <body>
-<header>
+ <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 2rem 1rem 0.5rem 1rem; ">
-      <a class="navbar-brand" href="../index.php" style="margin-top: -1em;"><img src="../images/logo-ovni.png" width="120px" height="56"></a>
+      <a class="navbar-brand" href="index.php" style="margin-top: -1em;"><img src="images/logo-ovni.png" width="120px" height="56"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
-          <li class="nav-item">
-            <a class="nav-link"  href="../index.php">Página Inicial</a>
+          <li class="nav-item active">
+            <a class="nav-link"  href="index.php">Página Inicial</a>
           </li>
           <?php
           if ($_SESSION['logged_in'] === false ){
             echo "<li class='nav-item'>
-            <a class='nav-link' href='login.php'>Perfil</a>
+            <a class='nav-link' href='pages_php/login.php'>Perfil</a>
             </li>";
           }
           
           else{
             if ($_SESSION['tipo'] === 'musico') {
               echo "<li class='nav-item'>
-            <a class='nav-link' href='perfil_musico.php'>Perfil</a>
+            <a class='nav-link' href='pages_php/perfil_musico.php'>Perfil</a>
             </li>";
             }
             elseif ($_SESSION['tipo'] === 'cliente') {
               echo "<li class='nav-item'>
-            <a class='nav-link' href='perfil_cliente.php'>Perfil</a>
+            <a class='nav-link' href='pages_php/perfil_cliente.php'>Perfil</a>
             </li>";
             }
           }
@@ -116,21 +115,21 @@ $instrumentos = $_GET['instrumentos'];
           if ($_SESSION['tipo'] === 'musico') {
             if ($_SESSION['logged_in'] === true) {
               echo "<li class='nav-item'>
-            <a class='nav-link' href='chamado.php'>Chamados</a>
+            <a class='nav-link' href='pages_php/chamado.php'>Chamados</a>
               </li>";
             }
           }
-          if($_SESSION['tipo'] === 'musico'){
+          elseif($_SESSION['tipo'] === 'cliente'){
             if ($_SESSION['logged_in'] === true) {
-              echo "<li class='nav-item active'>
-            <a class='nav-link' href='chamado_atendido.php'>Chamados Atendidos</a>
+              echo "<li class='nav-item'>
+            <a class='nav-link' href='pages_php/pedido.php'>Pedidos</a>
               </li>";
               }
           }
           if ($_SESSION['logged_in'] === true) {
             echo "<li class='nav-item'>
               <li class='nav-item'>
-              <a class='nav-link' href='pedido.php'>Faça seu Pedido!</a>
+              <a class='nav-link' href='pages_php/pedido.php'>Faça seu Pedido!</a>
               </li>";
             }; 
         ?>
@@ -147,32 +146,32 @@ $instrumentos = $_GET['instrumentos'];
           <div class='loggedOutDiv1'>
             <div class='col' style='display: inline-flex;'>
           <li class='nav-item'>
-            <a class='nav-link' href='login.php'>Login</a>
+            <a class='nav-link' href='pages_php/login.php'>Login</a>
           </li>
           <span class='navbar-text'>
             |
           </span>
           <li class='nav-item'>
-            <a class='nav-link' href='cadastroCliente.php' id='cadastro'>Registrar-se</a>
+            <a class='nav-link' href='pages_php/cadastroCliente.php' id='cadastro'>Registrar-se</a>
           </li>
           <span class='navbar-text'>
             ||
           </span>
           <li class='nav-item'>
-            <a class='nav-link' href='login.php' id='login'>Login</a>
+            <a class='nav-link' href='pages_php/login.php' id='login'>Login</a>
           </li>
           <span class='navbar-text'>
             |
           </span>
           <li class='nav-item'>
-            <a class='nav-link'href='cadastroMusicos.php'>Registrar-se</a>
+            <a class='nav-link'href='pages_php/cadastroMusicos.php'>Registrar-se</a>
           </li>";
         }
           else{
             echo "<div class='loggedOutDiv2'>
             <div class='col' style='display: inline-flex;'>
           <li class='nav-item'>
-            <a class='nav-link' href='logout.php'>logout</a>
+            <a class='nav-link' href='pages_php/logout.php'>logout</a>
           </li>
           <span class='navbar-text'>
             |
@@ -180,11 +179,11 @@ $instrumentos = $_GET['instrumentos'];
           <li class='nav-item'>";
 
           if ($_SESSION['tipo'] === 'cliente' ) {
-            echo "<a class='nav-link' href='perfil_cliente.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
+            echo "<a class='nav-link' href='pages_php/perfil_cliente.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
           </li>";
           }
           elseif ($_SESSION['tipo'] === 'musico' ) {
-            echo "<a class='nav-link' href='perfil_musico.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
+            echo "<a class='nav-link' href='pages_php/perfil_musico.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
             </li>";
               }
             }
@@ -195,6 +194,82 @@ $instrumentos = $_GET['instrumentos'];
       </div>
   </nav>
 </header>
+<!-- Barra de pesquisa -->
+		
+<div class="s010">
+  <form>
+    <div class="inner-form">
+      <div class="advance-search">
+        <h1 class="desc">Pesquisa de Músicos Por Instrumentos Ou Estilos</h1>
+        <div class="row">
+          <div class="col input-field">
+            <div class="input-select">
+              <select data-trigger="" name="instrumentos">
+                <option placeholder="" value="0">Instrumentos</option>
+                <option value="violao">Violão</option>
+                <option value="cavaco">Cavaco</option>
+                <option value="bateria">Bateria</option>
+                <option value="flauta">Flauta</option>
+                <option value="guitarra">Guitarra</option>
+                <option value="baixo">Baixo</option>
+                <option value="piano">Piano</option>
+                <option value="viola">Viola</option>
+                <option value="teclado">Teclado</option>
+                <option value="orgao">Órgão</option>
+                <option value="violino">Violino</option>
+                <option value="trompa">Trompa</option>
+                <option value="acordeao">Acordeão</option>
+                <option value="trombone">Trombone</option>
+                <option value="trompete">Trompete</option>
+                <option value="saxofone">Saxofone</option>
+                <option value="dj)">Instrumentos (DJ)</option>
+              </select>
+            </div>
+          </div>
+          <div class="col input-field">
+            <div class="input-select">
+              <select data-trigger="" name="estilos">
+                <option placeholder="" value="0">Estilos</option>
+                <option value="alternativa">Alternativa</option>
+                <option value="blues">Blues</option>
+                <option value="dance">Dance</option>
+                <option value="eletronica">Eletrônica</option>
+                <option value="hip">Hip-Hop</option>
+                <option value="rb">R&B</option>
+                <option value="reggae">Reggae</option>
+                <option value="rock">Rock</option>
+                <option value="country">Country</option>
+                <option value="folk">Folk</option>
+                <option value="forro">Forró</option>
+                <option value="funk">Funk</option>
+                <option value="jazz">Jazz</option>
+                <option value="axe">Axé</option>
+                <option value="sertanejo">Sertanejo</option>
+                <option value="mpb">MPB</option>
+                <option value="samba">Samba</option>
+                <option value="pagode">Pagode</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row third">
+          <div class="input-field">
+            <div class="result-count">
+              <span>
+              	<?php
+              		//numero de resultados
+              	?> 
+          	  </span>resultados</div>
+            <div class="group-btn">
+              <button class="btn-delete" id="delete">RESET</button>
+              <button class="btn-search">SEARCH</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>		
 
 			<!-- PESQUISAR MUSICOS -->
 <div id="extra" style="padding-top: 4em;">
@@ -208,20 +283,18 @@ $instrumentos = $_GET['instrumentos'];
 				  while ($row=mysqli_fetch_row($result))
 				    {
 				    echo "
-				    <section class='6u'> 
+				    <section class='4u'> 
 						<a href='#' class='image featured'>
 							<img src='../images/pic01.jpg' alt=''>
 						</a>
 						<div class='box'>
-								<div class='col' style='background-color: #f1f1f1;'><p>Data:" . utf8_encode($row[0]) . "</p></div>
-								<div class='col'><p>Hora:"  . utf8_encode($row[1]) . ".</p></div>
-								<div class='col' style='background-color: #f1f1f1;'><p>Estilo:" . utf8_encode($row[5]) . "</p></div>
-								<div class='col'><p>Instrumento:"  . utf8_encode($row[6]) . ".</p></div>
-								<div class='col' style='background-color: #f1f1f1;'><p>Cidade:" . utf8_encode($row[3]) . "</p></div>
-								<div class='col'></div>
+							
+								<div class='col'>Descrição: " . utf8_encode($row[15]) . "</div>
+								<div class='col' style='background-color: #f1f1f1;'>Estilo: " . utf8_encode($row[12]) . "</div>
+								<div class='col'>Instrumento "  . utf8_encode($row[8]) . ".</div>
 							
 
-							<a href='chamado_detalhes2.php?id=" . utf8_encode($row[13]) . "' class='button'>Ver mais detalhes</a> 
+							<a href='#' class='button'>" . utf8_encode($row[0]) . "</a> 
 						</div>
 					</section>";
 
@@ -234,23 +307,23 @@ $instrumentos = $_GET['instrumentos'];
 			
 			
 			/*
-
 			Referências:
-			$row[0] = data_evento
-			$row[1] = hora_evento
-			$row[2] = cep_evento
-			$row[3] = cidade_evento
-			$row[4] = endereço_evento
-			$row[5] = estilo_musica_pedido
-			$row[6] = instrumento_desejado
-			$row[7] = email_contato
-			$row[8] = telefone_contato
-			$row[9] = status_pedido
-			$row[10] = desc_pedido
-			$row[11] = CPF_clie_FK
-			$row[12] = CPF_func_FK
-			$row[13] = ID_pedido_PK
-
+			$row[0] = Nome
+			$row[1] = cpf
+			$row[2] = endereço
+			$row[3] = complemento endereço
+			$row[4] = idade
+			$row[5] = cidade
+			$row[6] = estado
+			$row[7] = telefone
+			$row[8] = instrumento
+			$row[9] = senha
+			$row[10] = cep
+			$row[11] = email
+			$row[12] = estilo musical
+			$row[13] = img perfil
+      $row[14] = disponibilidade do funcionario
+			$row[15] = descrição do funcionario
 			*/
 			?>
 
