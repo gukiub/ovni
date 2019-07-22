@@ -96,7 +96,7 @@ session_start();
             if ($_SESSION['tipo'] === 'cliente') {
               echo "<li class='nav-item'>
               <li class='nav-item'>
-              <a class='nav-link' href='pedido.php'>Faça seu Pedido!</a>
+              <a class='nav-link' href='pedido.php' style='text-decoration: none;'>Faça seu Pedido!</a>
               </li>";
             } 
           }; 
