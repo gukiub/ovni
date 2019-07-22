@@ -221,7 +221,7 @@ $instrumentos = $_GET['instrumentos'];
 								<div class='col'></div>
 							
 
-							<a href='chamado_detalhes2.php?id=" . utf8_encode($row[13]) . "' class='button'>Ver mais detalhes</a> 
+							<a href='chamado_detalhes.php?id=" . utf8_encode($row[13]) . "' class='button'>Ver mais detalhes</a> 
 						</div>
 					</section>";
 

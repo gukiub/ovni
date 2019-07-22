@@ -94,26 +94,31 @@
           }
           ?>
           <?php
-          if ($_SESSION['tipo'] === 'musico') {
+           if ($_SESSION['tipo'] === 'musico') {
         		if ($_SESSION['logged_in'] === true) {
-        			echo "<li class='nav-item'>
-            <a class='nav-link' href='pages_php/chamado.php'>Chamados</a>
-          		</li>";
-        		}
-        	}
-        	if($_SESSION['tipo'] === 'musico'){
-        		if ($_SESSION['logged_in'] === true) {
-        			echo "<li class='nav-item'>
-            <a class='nav-link' href='pages_php/chamado_atendido.php'>Chamados Atendidos</a>
-          		</li>";
-          		}
-        	}
+         echo "<div class='dropdown'>
+			  <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
+    border-color: #343a40;'>
+			    Pedidos
+			  </button>
+			  <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+			    <a class='dropdown-item' href='pages_php/chamado.php' style='text-decoration: none;'>Chamados</a>
+			    <a class='dropdown-item' href='pages_php/chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a>
+
+			    <a class='dropdown-item' href='pages_php/pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
+			  </div>
+			</div>";
+		}
+	}
+         
         	if ($_SESSION['logged_in'] === true) {
-        		echo "<li class='nav-item'>
+        		if ($_SESSION['tipo'] === 'cliente') {
+        			echo "<li class='nav-item'>
           		<li class='nav-item'>
           		<a class='nav-link' href='pages_php/pedido.php'>Faça seu Pedido!</a>
           		</li>";
-        		}; 
+        		}	
+        	}; 
         ?>
     </ul>
         <ul class="navbar-nav ml-auto" style="display:block;">

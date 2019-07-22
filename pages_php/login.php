@@ -16,6 +16,12 @@ session_start();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
+    <link rel="stylesheet" href="../css/skel.css" />
+      <link rel="stylesheet" href="../css/style.css" />
+      <link rel="stylesheet" href="../css/style-wide.css" />
+      <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
+      <link href="../css/main.css" rel="stylesheet" />
+      <link href="../css/menu.css" rel="stylesheet" />
 
     <title>Ovni - Login</title>
     <style type="text/css">
@@ -175,6 +181,22 @@ session_start();
 
 </div>
     
+</form>
+</div>
+</div>
+<div id="copyright">
+      <div class="container">
+        <div class="copyright">
+          <p>Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)</p>
+          <ul class="icons">
+            <li><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
+            <li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
+            <li><a href="#" class="fa fa-google-plus"><span>Google+</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
 
     <!-- JavaScript (Opcional) -->
     <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->

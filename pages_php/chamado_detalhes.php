@@ -46,30 +46,15 @@ $row[11] -> CPF_clie_FK,
 $row[12] -> CPF_func_FK,
 $row[13] -> ID_pedido_PK
 */
-echo $row[0] . "<br>";
-echo $row[1] . "<br>";
-echo $row[2] . "<br>";
-echo $row[3] . "<br>";
-echo $row[4] . "<br>";
-echo $row[5] . "<br>";
-echo $row[6] . "<br>";
-echo $row[7] . "<br>";
-echo $row[8] . "<br>";
-echo $row[9] . "<br>";
-echo $row[10] . "<br>";
-echo $row[11] . "<br>";
-echo $row[12] . "<br>";
-echo $row[13] . "<br>";
 ?>
 
 <html>
 	<head>
-		<title>Ovni - Perfil</title>
+		<title>Ovni - Detalhes Pedido</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta charset="utf-8">
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
 		
 		 <style type="text/css">
      	 .collapse ul li a, .nav-item a{
@@ -98,12 +83,11 @@ echo $row[13] . "<br>";
 		<link rel="stylesheet" href="../css/style.css" />
 		<link rel="stylesheet" href="../css/style-wide.css" />
 		<link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body>
 
 		<!-- Wrapper -->
-			<div class="wrapper style1">
+		<div class="wrapper style1" style="background-image: none;">
 
 				<!-- Header -->
 					  <header>
@@ -114,7 +98,7 @@ echo $row[13] . "<br>";
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link"  href="../index.php">Página Inicial</a>
           </li>
           <?php
@@ -145,10 +129,10 @@ echo $row[13] . "<br>";
               </li>";
             }
           }
-          elseif($_SESSION['tipo'] === 'cliente'){
+          if($_SESSION['tipo'] === 'musico'){
             if ($_SESSION['logged_in'] === true) {
-              echo "<li class='nav-item'>
-            <a class='nav-link' href='pedido.php'>Pedidos</a>
+              echo "<li class='nav-item active'>
+            <a class='nav-link' href='chamado_atendido.php'>Chamados Atendidos</a>
               </li>";
               }
           }
@@ -223,59 +207,49 @@ echo $row[13] . "<br>";
 				<!-- Header -->
 
 				<!-- Page -->
-					<div id="page" class="container">
-						<div class="row">
-		
-							<!-- Sidebar -->
-							<div id="sidebar" class="4u">
-								<section>
-									<header class="major">
-										<h2><?php 
-										  echo utf8_encode($_SESSION['estilo']);
-										?></h2>
-									</header>
-									<div class="row half">
-										<section class="6u" style="contain: content;">
-											<?php 
-										//echo $_SESSION['img_perfil'];
-											echo "<img src='../images/teste.jpg' style='width: 100%; height: auto; margin-bottom: 5vh; border-radius: 100%;'>";
-										?>
-										</section>
-									</div>
-								</section>
-								<section>
-									<header class="major">
-										
-										<h2><?php 
-										echo utf8_encode($_SESSION['instrumento']);
-										?></h2>
-									</header>
-								</section>
-							</div>
-							
-							<!-- Content -->
-							<div id="content" class="8u skel-cell-important">
-								<section>
-									<header class="major">
-										<h2><?php 
-										echo utf8_encode($_SESSION['nome']);
-
-										?></h2>
-										<span class="byline">Descrição</span>
-									</header>
-									<p><?php 
-										echo utf8_encode($_SESSION['descricao']);
-									?></p>
-							</div>
-
-							 <input type="submit" class="btn btn-primary mr-auto ml-auto" style="padding: 0.75em 1.5em !important;">
-						</div>
-					</div> 
-				</div>
-
-	<!-- Footer -->
-		
-	<!-- /Footer -->
+  <div class="jumbotron mb-0">
+    <div class="container bg-light p-5">
+      <h1 class="center text-center">Detalhes do Pedido</h1>
+      <p></p>
+      <form action="../pages_php/salvar_pedido.php" class="w-50 ml-auto mr-auto">
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <label for="nome">Endereço do evento</label>
+            <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Ex: nome do logradouro, n° - bairro" maxlength="30" value="<?php echo(utf8_encode($row[4]))?>" readonly>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="idade">Data do evento</label>
+            <input type="date" class="form-control" name="data" id="data" placeholder="Data do Evento" maxlength="30" value="<?php echo(utf8_encode($row[0]))?>" readonly> 
+          </div>
+          <div class="form-group col-md-4">
+            <label for="cep">CEP</label>
+            <input type="text" class="form-control" name="cep" id="cep" placeholder="CEP" maxlength="30" value="<?php echo(utf8_encode($row[2]))?>" readonly> 
+          </div>
+          <div class="form-group col-md-4">
+            <label for="hora">Hora</label>
+            <input type="text" class="form-control" name="hora" id="hora" placeholder="hh:mm" maxlength="30" value="<?php echo(utf8_encode($row[1]))?>" readonly>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="cidade">Cidade</label>
+            <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Ex: SP" maxlength="30" value="<?php echo(utf8_encode($row[3]))?>" readonly>
+          </div> 
+          <div class="form-group col-md-4">
+            <label for="instrumento">Instrumento</label>
+            <input type="text" class="form-control" name="instrumento" id="instrumento" placeholder="Ex: SP" maxlength="30" value="<?php echo(utf8_encode($row[6]))?>" readonly>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="estilo">Estilo Musical Principal</label>
+              <input type="text" class="form-control" name="estilo_musical" id="estilo" placeholder="Ex: SP" maxlength="30" value="<?php echo(utf8_encode($row[5]))?>" readonly>
+          </div>
+          <div class="form-group col-md-12">
+              <label for="descricao">Descrição do Pedido</label>
+              <textarea class="form-control" id="descricao" name="descricao" rows="3" readonly><?php echo(utf8_encode($row[10]))?></textarea>
+            </div>
+        </div>
+      </form>
+    </div>
+    
+  </div>
 
 	<!-- Copyright -->
 		<div id="copyright">
