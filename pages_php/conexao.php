@@ -1,9 +1,9 @@
 		<?php
 	try{
 		$HOST = "localhost";
-		$BANCO = "ovni";
-		$USUARIO = "root";
-		$SENHA = "";
+		$BANCO = "ovnism38_ovni";
+		$USUARIO = "ovnism38_root";
+		$SENHA = "admin";
 
 		$PDO = new PDO("mysql:host=" . $HOST . ";dbname=" . $BANCO . ";charset=utf8", $USUARIO, $SENHA);
 

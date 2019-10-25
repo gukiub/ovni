@@ -14,55 +14,51 @@ error_reporting(E_ALL);
  //não mostrar mensagens de erros
 
 include('conexao.php');//conecta ao banco de dados
+include('refresh.php');//conecta ao banco de dados
 
-$con=mysqli_connect("localhost","root","","ovni");
+$con=mysqli_connect("localhost","ovnism38_root","admin","ovnism38_ovni");
 
-if($_SESSION['logged_in'] == 0){
-header('../index.php');
-}
+
+  if($_SESSION['logged_in'] == false){
+    echo "<script>document.location='login.php'</script>";
+  };
+   
 
 ?>
 
 <html>
 	<head>
-		<title>Ovni - Perfil</title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="author" content="colorlib.com">
-      <link rel="stylesheet" href="../css/bootstrap.min.css">
-      <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
-      <link href="../css/main.css" rel="stylesheet" />
-      <link href="../css/menu.css" rel="stylesheet" />
-      <link rel="icon" type="imagem/png" href="../images/logo_ovni_no_borders.png" /> 
-
-      
-    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/jquery.dropotron.min.js"></script>
-    <script src="../js/skel.min.js"></script>
-    <script src="../js/skel-layers.min.js"></script>
-    <script src="../js/init.js"></script>
-    <noscript>
-      <link rel="stylesheet" href="../css/skel.css" />
-      <link rel="stylesheet" href="../css/style.css" />
-      <link rel="stylesheet" href="../css/style-wide.css" />
-    </noscript>
+		<title>Ovni - Perfil do Musico</title>
+  <meta name="description" content="" /> 
+      <meta name="keywords" content="" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+        <meta name="author" content="colorlib.com"> 
+        <link rel="stylesheet" href="../css/bootstrap.min.css"> 
+        <link href="../css/font-google-apis.css" rel="stylesheet" /> 
+        <link href="../css/main.css" rel="stylesheet" /> 
+        <link href="../css/menu.css" rel="stylesheet" /> 
+      <link rel="icon" type="imagem/png" href="../images/logo_ovni_no_borders.png" />                                                                                          
+   
+         
+      <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]--> 
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+      <script src="../js/popper.min.js"></script> 
+      <script src="../js/bootstrap.min.js"></script> 
+      <script src="../js/jquery.min.js"></script> 
+      <script src="../js/jquery.dropotron.min.js"></script> 
+      <script src="../js/skel.min.js"></script>  
+      <script src="../js/init.js"></script>  
+        <!-- <link rel="stylesheet" href="../css/skel.css" /> -->
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/style-wide.css" />
 		
 		 <style type="text/css">
      	 .collapse ul li a, .nav-item a{
 			font-size: 16px; text-decoration: none; font-family: sans-serif
 			}
-		.loggedOutDiv1{
-				margin-top: -2.8em;
-			}
 			.loggedOutDiv2{
-				margin-top: -1.3em;
+				margin-top: 0 em;
 			}
 
 			.carousel-indicators li{
@@ -70,213 +66,152 @@ header('../index.php');
 				height: 25px;
 				border-radius: 50%;
 			}
+			
+			@media screen and (max-width: 450px){     	
+	.container{
+		width: 100%!important;
+	}
+	.w-50{
+		width: 100%!important;
+	}
+	
+	.w-25{
+		width: 100%!important;
+	}      
+      }
+			
     	</style>
-    	<script src="../js/jquery.min.js"></script>
-		<script src="../js/jquery.dropotron.min.js"></script>
-		<script src="../js/skel.min.js"></script>
-		<script src="../js/skel-layers.min.js"></script>
-		<script src="../js/init.js"></script>
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-		<link rel="stylesheet" href="../css/skel.css" />
-		<link rel="stylesheet" href="../css/style.css" />
-		<link rel="stylesheet" href="../css/style-wide.css" />
-		<link rel="icon" type="imagem/png" href="../images/logo-ovni.png" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body>
+    <?php
+   
+  include('verify.php'); 
+  
+  ?>
 
 		<!-- Wrapper -->
 			<div class="wrapper style1">
 
 				<!-- Header -->
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 2rem 1rem 0.5rem 1rem; ">
-      <a class="navbar-brand" href="../index.php" style="margin-top: -1em;"><img src="../images/logo-ovni.png" width="120px" height="56"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;">
-          <li class="nav-item">
-            <a class="nav-link"  href="../index.php">Página Inicial</a>
-          </li>
-          <?php
-          if ($_SESSION['logged_in'] === false ){
-            echo "<li class='nav-item'>
-            <a class='nav-link' href='login.php'>Perfil</a>
-            </li>";
-          }
-          
-          else{
-            if ($_SESSION['tipo'] === 'musico') {
-              echo "<li class='nav-item active'>
-            <a class='nav-link' href='perfil_musico.php'>Perfil</a>
-            </li>";
-            }
-            elseif ($_SESSION['tipo'] === 'cliente') {
-              echo "<li class='nav-item active'>
-            <a class='nav-link' href='perfil_cliente.php'>Perfil</a>
-            </li>";
-            }
-          }
-          ?>
-          <?php
-           if ($_SESSION['tipo'] === 'musico') {
-            if ($_SESSION['logged_in'] === true) {
-         echo "<div class='dropdown'>
-        <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40;
-    border-color: #343a40;'>
-          Pedidos
-        </button>
-        <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-          <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Chamados</a>
-          <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a>
+<?php
 
-          <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a>
-        </div>
-      </div>";
-    }
-  }
-         
-          if ($_SESSION['logged_in'] === true) {
-            if ($_SESSION['tipo'] === 'cliente') {
-              echo "<li class='nav-item'>
-              <li class='nav-item'>
-              <a class='nav-link' href='pedido.php'>Faça seu Pedido!</a>
-              </li>";
-            } 
-          }; 
-        ?>
-    </ul>
-        <ul class="navbar-nav ml-auto" style="display:block;">
-          <?php
-          if ($_SESSION['logged_in'] === false ){
-          echo "
-          <div class='loggedOutDiv2'>
-            <div class='col'>
-              <p style='color: rgba(255,255,255,.5); margin-left: 0.6em;'>Buscando Músicos?  ||  Ou você é o Músico?</p>
-            </div>
-          </div>
-          <div class='loggedOutDiv1'>
-            <div class='col' style='display: inline-flex;'>
-          <li class='nav-item'>
-            <a class='nav-link' href='login.php'>Login</a>
-          </li>
-          <span class='navbar-text'>
-            |
-          </span>
-          <li class='nav-item'>
-            <a class='nav-link' href='cadastroCliente.php' id='cadastro'>Registrar-se</a>
-          </li>
-          <span class='navbar-text'>
-            ||
-          </span>
-          <li class='nav-item'>
-            <a class='nav-link' href='login.php' id='login'>Login</a>
-          </li>
-          <span class='navbar-text'>
-            |
-          </span>
-          <li class='nav-item'>
-            <a class='nav-link'href='cadastroMusicos.php'>Registrar-se</a>
-          </li>";
-        }
-          else{
-            echo "<div class='loggedOutDiv2'>
-            <div class='col' style='display: inline-flex;'>
-          <li class='nav-item'>
-            <a class='nav-link' href='logout.php'>logout</a>
-          </li>
-          <span class='navbar-text'>
-            |
-          </span>
-          <li class='nav-item'>";
-
-          if ($_SESSION['tipo'] === 'cliente' ) {
-            echo "<a class='nav-link' href='perfil_cliente.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
-          </li>";
-          }
-          elseif ($_SESSION['tipo'] === 'musico' ) {
-            echo "<a class='nav-link' href='perfil_musico.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a>
-            </li>";
-              }
-            }
-          ?>
-        </div>
-          </div>
-        </ul>
-      </div>
-  </nav>
-</header>
+	include('menu.php');
+?>
 				<!-- Header -->
 
 				<!-- Page -->
-					<div id="page" class="container">
-						<div class="row">
-		
-							<!-- Sidebar -->
-							<div id="sidebar" class="4u">
-								<section>
-									<header class="major">
-										<h2><?php 
-										echo utf8_encode($_SESSION['estilo']);
-
-										?></h2>
-									</header>
-									<div class="row half">
-										<section class="6u" style="contain: content;">
-											<?php 
-										//echo $_SESSION['img_perfil'];
-											echo "<img src='../images/teste.jpg' style='width: 100%; height: auto; margin-bottom: 5vh; border-radius: 100%;'>";
-
-										?>
-										</section>
-									</div>
-								</section>
-								<section>
-									<header class="major">
-										
-										<h2><?php 
-										echo utf8_encode($_SESSION['instrumento']);
-										?></h2>
-									</header>
-								</section>
-							</div>
-							
-							<!-- Content -->
-							<div id="content" class="8u skel-cell-important">
-								<section>
-									<header class="major">
-										<h2><?php 
-										echo utf8_encode($_SESSION['nome']);
-
-										?></h2>
-										<span class="byline">Descrição</span>
-									</header>
-									<p><?php 
-										echo utf8_encode($_SESSION['descricao']);
-									?></p>
-							</div>
-
-							 <input type="submit" class="btn btn-primary mr-auto ml-auto" style="padding: 0.75em 1.5em !important;">
-						</div>
-					</div> 
-				</div>
+					<div id="page" class="container"> 
+               
+              <!-- Content --> 
+  <center>
+                  <header class="major"> 
+                    <h2><?php  
+                    echo $_SESSION['nome']; 
+ 
+                    ?></h2> 
+                    <span class="byline">Alterar dados do perfil</span> 
+                  </header> </center>
+                    <div class="jumbotron w-100" style="border-radius: 25px"> 
+                      <?php 
+                      echo "<div class='form-row'>
+                      <div class='form-group col-md-12'>
+                         Vencimento: " . $_SESSION['date_expirar'] . "
+                         <p></p>
+                     </div> 
+                        <div class='form-group col-md-6'> 
+                          Nome: ". $_SESSION['nome'] ." 
+                        </div>
+                       <div class='form-group col-md-6'> 
+                          Telefone comercial: ". $_SESSION['cel'] ." 
+                        </div>  
+                      </div> 
+                      <div class='form-row'> 
+                        <div class='form-group col-md-6'> 
+                          Idade: " . $_SESSION['bday'] . " 
+                        </div> 
+                        <div class='form-group col-md-6'> 
+                          E-mail: " . $_SESSION['email'] . " 
+                        </div> 
+                      </div> 
+                      <div class='form-row'> 
+                        <div class='form-group col-md-6'> 
+                          Endereço: ". $_SESSION['end'] ." 
+                        </div> 
+                        <div class='form-group col-md-6'> 
+                          Complemento: ". $_SESSION['end_complemento'] ." 
+                        </div> 
+                      </div> 
+                      <div class='form-row'> 
+                        <div class='form-group col-md-6'> 
+                          Cidade: ". $_SESSION['cidade'] ." 
+                        </div> 
+                        <div class='form-group col-md-6'> 
+                          Cep: ". $_SESSION['cep'] ." 
+                        </div> 
+                      </div> 
+                      <div class='form-row'> 
+                      </div> 
+                      <div class='form-row'> 
+                        <div class='form-group col-md-6'> 
+                          CPF: ". $_SESSION['cpf'] ." 
+                        </div> 
+                        <div class='form-group col-md-6'> 
+                          Estado: ". $_SESSION['estado'] ." 
+                        </div>
+                        <div class='form-group col-md-6'> 
+                          Estilo: ". $_SESSION['estilo'] ." 
+                        </div>
+                        <div class='form-group col-md-6'> 
+                          Instrumento: ". $_SESSION['instrumento'] ." 
+                        </div>
+                        <div class='form-group col-md-12'>
+                        <center> Descrição: " . $_SESSION['descricao'] . " </center>
+                     </div>         
+                      </div> 
+                    </div>";?> 
+                     
+              <center><input type="submit" class="btn btn-primary mr-auto ml-auto" style="padding: 0.75em 1.5em !important;" value="alterar dados" id="batata"></center>
+            </div> 
+          </div>  
+        </div> 
 
 	<!-- Footer -->
 		
 	<!-- /Footer -->
 
 	<!-- Copyright -->
-		<div id="copyright">
-			<div class="container"> <span class="copyright">Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)</span>
-				<ul class="icons">
-					<li><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
-					<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
-					<li><a href="#" class="fa fa-google-plus"><span>Google+</span></a></li>
-				</ul>
-			</div>
+	<div id="copyright">
+            <div class="container"> <span class="copyright">Design: <a href="http://templated.co">TEMPLATED</a> Images: <a 
+                        href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)</span>
+	         <ul class="icons">
+			<li><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
+			<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
+			<li><a href="#" class="fa fa-google-plus"><span>Google+</span></a></li>
+			</ul>
 		</div>
+	</div>
+	
+	<script type="text/JavaScript">
+      $(document).ready(function () { 
+          $("#batata").click(function(){
+		document.location='update_perfil_func.php'
+          }); 
+      });
+    </script>
+    <script type="text/JavaScript"> //JQUERY
+    
+      $(document).ready(function() {
+        jQuery(function($){
+          $("#dropdownMenuButton").click(function(){
+            $(".dropdown-menu").toggleClass("show");
+          });
 
-	</body>
+           //$("div").click(function(){
+           //  $("div").toggleClass("fa-spin");
+           //});
+        });
+      });
+    </script>
+	
+</body>
 </html>

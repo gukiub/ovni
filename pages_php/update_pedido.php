@@ -19,6 +19,6 @@
 
 $PDO->query($sql); //comando de enviar o sql
 
-header('location:chamado_atendido.php')
+echo "<script>document.location='http://ovnis.mus.br/pages_php/chamado_atendido.php'</script>";
 
 ?>
