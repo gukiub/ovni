@@ -1,9 +1,7 @@
-<?php 
-// session_start inicia a sessão
-session_start();
+<?php
 // as variáveis login e senha recebem os dados digitados na página anterior
-$email = $_GET['login'];
-$senha = $_GET['senha'];
+
+$cpf = $_SESSION['cpf'];
 
 // as próximas 3 linhas são responsáveis em se conectar com o bando de dados.
 $con = mysqli_connect("localhost", "ovnism38_root", "admin") or die
@@ -14,14 +12,13 @@ contato com o Administrador, ovni@gmail.com");
 // A variavel $result pega as varias $login e $senha, faz uma
 //pesquisa na tabela de usuarios
 
+$result2 = $con->query("SELECT * FROM funcionario
+    WHERE (CPF_func = '" . $cpf . "')"); //checar se foi login de um funcionario
 
-$result2 = $con->query("SELECT * FROM funcionario 
-    WHERE (email_func = '" . $email . "')"); //checar se foi login de um funcionario
+$result3 = $con->query("SELECT * FROM cliente
+    WHERE (CPF_clie = '" . $cpf . "')"); //checar se foi login de um funcionario
 
-$result3 = $con->query("SELECT * FROM cliente 
-    WHERE (email_clie = '" . $email . "')"); //checar se foi login de um funcionario
-
-//pegar os dados do 
+//pegar os dados do
 
 /* Logo abaixo temos um bloco com if e else, verificando se a variável $result foi 
 bem sucedida, ou seja se ela estiver encontrado algum registro idêntico o seu valor
@@ -34,11 +31,6 @@ do formulário inicial para que se possa tentar novamente realizar o login */
 if (mysqli_num_rows($result2) > 0) {//checar se foi login de musico
 
   $row = $result2->fetch_assoc();
-
-  if (password_verify($senha, $row["senha_func"])) {
-    # code...
-    $_SESSION['tipo'] = "musico";
-    $_SESSION['logged_in']=true;
 
     //transforma resultado sql em string
 
@@ -62,23 +54,10 @@ if (mysqli_num_rows($result2) > 0) {//checar se foi login de musico
     $_SESSION['date_expirar'] = iconv(mb_detect_encoding($row["data_expirar"], mb_detect_order(), true), "UTF-8", $row["data_expirar"]);
     $_SESSION['verify'] = iconv(mb_detect_encoding($row["verify_func"], mb_detect_order(), true), "UTF-8", $row["verify_func"]);
 
-    header('location:../index.php');
-  }else{
-    
-    unset ($_SESSION['login']);
-    unset ($_SESSION['senha']);
-    
-    header('location: ../pages_php/login.php?tentativa=1');
-  }
-
 }elseif (mysqli_num_rows($result3) > 0) {//checar se foi login de cliente
   
   $row = $result3->fetch_assoc();
 
-  if (password_verify($senha, $row["senha_clie"])) {
-
-    $_SESSION['tipo'] = "cliente";
-    $_SESSION['logged_in']=true;
     $_SESSION['nome'] = iconv(mb_detect_encoding($row["nome_clie"], mb_detect_order(), true), "UTF-8", $row["nome_clie"]);
     $_SESSION['senha'] = iconv(mb_detect_encoding($row["senha_clie"], mb_detect_order(), true), "UTF-8", $row["senha_clie"]);
     $_SESSION['email'] = iconv(mb_detect_encoding($row["email_clie"], mb_detect_order(), true), "UTF-8", $row["email_clie"]);
@@ -92,22 +71,14 @@ if (mysqli_num_rows($result2) > 0) {//checar se foi login de musico
     $_SESSION['cep'] = iconv(mb_detect_encoding($row["cep_clie"], mb_detect_order(), true), "UTF-8", $row["cep_clie"]);
     $_SESSION['cpf'] = iconv(mb_detect_encoding($row["CPF_clie"], mb_detect_order(), true), "UTF-8", $row["CPF_clie"]);
     $_SESSION['verify'] = iconv(mb_detect_encoding($row["verify_clie"], mb_detect_order(), true), "UTF-8", $row["verify_clie"]);
-
-    header('location:../index.php');
-  }else{
-    
-    unset ($_SESSION['login']);
-    unset ($_SESSION['senha']);
-    
-    header('location: ../pages_php/login.php?tentativa=1');
-  }
 }
 
 else{//logou errado
   unset ($_SESSION['login']);
   unset ($_SESSION['senha']);
-  
-  header('location: ../pages_php/login.php?tentativa=1');
+  $_SESSION['logged_in']=false;
+  $_SESSION['message'] = "ALGO DEU ERRADO!";
+  header('location: ../pages_php/mensagem.php');
   
   }
 ?>

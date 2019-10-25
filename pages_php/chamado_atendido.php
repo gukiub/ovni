@@ -8,22 +8,23 @@
 session_start(); 
  
  
-if($_SESSION['logged_in'] == 0){ 
-header('location: ../index.php'); 
-}; 
+
+  if($_SESSION['logged_in'] == false){
+    echo "<script>document.location='login.php'</script>";
+  };
+   
  
  //não mostrar mensagens de erros 
-ini_set('display_errors', 0);  
-ini_set('display_startup_errors', 0); 
+ini_set('display_errors', 1);  
+ini_set('display_startup_errors', 1); 
 error_reporting(E_ALL); 
  //não mostrar mensagens de erros 
  
 include('conexao.php');//conecta ao banco de dados 
  
-$con=mysqli_connect("localhost","root","","ovni"); 
+$con=mysqli_connect("localhost","ovnism38_root","admin","ovnism38_ovni"); 
    
-$estilos = $_GET['estilos']; 
-$instrumentos = $_GET['instrumentos']; 
+
  
  
   if ($_SESSION['tipo'] === 'musico') { 
@@ -73,7 +74,7 @@ $instrumentos = $_GET['instrumentos'];
       margin-top: -2.8em; 
     } 
     .loggedOutDiv2{ 
-      margin-top: -1.3em; 
+      margin-top: 0.4em;
     } 
     .container div section{ 
       margin-top: 2em; 
@@ -84,138 +85,25 @@ $instrumentos = $_GET['instrumentos'];
   </style> 
 </head> 
 <body> 
-<header> 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 2rem 1rem 0.5rem 1rem; "> 
-      <a class="navbar-brand" href="../index.php" style="margin-top: -1em;"><img src="../images/logo-ovni.png" width="120px" height="56"></a> 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> 
-        <span class="navbar-toggler-icon"></span> 
-      </button> 
-      <div class="collapse navbar-collapse" id="navbarNavDropdown"> 
-        <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;"> 
-          <li class="nav-item active"> 
-            <a class="nav-link"  href="../index.php">Página Inicial</a> 
-          </li> 
-          <?php 
-          if ($_SESSION['logged_in'] === false ){ 
-            echo "<li class='nav-item'> 
-            <a class='nav-link' href='login.php'>Perfil</a> 
-            </li>"; 
-          } 
-           
-          else{ 
-            if ($_SESSION['tipo'] === 'musico') { 
-              echo "<li class='nav-item'> 
-            <a class='nav-link' href='perfil_musico.php'>Perfil</a> 
-            </li>"; 
-            } 
-            elseif ($_SESSION['tipo'] === 'cliente') { 
-              echo "<li class='nav-item'> 
-            <a class='nav-link' href='perfil_cliente.php'>Perfil</a> 
-            </li>"; 
-            } 
-          } 
-          ?> 
-          <?php 
-           if ($_SESSION['logged_in'] === true) { 
-            if ($_SESSION['tipo'] === 'musico') { 
-             echo "<div class='dropdown'> 
-                <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40; 
-            border-color: #343a40;'> 
-                  Pedidos 
-                </button> 
-                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'> 
-                  <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a> 
-                  <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Chamados</a> 
-                  <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a> 
-                </div> 
-              </div>"; 
-            }elseif ($_SESSION['tipo'] === 'cliente') { 
-              echo "<div class='dropdown'> 
-                <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40; 
-            border-color: #343a40;'> 
-                  Pedidos 
-                </button> 
-                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'> 
-                  <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a> 
-                  <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Outros Pedidos</a> 
-                  <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Pedidos feitos</a> 
-                </div> 
-              </div>"; 
-            } 
-          }; 
-        ?> 
-    </ul> 
-        <ul class="navbar-nav ml-auto" style="display:block;"> 
-          <?php 
-          if ($_SESSION['logged_in'] === false ){ 
-          echo " 
-          <div class='loggedOutDiv2'> 
-            <div class='col'> 
-              <p style='color: rgba(255,255,255,.5); margin-left: 0.6em;'>Buscando Músicos?  ||  Ou você é o Músico?</p> 
-            </div> 
-          </div> 
-          <div class='loggedOutDiv1'> 
-            <div class='col' style='display: inline-flex;'> 
-          <li class='nav-item'> 
-            <a class='nav-link' href='login.php'>Login</a> 
-          </li> 
-          <span class='navbar-text'> 
-            | 
-          </span> 
-          <li class='nav-item'> 
-            <a class='nav-link' href='cadastroCliente.php' id='cadastro'>Registrar-se</a> 
-          </li> 
-          <span class='navbar-text'> 
-            || 
-          </span> 
-          <li class='nav-item'> 
-            <a class='nav-link' href='login.php' id='login'>Login</a> 
-          </li> 
-          <span class='navbar-text'> 
-            | 
-          </span> 
-          <li class='nav-item'> 
-            <a class='nav-link'href='cadastroMusicos.php'>Registrar-se</a> 
-          </li>"; 
-        } 
-          else{ 
-            echo "<div class='loggedOutDiv2'> 
-            <div class='col' style='display: inline-flex;'> 
-          <li class='nav-item'> 
-            <a class='nav-link' href='logout.php'>logout</a> 
-          </li> 
-          <span class='navbar-text'> 
-            | 
-          </span> 
-          <li class='nav-item'>"; 
+  
+  <?php
+   include('verify.php');
+   include('menu.php');
  
-          if ($_SESSION['tipo'] === 'cliente' ) { 
-            echo "<a class='nav-link' href='perfil_cliente.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a> 
-          </li>"; 
-          } 
-          elseif ($_SESSION['tipo'] === 'musico' ) { 
-            echo "<a class='nav-link' href='perfil_musico.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a> 
-            </li>"; 
-              }; 
-            }; 
-          ?> 
-        </div> 
-          </div> 
-        </ul> 
-      </div> 
-  </nav> 
-</header> 
+  ?>
+  
  
       <!-- PESQUISAR MUSICOS --> 
 <div id="extra" style="padding-top: 4em;"> 
-  <div class="container"> 
+  <div class="container" style="min-height: 300px;"> 
     <div class="row no-collapse-1"> 
  
       <?php 
         if ($result=mysqli_query($con,$sql)) 
           { 
           // Fetch one and one row 
-          while ($row=mysqli_fetch_row($result)) 
+            //INICIO DO WHILE
+          while ($row= mysqli_fetch_row($result)) 
             { 
             echo " 
             <section class='6u'>  
@@ -223,24 +111,61 @@ $instrumentos = $_GET['instrumentos'];
               <img src='../images/pic01.jpg' alt=''> 
             </a> 
             <div class='box'> 
-                <div class='col' style='background-color: #f1f1f1;'><p>Data:" . utf8_encode($row[0]) . "</p></div> 
-                <div class='col'><p>Hora:"  . utf8_encode($row[1]) . ".</p></div> 
-                <div class='col' style='background-color: #f1f1f1;'><p>Estilo:" . utf8_encode($row[5]) . "</p></div> 
-                <div class='col'><p>Instrumento:"  . utf8_encode($row[6]) . ".</p></div> 
-                <div class='col' style='background-color: #f1f1f1;'><p>Cidade:" . utf8_encode($row[3]) . "</p></div> 
-                <div class='col'></div> 
-               
+                <div class='col' style='background-color: #f1f1f1;'><p>Data:" . iconv(mb_detect_encoding($row[0], mb_detect_order(), true), "UTF-8", $row[0]) . "</p></div> 
+                <div class='col'><p>Hora:"  . iconv(mb_detect_encoding($row[1], mb_detect_order(), true), "UTF-8", $row[1]) . ".</p></div> 
+                <div class='col' style='background-color: #f1f1f1;'><p>Estilo:" . iconv(mb_detect_encoding($row[5], mb_detect_order(), true), "UTF-8", $row[5]) . "</p></div> 
+                <div class='col'><p>Instrumento:"  . iconv(mb_detect_encoding($row[6], mb_detect_order(), true), "UTF-8", $row[6]) . ".</p></div> 
+                <div class='col' style='background-color: #f1f1f1;'><p>Cidade:" . iconv(mb_detect_encoding($row[3], mb_detect_order(), true), "UTF-8", $row[3]) . "</p></div> 
+                <div class='col'></div>
+
+
+                <a href='chamado_detalhes.php?id=" . iconv(mb_detect_encoding($row[13], mb_detect_order(), true), "UTF-8", $row[13]) . "' class='button'>Ver mais detalhes</a>"; 
  
-              <a href='chamado_detalhes.php?id=" . utf8_encode($row[13]) . "' class='button'>Ver mais detalhes</a>  
-            </div> 
-          </section>"; 
+                if ($_SESSION['tipo'] === 'cliente') {
+
+                  echo "
+                  <a href='../pages_php/delete_row.php?id=" . iconv(mb_detect_encoding($row[13], mb_detect_order(), true), "UTF-8", $row[13]) . "'>
+                  <div class='bg-danger arrependimento'>
+                    <div>
+                      <p class='text-white'>
+                        Deletar Evento
+                      </p>
+                    </div>
+                  </div>
+                  </a>
+                  ";
+                  // echo "div quadrada com xzinho link para outro arquivo -> sql delete from table where id=row13";
+                  //sql = DELETE FROM realiza_pedido WHERE ID_pedido_PK = row[13];
+
+                }elseif ($_SESSION['tipo'] === 'musico') {
+                  
+                  echo "
+                  <a href='../pages_php/arrependimento_row.php?id=" . iconv(mb_detect_encoding($row[13], mb_detect_order(), true), "UTF-8", $row[13]) . "'>
+                  <div class='bg-danger arrependimento'>
+                    <button type='button' class='close' aria-label='Close'>
+                      <span aria-hidden='true'>&times;</span>
+                    </button>
+                    <div>
+                      <p class='text-white'>
+                        Arrependimento
+                      </p>
+                    </div>
+                  </div>
+                  </a>
+                  ";
+                  // echo "div quadrada com xzinho link para outro arquivo -> sql alter table  where id=row13";
+                  //sql = UPDATE realiza_pedido SET CPF_clie_FK="" , status_pedido="0" WHERE ID_pedido_PK = row[13];
+
+                }
  
+              echo "</div>
+              </section>";
              
             } 
+            //FIM DO WHILE
           // Free result set 
           mysqli_free_result($result); 
-        } 
-      //comando while 
+        }
        
        
       /* 
@@ -323,8 +248,22 @@ $instrumentos = $_GET['instrumentos'];
     { 
       deleteAll[i].click(); 
     } 
-  }); 
- 
-</script> 
+  });    
+</script>
+
+<script type="text/JavaScript"> //JQUERY
+    
+      $(document).ready(function() {
+        jQuery(function($){
+          $("#dropdownMenuButton").click(function(){
+            $(".dropdown-menu").toggleClass("show");
+          });
+
+           //$("div").click(function(){
+           //  $("div").toggleClass("fa-spin");
+           //});
+        });
+      });
+    </script>
 </body> 
 </html>

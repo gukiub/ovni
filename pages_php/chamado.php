@@ -8,38 +8,76 @@
 session_start(); 
  
  
-if($_SESSION['logged_in'] == 0){ 
-header('location: ../index.php'); 
-}else if($_SESSION['tipo'] === "cliente"){ 
-header('location: ../index.php'); 
-}; 
- 
- 
- //não mostrar mensagens de erros 
-ini_set('display_errors', 0);  
-ini_set('display_startup_errors', 0); 
-error_reporting(E_ALL); 
- //não mostrar mensagens de erros 
- 
-include('conexao.php');//conecta ao banco de dados 
- 
-$con=mysqli_connect("localhost","root","","ovni"); 
-   
-$estilos = $_GET['estilos']; 
-$instrumentos = $_GET['instrumentos']; 
- 
-if (!empty($estilos) and !empty($instrumentos)) { 
-  $sql="SELECT * FROM `realiza_pedido` WHERE `estilo_musica_pedido` = '" . $estilos . "' and `instrumento_desejado` = '" . $instrumentos .  "' AND `status_pedido` = 0"; 
-} 
-else if (!empty($estilos)) { 
-  $sql="SELECT * FROM `realiza_pedido` WHERE `estilo_musica_pedido` = '" . $estilos .  "' AND `status_pedido` = 0"; 
-} 
-else if (!empty($instrumentos)) { 
-  $sql="SELECT * FROM `realiza_pedido` WHERE `instrumento_desejado` = '" . $instrumentos . "' AND `status_pedido` = 0"; 
-} 
-else{ 
-  $sql="SELECT * FROM `realiza_pedido` WHERE `status_pedido` = 0"; 
-  } 
+
+  if($_SESSION['logged_in'] == false){
+    echo "<script>document.location='login.php'</script>";
+  };
+
+//não mostrar mensagens de erros
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL);
+ //não mostrar mensagens de erros
+
+include('conexao.php');//conecta ao banco de dados
+
+$con=mysqli_connect("localhost","ovnism38_root","admin","ovnism38_ovni");
+
+$estilos = $_GET['estilos'];
+$instrumentos = $_GET['instrumentos'];
+$estados = $_GET['estado'];
+
+$estadopadrao = $_SESSION['estado'];
+
+/*
+ideia:
+a = estilos
+b = instrumentos
+c = estados
+
+se os 3 forem setados > se 2 forem setados > se 1 for setado.
+
+abc > ab, ac, cb > a, b, c
+
+estado_pedido
+
+*/
+
+//os 3 foram setados
+if (!empty($estilos) and !empty($instrumentos) and !empty($estados)) {
+  $sql="SELECT * FROM `realiza_pedido` WHERE `estilo_musica_pedido` = '" . $estilos . "' AND `instrumento_desejado` = '" . $instrumentos .  "' AND `estado_pedido` = '" . $estados .  "' AND `status_pedido` = 0";
+}
+// estilos e instrumentos
+else if (!empty($estilos) and !empty($instrumentos)) {
+  $sql="SELECT * FROM `realiza_pedido` WHERE `estilo_musica_pedido` = '" . $estilos . "' AND `instrumento_desejado` = '" . $instrumentos .  "' AND `status_pedido` = 0";
+}
+// estilos e estados
+else if (!empty($estilos) and !empty($estados)) {
+  $sql="SELECT * FROM `realiza_pedido` WHERE `estilo_musica_pedido` = '" . $estilos . "' AND `estado_pedido` = '" . $estados .  "' AND `status_pedido` = 0";
+}
+// estados e instrumentos
+else if (!empty($estados) and !empty($instrumentos)) {
+  $sql="SELECT * FROM `realiza_pedido` WHERE `estado_pedido` = '" . $estados . "' AND `instrumento_desejado` = '" . $instrumentos .  "' AND `status_pedido` = 0";
+}
+else if (!empty($estilos)) {
+  $sql="SELECT * FROM `realiza_pedido` WHERE `estilo_musica_pedido` = '" . $estilos .  "' AND `status_pedido` = 0";
+}
+else if (!empty($instrumentos)) {
+  $sql="SELECT * FROM `realiza_pedido` WHERE `instrumento_desejado` = '" . $instrumentos . "' AND `status_pedido` = 0";
+}
+else if (!empty($estados)) {
+  $sql="SELECT * FROM `realiza_pedido` WHERE `estado_pedido` = '" . $estados . "' AND `status_pedido` = 0";
+}
+else{
+  $sql="SELECT * FROM `realiza_pedido` WHERE `status_pedido` = 0";
+}
+
+  $data = date('Y-m-d');
+  $data = DateTime::createFromFormat('Y-m-d', $data);
+  $dota2 = $data->format('Y-m-d');
+  $result = "Delete from realiza_pedido WHERE data_evento < '" . $dota2 . "';";
+  $con->query($result); //comando de enviar o sql
+
 ?> 
  
 <html> 
@@ -58,7 +96,7 @@ else{
     <link href="../css/skel.css" rel="stylesheet"  /> 
   <link href="../css/style.css" rel="stylesheet" /> 
   <link href="../css/style-wide.css" rel="stylesheet" /> 
-      <link rel="icon" type="imagem/png" href="../images/logo_ovni_no_borders.png" /> 
+        <link rel="icon" type="imagem/png" href="../images/logo_ovni_no_borders.png" /> 
  
      
   <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]--> 
@@ -68,7 +106,6 @@ else{
   <script src="../js/jquery.min.js"></script> 
   <script src="../js/jquery.dropotron.min.js"></script> 
   <script src="../js/skel.min.js"></script> 
-  <script src="../js/skel-layers.min.js"></script> 
   <script src="../js/init.js"></script> 
  
   <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]--> 
@@ -80,7 +117,7 @@ else{
       margin-top: -2.8em; 
     } 
     .loggedOutDiv2{ 
-      margin-top: -1.3em; 
+      margin-top: 0 em; 
     } 
     .container div section{ 
       margin-top: 2em; 
@@ -91,127 +128,13 @@ else{
   </style> 
 </head> 
 <body> 
-<header> 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="padding: 2rem 1rem 0.5rem 1rem; "> 
-      <a class="navbar-brand" href="../index.php" style="margin-top: -1em;"><img src="../images/logo-ovni.png" width="120px" height="56"></a> 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> 
-        <span class="navbar-toggler-icon"></span> 
-      </button> 
-      <div class="collapse navbar-collapse" id="navbarNavDropdown"> 
-        <ul class="navbar-nav mr-auto" style="margin-top: -1.5em;"> 
-          <li class="nav-item active"> 
-            <a class="nav-link"  href="../index.php">Página Inicial</a> 
-          </li> 
-          <?php 
-          if ($_SESSION['logged_in'] === false ){ 
-            echo "<li class='nav-item'> 
-            <a class='nav-link' href='login.php'>Perfil</a> 
-            </li>"; 
-          } 
-           
-          else{ 
-            if ($_SESSION['tipo'] === 'musico') { 
-              echo "<li class='nav-item'> 
-            <a class='nav-link' href='perfil_musico.php'>Perfil</a> 
-            </li>"; 
-            } 
-            elseif ($_SESSION['tipo'] === 'cliente') { 
-              echo "<li class='nav-item'> 
-            <a class='nav-link' href='perfil_cliente.php'>Perfil</a> 
-            </li>"; 
-            } 
-          } 
-          ?> 
-          <?php 
-           if ($_SESSION['logged_in'] === true) { 
-            if ($_SESSION['tipo'] === 'musico') { 
-             echo "<div class='dropdown'> 
-                <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40; 
-            border-color: #343a40;'> 
-                  Pedidos 
-                </button> 
-                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'> 
-                  <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a> 
-                  <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Chamados</a> 
-                  <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Chamados Atendidos</a> 
-                </div> 
-              </div>"; 
-            }elseif ($_SESSION['tipo'] === 'cliente') { 
-              echo "<div class='dropdown'> 
-                <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown'  aria-haspopup='true' aria-expanded='false' style='background-color: #343a40; 
-            border-color: #343a40;'> 
-                  Pedidos 
-                </button> 
-                <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'> 
-                  <a class='dropdown-item' href='pedido.php' style='text-decoration: none;'>Faça seu pedido</a> 
-                  <a class='dropdown-item' href='chamado.php' style='text-decoration: none;'>Outros Pedidos</a> 
-                  <a class='dropdown-item' href='chamado_atendido.php' style='text-decoration: none;'>Pedidos feitos</a> 
-                </div> 
-              </div>"; 
-            } 
-          }; 
-        ?> 
-    </ul> 
-        <ul class="navbar-nav ml-auto" style="display:block;"> 
-          <?php 
-          if ($_SESSION['logged_in'] === false ){ 
-          echo " 
-          <div class='loggedOutDiv2'> 
-            <div class='col'> 
-              <p style='color: rgba(255,255,255,.5); margin-left: 0.6em;'>Buscando Músicos?  ||  Ou você é o Músico?</p> 
-            </div> 
-          </div> 
-          <div class='loggedOutDiv1'> 
-            <div class='col' style='display: inline-flex;'> 
-          <li class='nav-item'> 
-            <a class='nav-link' href='login.php'>Login</a> 
-          </li> 
-          <span class='navbar-text'> 
-            | 
-          </span> 
-          <li class='nav-item'> 
-            <a class='nav-link' href='cadastroCliente.php' id='cadastro'>Registrar-se</a> 
-          </li> 
-          <span class='navbar-text'> 
-            || 
-          </span> 
-          <li class='nav-item'> 
-            <a class='nav-link' href='login.php' id='login'>Login</a> 
-          </li> 
-          <span class='navbar-text'> 
-            | 
-          </span> 
-          <li class='nav-item'> 
-            <a class='nav-link'href='cadastroMusicos.php'>Registrar-se</a> 
-          </li>"; 
-        } 
-          else{ 
-            echo "<div class='loggedOutDiv2'> 
-            <div class='col' style='display: inline-flex;'> 
-          <li class='nav-item'> 
-            <a class='nav-link' href='logout.php'>logout</a> 
-          </li> 
-          <span class='navbar-text'> 
-            | 
-          </span> 
-          <li class='nav-item'>"; 
+
+<?php
+  
+include('verify.php');
+include ('menu.php');
  
-          if ($_SESSION['tipo'] === 'cliente' ) { 
-            echo "<a class='nav-link' href='perfil_cliente.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a> 
-          </li>"; 
-          } 
-          elseif ($_SESSION['tipo'] === 'musico' ) { 
-            echo "<a class='nav-link' href='perfil_musico.php' id='cadastro'>" . utf8_encode($_SESSION['nome']) . "</a> 
-            </li>"; 
-              } 
-            } 
-          ?> 
-        </div> 
-          </div> 
-        </ul> 
-      </div> 
-  </nav> 
-</header> 
+?>
  
 <!-- Barra de pesquisa --> 
      
@@ -219,12 +142,12 @@ else{
   <form> 
     <div class="inner-form"> 
       <div class="advance-search"> 
-        <h1 class="desc">Pesquisa de Músicos Por Instrumentos Ou Estilos</h1> 
+        <h1 class="desc">Filtro de chamados por Instrumentos, Estilos ou Estado:</h1> 
         <div class="row"> 
           <div class="col input-field"> 
             <div class="input-select"> 
               <select data-trigger="" name="instrumentos"> 
-                <option placeholder="" value="0">Instrumentos</option> 
+                <option placeholder="" value="">Instrumentos</option> 
                 <option value="violao">Violão</option> 
                 <option value="cavaco">Cavaco</option> 
                 <option value="bateria">Bateria</option> 
@@ -248,7 +171,7 @@ else{
           <div class="col input-field"> 
             <div class="input-select"> 
               <select data-trigger="" name="estilos"> 
-                <option placeholder="" value="0">Estilos</option> 
+                <option placeholder="" value="">Estilos</option> 
                 <option value="alternativa">Alternativa</option> 
                 <option value="blues">Blues</option> 
                 <option value="dance">Dance</option> 
@@ -270,18 +193,55 @@ else{
               </select> 
             </div> 
           </div> 
+          <div class="col input-field"> 
+            <div class="input-select"> 
+              <select data-trigger="" name="estado">
+                <option placeholder="" value="">Estados</option>
+                <option value="Acre">Acre</option>
+                <option value="Alagoas">Alagoas</option>
+                <option value="Amapá">Amapá</option>
+                <option value="Amazonas">Amazonas</option>
+                <option value="Bahia">Bahia</option>
+                <option value="Ceará">Ceará</option>
+                <option value="Distrito Federal(Brasília)">Distrito Federal(Brasília)</option>
+                <option value="Espírito Santo">Espírito Santo</option>
+                <option value="Goiás">Goiás</option>
+                <option value="Maranhão">Maranhão</option>
+                <option value="Mato Grosso">Mato Grosso</option>
+                <option value="Mato Grosso do Sul">Mato Grosso do Sul</option>
+                <option value="Minas Gerais">Minas Gerais</option>
+                <option value="Pará">Pará</option>
+                <option value="Paraíba">Paraíba</option>
+                <option value="Paraná">Paraná</option>
+                <option value="Pernambuco">Pernambuco</option>
+                <option value="Piauí">Piauí</option>
+                <option value="Rio de Janeiro">Rio de Janeiro</option>
+                <option value="Rio Grande do Norte">Rio Grande do Norte</option>
+                <option value="Rio Grande do Sul">Rio Grande do Sul</option>
+                <option value="Rondônia">Rondônia</option>
+                <option value="Roraima">Roraima</option>
+                <option value="Santa Catarina">Santa Catarina</option>
+                <option value="São Paulo">São Paulo</option>
+                <option value="Sergipe">Sergipe</option>
+                <option value="Tocantins">Tocantins</option>
+              </select> 
+            </div> 
+          </div> 
         </div> 
         <div class="row third"> 
           <div class="input-field"> 
             <div class="result-count"> 
               <span> 
                 <?php 
-                  //numero de resultados 
+                  //numero de resultados
+                $result2=mysqli_query($con,$sql);
+                $row2 = mysqli_num_rows($result2);
+                echo $row2 . " ";
                 ?>  
-              </span>resultados</div> 
+              </span>Resultados</div> 
             <div class="group-btn"> 
-              <button class="btn-delete" id="delete">RESET</button> 
-              <button class="btn-search">SEARCH</button> 
+              <button class="btn-delete" id="delete">LIMPAR</button> 
+              <button class="btn-search">PROCURAR</button> 
             </div> 
           </div> 
         </div> 
@@ -299,7 +259,7 @@ else{
         if ($result=mysqli_query($con,$sql)) 
           { 
           // Fetch one and one row 
-          while ($row=mysqli_fetch_row($result)) 
+          while ($row = mysqli_fetch_row($result))
             { 
             echo " 
             <section class='6u'>  
@@ -307,15 +267,17 @@ else{
               <img src='../images/pic01.jpg' alt=''> 
             </a> 
             <div class='box'> 
-                <div class='col' style='background-color: #f1f1f1;'><p>Data:" . utf8_encode($row[0]) . "</p></div> 
-                <div class='col'><p>Hora:"  . utf8_encode($row[1]) . ".</p></div> 
-                <div class='col' style='background-color: #f1f1f1;'><p>Estilo:" . utf8_encode($row[5]) . "</p></div> 
-                <div class='col'><p>Instrumento:"  . utf8_encode($row[6]) . ".</p></div> 
-                <div class='col' style='background-color: #f1f1f1;'><p>Cidade:" . utf8_encode($row[3]) . "</p></div> 
+                <div class='col' style='background-color: #f1f1f1;'><p>Data:" . iconv(mb_detect_encoding($row[0], mb_detect_order(), true), "UTF-8", $row[0]) . "</p></div> 
+                <div class='col'><p>Hora:"  . iconv(mb_detect_encoding($row[1], mb_detect_order(), true), "UTF-8", $row[1]) . ".</p></div> 
+                <div class='col' style='background-color: #f1f1f1;'><p>Estilo:" . iconv(mb_detect_encoding($row[5], mb_detect_order(), true), "UTF-8", $row[5]) . "</p></div> 
+                <div class='col'><p>Instrumento:"  . iconv(mb_detect_encoding($row[6], mb_detect_order(), true), "UTF-8", $row[6]) . ".</p></div> 
+                <div class='col' style='background-color: #f1f1f1;'><p>Cidade:" . iconv(mb_detect_encoding($row[3], mb_detect_order(), true), "UTF-8", $row[3]) . "</p></div> 
                 <div class='col'></div> 
                
  
-              <a href='update_pedido.php?id=" . $row[13] . "' class='button'>Atender!</a>  
+              <div class='col'><a href='update_pedido.php?id=" . iconv(mb_detect_encoding($row[13], mb_detect_order(), true), "UTF-8", $row[13]) . "' class='button'>Atender!</a></div>
+                <div class='col'></div> 
+              <div class='col'><a href='chamado_detalhes.php?id=" . iconv(mb_detect_encoding($row[13], mb_detect_order(), true), "UTF-8", $row[13]) . "' class='button'>Ver mais detalhes</a></div>  
             </div> 
           </section>"; 
  
@@ -352,15 +314,13 @@ else{
     </div> 
   </div> 
 </div> 
-       
-<!-- Footer --> 
- 
  
 <!-- Copyright --> 
 <div id="copyright"> 
   <div class="container"> 
     <div class="copyright"> 
       <p>Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)</p> 
+      <p> Copyright © 2019 OVNIS.</p>
       <ul class="icons"> 
         <li><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li> 
         <li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li> 

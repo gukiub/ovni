@@ -4,14 +4,20 @@ session_start();
   ini_set('display_errors', 0); 
   ini_set('display_startup_errors', 0); 
   error_reporting(E_ALL);
+  
+  
+  if($_SESSION['logged_in'] == false){
+    echo "<script>document.location='login.php'</script>";
+  };
+   
+   
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <!-- Meta tags Obrigatórias -->
     <meta charset="utf-8">
-
-    <title>Ovni - Cadastro Músico</title>
+    <title>Ovni - Alterar Perfil Musico</title>
     <style type="text/css">
       .collapse ul li a, .nav-item a{
         font-size: 16px; text-decoration: none; font-family: sans-serif
@@ -20,23 +26,29 @@ session_start();
         margin-top: -2.5em;
       }
       .loggedOutDiv2{
-        margin-top: -1.5em;
+        margin-top: 0em;
         margin-left: 0.65em;
       }
-      
-   @media screen and (max-width: 450px){      
-  .container{
-    width: 100%!important;
-  }
-  .w-50{
-    width: 100%!important;
-  }
-  
-  .w-25{
-    width: 100%!important;
-  } 
-      }
 
+      .carousel-indicators li{
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+      }
+      
+      @media screen and (max-width: 450px){     	
+	.container{
+		width: 100%!important;
+	}
+	
+	.w-50{
+		width: 100%!important;
+	}
+	
+	.w-25{
+		width: 100%!important;
+	}      
+      }
     </style>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -46,28 +58,28 @@ session_start();
       <link rel="stylesheet" href="../css/bootstrap.min.css">
       <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700" rel="stylesheet" />
       <link href="../css/main.css" rel="stylesheet" />
-      <link href="../css/menu.css" rel="stylesheet" />
+      <link href="../css/menu.css" rel="stylesheet" /> 
       <link rel="icon" type="imagem/png" href="../images/logo_ovni_no_borders.png" /> 
 
       
     <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/jquery.min.js"></script>
     <script src="../js/jquery.dropotron.min.js"></script>
-   <!--  <script src="../js/skel.min.js"></script> -->
+    <script src="../js/skel.min.js"></script> 
     <script src="../js/init.js"></script>
-      <link rel="stylesheet" href="../css/style.css" />
-      <link rel="stylesheet" href="../css/style-wide.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/style-wide.css" /> 
 
   <body>
-  
-  <?php
-   include('menu.php'); 
-  ?>
-  
-</header>
+     <?php
+     
+     include('verify.php'); 
+     include('menu.php');
+     
+     ?>
 
     <div class="jumbotron mb-0">
       <div class="container bg-light p-5" style="border-radius: 25px">
@@ -80,53 +92,41 @@ session_start();
           </div>";
             };
           ?>
-        <h1 class="center text-center">Cadastro do Músico</h1>
-        <div class="text-center"><p>Agora falta pouco para você conseguir vizualizar o seus chamados!</p></div
+        <h1 class="center text-center">Alterar perfil</h1>
         <p></p>
-        <form id="myForm2" action="../pages_php/salvar_funcionario.php" class="w-50 ml-auto mr-auto">
+        <form id="myForm2" action="../pages_php/update_perfil_func_update.php" class="w-50 ml-auto mr-auto">
           <div class="form-row">
-            <input type="hidden" name="data_expirar" id="data_expirar" value="<?php 
-              $data = date('Y-m-d');
-
-    $data = DateTime::createFromFormat('Y-m-d', $data);
-    $data->add(new DateInterval('P1M')); // 5 dias periodo de testes
-    echo $data->format('Y-m-d');
-            ?>">
-            <div class="form-group col-md-6">
-              <label for="nome">Nome Completo:</label>
-              <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" minlength="7" maxlength="35" required>
-            </div>
-            <div class="form-group col-md-6">
-              <label for="idade">Data de Nascimento:</label>
-              <input type="date" class="form-control" name="idade" id="idade" placeholder="Idade" required> <!-- maple -->
+            <div class="form-group col-md-12">
+              <label for="nome">Nome Completo</label>
+              <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" minlength="7" maxlength="35">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
-              <label for="email">E-mail:</label>
-              <input type="Email" class="form-control" name="email" id="email" placeholder="Email" minlength="5" maxlength="30" required>
+              <label for="nome">Email</label>
+              <input type="email" class="form-control" name="email" id="email" placeholder="Email" minlength="7" maxlength="35">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-12">
-              <label for="endereco">Endereço:</label>
-              <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Ex: Avenida Paulista, Nº" minlength="5" maxlength="30" required>
+              <label for="endereco">Endereço</label>
+              <input type="text" class="form-control" name="endereco" id="endereco" placeholder="Ex: Avenida Paulista, Nº" minlength="5" maxlength="30">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="complemento">Complemento do Endereço:</label>
+              <label for="complemento">Complemento do endereço</label>
               <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Complemento(Opcional)" minlength="3" maxlength="30">
             </div>
             <div class="form-group col-md-6">
-              <label for="cpf">CPF:</label>
-              <input type="text" class="form-control" name="cpf" id="cpf" placeholder="000.000.000-00" minlength="14" maxlength="14" required>
+              <label for="telefone">Telefone Comercial</label>
+              <input type="text" class="form-control" name="telefone" id="telefone" placeholder="(00)0000-0000" minlength="13" maxlength="14">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
-              <label for="estado">Estado:</label>
-                <select name="estado" id="estado" class="form-control" required>
+              <label for="estado">Estado</label>
+                <select name="estado" id="estado" class="form-control">
                   <option>Acre</option>
                   <option>Alagoas</option>
                   <option>Amapá</option>
@@ -157,24 +157,18 @@ session_start();
                 </select>
             </div>
             <div class="form-group col-md-4">
-              <label for="cidade">Cidade:</label>
-              <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Ex: SP" maxlength="30" minlength="2" required>
+              <label for="cidade">Cidade</label>
+              <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Ex: SP" maxlength="30" minlength="2">
             </div> 
             <div class="form-group col-md-4">
-              <label for="cep">CEP:</label>
-              <input type="text" class="form-control" name="cep" id="cep" placeholder="00000-000" maxlength="30" minlength="9" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group col-md-12">
-              <label for="telefone">Telefone Comercial:</label>
-              <input type="text" class="form-control" name="telefone" id="telefone" placeholder="(00)0000-0000" minlength="13" maxlength="14">
+              <label for="cep">CEP</label>
+              <input type="text" class="form-control" name="cep" id="cep" placeholder="00000-000" maxlength="30" minlength="9">
             </div>
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="instrumento">Instrumento:</label>
-                <select name="instrumento" id="instrumento" class="form-control" required>
+              <label for="instrumento">Instrumento</label>
+                <select name="instrumento" id="instrumento" class="form-control">
                   <option>Acordeão</option>
                   <option>Baixo</option>
                   <option>Bateria</option>
@@ -195,8 +189,8 @@ session_start();
                 </select>
             </div>
             <div class="form-group col-md-6">
-              <label for="estilo">Estilo Musical:</label>
-                <select name="estilo_musical" id="estilo" class="form-control" required>
+              <label for="estilo">Estilo Musical Principal</label>
+                <select name="estilo_musical" id="estilo" class="form-control">
                   <option>Alternativa</option>
                   <option>Axé</option>
                   <option>Blues</option>
@@ -223,33 +217,13 @@ session_start();
               <label for="descricao">Fale um pouco sobre você. [Descrição]</label>
               <textarea class="form-control" id="descricao" name="descricao_func" rows="3" maxlenght="220"></textarea>
             </div>
+            <input type="submit" class="btn btn-primary mr-auto ml-auto" style="display: block;"/>
           </div>
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <label for="senha">Senha:</label>
-            <input type="password" class="form-control" name="senha" id="senha" placeholder="Sua senha" minlength="8" maxlength="30" required>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <label for="confirma_senha">Confirmar:</label>
-            <input type="password" class="form-control" id="confirma_senha" placeholder="Confirmar senha" minlength="8" maxlength="30" required>
-          </div>
-        </div>
-        <div class="form-check">
-   <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">eu aceito os <a href="termos.php" target="_blank">Termos de condições de uso</a></label>
-  </div>
-        <p></p>
-        
-        
-          <input type="submit" class="btn btn-primary"/>
-          <input type="reset" class="btn btn-primary">
       </div>
 </div>
 
 </body>
-<div id="copyright">
+<div id="copyright" style="background-color:#212529;">
       <div class="container">
         <div class="copyright">
           <p>Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)</p>
@@ -269,34 +243,14 @@ session_start();
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="../js/jquery.mask.js"></script>
     <script type="text/JavaScript">
-   
-
-
       //MASCARAS
       $(document).ready(function () { 
         jQuery(function($){
-          $("#cpf").mask('999.999.999-99'); //precisa estar sem pontos
           $("#cep").mask('99999-999');
           $("#telefone").mask("(99)99999-9999");
         });
       });
-
-
-      //CONFIRMA SENHA
-      var password = document.getElementById("senha")
-      , confirm_password = document.getElementById("confirma_senha");
-
-      function validatePassword(){
-          if(password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("A senha não é igual!");
-        } else {
-          confirm_password.setCustomValidity('');
-        }
-      }
-      password.onchange = validatePassword;
-      confirm_password.onchange = validatePassword;
-      
-      
     </script>
+    
   </body>
 </html>
